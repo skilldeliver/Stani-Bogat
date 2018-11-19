@@ -13,7 +13,7 @@ def main():
         except Exception as e:
             print(f'Failed to load extension {extension}: {repr(e)}')
 
-    bot.run('NTEzNDMzMjcxMDUzNDUxMjY1.DtH7uA.de9Iw6nw2dtqhkspui3e63L2lgI')
+    bot.run('randtoken')
 
 
 if __name__ == '__main__':

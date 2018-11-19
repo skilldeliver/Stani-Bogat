@@ -25,7 +25,6 @@ class Host:
                      'В)': 'екзистенциалист', 'Г)': 'пацифист'},
             color=0xb6f7c2,
             question_leva=2000,
-            # thumbnail_url='https://i.imgur.com/pLTtYwk.png',
             author='Skilldeliver',
             author_url='https://github.com/skilldeliver',
             author_thumbnail='https://i.imgur.com/GXTzOA0.png'
@@ -43,9 +42,8 @@ class Host:
 
     @commands.command(name='помощ')
     async def get_help(self, ctx, arg):  # arg - приятел or публика
-        if arg == 'приятел':
-            await ctx.send(f'<@{ctx.author.id}>, получаваш помощ от приятел.')
-        elif arg == 'публика':
+        await ctx.send(f'{arg}, имаш 30 секунди да помогнеш на своят приятел.')
+        if arg == 'публика':
             await ctx.send(f'<@{ctx.author.id}>, получаваш помощ от публика.')
 
     @commands.command(name='50:50', aliases=['50/50', '5050', '50%50'])
