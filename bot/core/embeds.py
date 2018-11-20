@@ -4,30 +4,31 @@ import discord
 from discord import Embed
 
 
-class QuestionEmded(Embed):
+class QuestionEmbed(Embed):
     def __init__(self,
+                 player: str,
+                 player_thumbnail: str,
                  question: str,
                  question_leva: int,
-                 answers: str,
+                 answers: dict,
                  color: int,
                  author: str,
-                 author_url=Embed.Empty,
-                 author_thumbnail=Embed.Empty
+                 author_thumbnail: str,
                  ):
         Embed.__init__(self,
                        title=question,
                        color=color)
 
-        self.set_author(name=f'Добавен от: {author}',
-                        url=author_url,
-                        icon_url=author_thumbnail)
+        self.set_author(name=f'Играта на {player}. Въпрос за {question_leva} лева.',
+                        icon_url=player_thumbnail)
 
         for key in answers:
             self.add_field(name=key,
                            value=answers[key],
                            inline=False)
 
-        self.set_footer(text=f"Въпрос за {question_leva} лева.")
+        self.set_footer(text=f"Въпрос добавен от {author}.",
+                        icon_url=author_thumbnail)
 
 
 class InfoEmbed(Embed):
@@ -68,6 +69,19 @@ class RightAnswerEmbed(Embed):
         Embed.__init__(self,
                        title=text,
                        color=color)
+
+
+class JokersEmbed(Embed):
+    def __init__(self,
+                 player: str,
+                 player_thumbnail: str,
+                 image_url: str,):
+        color = 0x1b87e7
+        Embed.__init__(self, color=color)
+
+        self.set_author(name=f'Играта на {player}.',
+                        icon_url=player_thumbnail)
+        self.set_image(url=image_url)
 
 
 class CommandsEmbed(Embed):
