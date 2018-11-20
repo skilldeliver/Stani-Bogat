@@ -1,6 +1,10 @@
 import random
-
 import discord
+
+from bot.constants import Image
+from bot.json_util import load_question
+
+from bot.core.embeds import QuestionEmbed
 
 
 class Game:
@@ -15,6 +19,9 @@ class Game:
         self.fifty = True
         self.friend = True
         self.audience = True
+
+        self.last_question = None
+        self.last_embed = None
 
         self.question_amount_map = [50,
                                     100,
@@ -33,8 +40,6 @@ class Game:
                                     100_000]
 
     def ask(self)->dict:
-        from bot.json_util import load_question
-
         self.question_level += 1
         questions = load_question(str(self.question_level).zfill(2),
                                   'general')
@@ -63,9 +68,40 @@ class Game:
                     author_thumbnail=author_thumbnail,
                     )
 
-    def correct_answer(self, ans):
-        print(self.answers[f'{ans})'], self.right_answer)
+    def remove_2_choices(self)->None:
+        removed = 0
+        loop = 0
+
+        while removed < 2:
+            try:
+                choice = self.letters[random.randint(0, 3-removed)]
+                to_remove = self.last_question['answers'][choice]
+            except KeyError:
+                continue
+
+            if to_remove != self.right_answer:
+                del self.last_question['answers'][choice]
+                removed += 1
+
+            loop += 1
+            if loop > 200:
+                print('''
+                \n\n\nInfinity while loop error!
+                bot.core.game.py line - 88!\n\n\n
+                ''')
+                break
+
+    def correct_answer(self, ans: str)->bool:
         return self.answers[f'{ans})'] == self.right_answer
+
+    def jokers_left(self)->str:
+        lrs = 'xo'
+        n1 = int(self.fifty)
+        n2 = int(self.friend)
+        n3 = int(self.audience)
+
+        key = f'{lrs[n1]}{lrs[n2]}{lrs[n3]}'
+        return Image.jokers[key]
 
     @staticmethod
     def _get_rand_color():
