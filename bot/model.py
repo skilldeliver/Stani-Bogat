@@ -8,4 +8,4 @@ class Bot(commands.Bot):
         commands.Bot.__init__(self,
                               command_prefix=prefix)
 
-        self.games_queue = dict()
+        self.games = dict()
