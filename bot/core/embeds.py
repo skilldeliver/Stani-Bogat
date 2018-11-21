@@ -1,4 +1,4 @@
-from platform import python_version
+from platform import python_version, uname
 
 import discord
 from discord import Embed
@@ -33,12 +33,16 @@ class QuestionEmbed(Embed):
 
 class InfoEmbed(Embed):
     def __init__(self, connected_servers: int):
+        pc = uname()
         Embed.__init__(self)
         self.set_author(name=f'ГитХъб репо',
                         url='https://github.com/skilldeliver/Stani-Bogat',
                         icon_url='https://avatars2.githubusercontent.com/u/37806520?s=400&u=581fd4ac6786e8d1e4880f51922592d1945aaaeb&v=4')
         self.add_field(name=f'Дискорд сървъри:',
                        value=f'{connected_servers}',
+                       inline=False)
+        self.add_field(name=f'Хост:',
+                       value=f'{pc.node}\n{pc.system} {pc.release}',
                        inline=False)
         self.add_field(name='Използвани технологии:',
                        value=f'discord.py rewrite branch {discord.__version__},\n Python {python_version()} :snake:',

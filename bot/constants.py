@@ -2,10 +2,15 @@ from pathlib import PurePath
 
 
 class Path:
-    project = PurePath(__file__).parent
-    questions = project.joinpath('questions/')
+    project = PurePath(__file__).parent.parent
+    data = project.joinpath('data/')
+
+    questions = data.joinpath('questions/')
     general = questions.joinpath('general/')
 
+class Files:
+    pass
+    # general_questions = [questifor i in range(1, 16)]
 
 class Image:
     jokers = {'ooo': 'https://i.imgur.com/aTzsSyO.png',

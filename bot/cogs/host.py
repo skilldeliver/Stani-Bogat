@@ -87,7 +87,8 @@ class Host:
                 del self.games_queue[user_id]
 
                 await asyncio.sleep(1.5)
-                await ctx.send(f'<@{user_id}>, твоята игра приключи. Тръгваш си с - {0} лева.')
+                await ctx.send(f'<@{user_id}>, твоята игра приключи. \
+Тръгваш си с - {game.return_money()} лева.')
 
     @commands.command(name='помощ')
     async def get_help(self, ctx, arg):  # arg - приятел[tag] or публика
@@ -138,7 +139,22 @@ class Host:
 
     @commands.command(name='спирам')
     async def terminate(self, ctx):
-        await ctx.send(f'<@{ctx.author.id}>, игра ти приключва и си взимаш парите.')
+        user_id = str(ctx.author.id)
+        game = self.games_queue[user_id]
+        del self.games_queue[user_id]
+
+        await ctx.send(f'<@{user_id}>, твоята игра приключи.\
+Тръгваш си с {game.return_money(wrong_answer=False)} лева.')
+
+    @commands.command(name='добави')
+    async def add(self, ctx):
+        user = self.bot.get_user(ctx.author.id)
+        dm = await user.create_dm()
+
+        await dm.send(content='Helllo my old friend.', tts=True)
+        messages = await dm.pins()
+        for i in messages:
+            print(i.content)
 
     @staticmethod
     def _extract_id_from_tag(tag):

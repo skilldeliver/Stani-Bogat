@@ -23,7 +23,8 @@ class Game:
         self.last_question = None
         self.last_embed = None
 
-        self.question_amount_map = [50,
+        self.question_amount_map = [0,
+                                    50,
                                     100,
                                     200,
                                     300,
@@ -44,7 +45,7 @@ class Game:
         questions = load_question(str(self.question_level).zfill(2),
                                   'general')
 
-        amount = self.question_amount_map[self.question_level - 1]
+        amount = self.question_amount_map[self.question_level]
         unpack = questions['1']
 
         question = f'{self.question_level}. {list(unpack.keys())[0]}'
@@ -102,6 +103,22 @@ class Game:
 
         key = f'{lrs[n1]}{lrs[n2]}{lrs[n3]}'
         return Image.jokers[key]
+
+    def return_money(self, wrong_answer=True)->int:
+        if wrong_answer:
+            secure_prices = [2500, 500]
+            if self.question_level > \
+               self.question_amount_map.index(secure_prices[0]):
+                return secure_prices[0]
+            if self.question_level > \
+               self.question_amount_map.index(secure_prices[1]):
+                return secure_prices[1]
+            return 0
+        else:
+            if self.question_level == 0:
+                return 0
+            else:
+                return self.question_amount_map[self.question_level - 1]
 
     @staticmethod
     def _get_rand_color():
