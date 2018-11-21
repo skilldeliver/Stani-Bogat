@@ -4,5 +4,4 @@ user = self.bot.get_user(ctx.author.id)
 user.name                  - This is the name of the user
 user.discriminator         - This is the user tag
 
-
-
+БРАТЯ ГРИМ са
