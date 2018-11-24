@@ -11,12 +11,31 @@ class Answer:
 
     @commands.command(name='А', aliases=list("БВГабвг"))
     async def take_answer(self, ctx):
-        user_id = str(ctx.author.id)
-        game = self.bot.games[user_id]
+        print('IN')
+        user_id = str(ctx.author.id)  # id of the player or helper 
+        print(self.bot.helping_friends)
+        if user_id in self.bot.helping_friends.keys():  # this is the second case when the helper is invoked
+            print('IN')
+            letter = ctx.message.content[1:].upper()
+            helper = self.bot.get_user(ctx.author.id) # the discord.User object of the helper
+            help_for = self.bot.helping_friends[str(helper.id)]
+
+            player = self.bot.games[help_for]
+
+            val = player.last_question['answers'][letter + ')']
+            del player.last_question['answers'][letter + ')']
+            player.last_question['answers'][f'{letter})     {helper.name}'] = val
+
+            print(player.last_question)
+            embed = QuestionEmbed(**player.last_question)
+            await player.last_embed.edit(embed=embed)
+
+            return 
 
         if user_id not in self.bot.games.keys():
             await ctx.send(f'<@{user_id}>, не си в игра.')
         else:
+            game = self.bot.games[user_id]  # the game of the player
             await asyncio.sleep(0.5)
             answer = ctx.message.content[1:].upper()
 

@@ -23,6 +23,9 @@ class Game:
         self.last_question = None
         self.last_embed = None
 
+        self.waiting_friend_help = False
+        self.waiting_audience_help = False
+
         self.question_amount_map = [0,
                                     50,
                                     100,

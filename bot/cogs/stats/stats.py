@@ -7,8 +7,13 @@ class Stats:
         self.bot = bot
 
     @commands.command(name='топ10', aliases=['топ'])
-    async def print_top10(self, ctx):
-        await ctx.send(f'<@{ctx.author.id}>, отпечатва се класацията.')
+    async def print_top10(self, ctx, arg): # автори or играчи
+        if arg == 'автори':
+            print(arg)
+            await ctx.send(f'<@{ctx.author.id}>, автори')
+        elif arg == 'играчи':
+            print(arg)
+            await ctx.send(f'<@{ctx.author.id}>, играчи')
 
     @commands.command(name='статс', aliases=['стат'])
     async def stats(self, ctx):

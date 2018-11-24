@@ -15,9 +15,9 @@ class QuestionEmbed(Embed):
                  author: str,
                  author_thumbnail: str,
                  ):
-        Embed.__init__(self,
-                       title=question,
-                       color=color)
+        super().__init__(
+                         title=question,
+                         color=color)
 
         self.set_author(name=f'Играта на {player}. Въпрос за {question_leva} лева.',
                         icon_url=player_thumbnail)
@@ -34,7 +34,7 @@ class QuestionEmbed(Embed):
 class InfoEmbed(Embed):
     def __init__(self, connected_servers: int):
         pc = uname()
-        Embed.__init__(self)
+        super().__init__()
         self.set_author(name=f'ГитХъб репо',
                         url='https://github.com/skilldeliver/Stani-Bogat',
                         icon_url='https://avatars2.githubusercontent.com/u/37806520?s=400&u=581fd4ac6786e8d1e4880f51922592d1945aaaeb&v=4')
@@ -60,9 +60,8 @@ class WrongAnswerEmbed(Embed):
         text = f'Грешен отговор!'
         color = 0xdd2e44
 
-        Embed.__init__(self,
-                       title=text,
-                       color=color)
+        super().__init__(title=text,
+                         color=color)
 
 
 class RightAnswerEmbed(Embed):
@@ -70,9 +69,8 @@ class RightAnswerEmbed(Embed):
         text = f'Верен отговор!'
         color = 0x77b255
 
-        Embed.__init__(self,
-                       title=text,
-                       color=color)
+        super().__init__(title=text,
+                         color=color)
 
 
 class JokersEmbed(Embed):
@@ -81,7 +79,7 @@ class JokersEmbed(Embed):
                  player_thumbnail: str,
                  image_url: str,):
         color = 0x1b87e7
-        Embed.__init__(self, color=color)
+        super().__init__(color=color)
 
         self.set_author(name=f'Играта на {player}.',
                         icon_url=player_thumbnail)
