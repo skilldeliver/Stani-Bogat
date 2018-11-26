@@ -1,7 +1,8 @@
 from pathlib import PurePath
+from typing import NamedTuple
 
 
-class Path:
+class Path(NamedTuple):
     project = PurePath(__file__).parent.parent
     data = project.joinpath('data/')
 
@@ -9,15 +10,7 @@ class Path:
     general = questions.joinpath('general/')
 
 
-class Files:
-    end = '/questions.json'
-    general_questions = list()
-
-    for i in range(1, 16):
-        general_questions.append(Path.general.joinpath(str(i).zfill(2) + end))
-
-
-class Image:
+class Image(NamedTuple):
     jokers = {'ooo': 'https://i.imgur.com/aTzsSyO.png',
               'oox': 'https://i.imgur.com/4CUYpvv.png',
               'oxo': 'https://i.imgur.com/NYLgn73.png',
@@ -27,3 +20,10 @@ class Image:
               'oxx': 'https://i.imgur.com/y1r9XGK.png',
               'xxx': 'https://i.imgur.com/ZPOM3Tc.png'
               }
+
+
+class Files:
+    general_questions = list()
+    end = '/questions.json'
+    for i in range(1, 16):
+        general_questions.append(Path.general.joinpath(str(i).zfill(2) + end))
