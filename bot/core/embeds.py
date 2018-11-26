@@ -4,7 +4,7 @@ import github
 import discord
 from discord import Embed
 
-g = github.Github('username', 'pass')
+g = github.Github('boneredcoder', 'stanibogatbot1')
 
 
 class QuestionEmbed(Embed):
@@ -37,7 +37,7 @@ class QuestionEmbed(Embed):
 class InfoEmbed(Embed):
     def __init__(self, connected_servers: int):
         pc = uname()
-        super().__init__()
+        super().__init__(color=0x000000)
 
         repo = g.get_repo("skilldeliver/Stani-Bogat")
         stars = repo.stargazers_count
@@ -65,7 +65,7 @@ Pipenv''',
                        value='Владислав Михов',
                        inline=False)
         self.add_field(name='Топ сътрудници(contributors):',
-                       value=':one:Някакво име\n:two:Друго име',
+                       value=':one: skilldeliver \n:two: surister',
                        inline=False)
 
 

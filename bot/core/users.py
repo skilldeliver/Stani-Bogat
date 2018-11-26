@@ -1,3 +1,0 @@
-
-class Users:
-    games = dict()
