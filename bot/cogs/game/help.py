@@ -14,8 +14,15 @@ class Help:
         game = self.bot.games[str(user_id)]
 
         if arg == 'публика':
-            await ctx.send('Нека публиката се включи сега!')
+            msg = await ctx.send('Нека публиката се включи сега! Оставящи 30 секунди.')
             game.audience = False
+
+            game.waiting_audience_help = True
+            for i in range(29, -1, -1): # count seconds 
+                await asyncio.sleep(1)
+                await msg.edit(content=f'Нека публиката се включи сега! Оставящи {i} секунди.')
+            game.waiting_audience_help = False
+            await ctx.send(game.audience_votes)
 
         # TODO pack this shit into methods >>>>
         else:  # helper is invoked

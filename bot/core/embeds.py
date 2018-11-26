@@ -4,7 +4,7 @@ import github
 import discord
 from discord import Embed
 
-g = github.Github('boneredcoder', 'stanibogatbot1')
+g = github.Github('none', 'none')
 
 
 class QuestionEmbed(Embed):

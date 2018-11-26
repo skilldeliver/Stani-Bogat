@@ -25,6 +25,10 @@ class Game:
 
         self.waiting_friend_help = False
         self.waiting_audience_help = False
+        self.audience_votes = dict(zip(self.letters, [set(),
+                                                      set(),
+                                                      set(),
+                                                      set()]))
 
         self.question_amount_map = [0,
                                     50,

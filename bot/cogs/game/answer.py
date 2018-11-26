@@ -11,7 +11,15 @@ class Answer:
 
     @commands.command(name='А', aliases=list("БВГабвг"))
     async def take_answer(self, ctx):
-        user_id = str(ctx.author.id)  # id of the player or helper 
+        user_id = str(ctx.author.id)  # id of the player or helper
+
+        for game in self.bot.games.values():
+            if game.waiting_audience_help:
+                if user_id != str(game.user.id):  # should be different
+                    letter = ctx.message.content[1:].upper()
+                    game.audience_votes[f'{letter})'].add(user_id)
+                    return
+
         print(self.bot.helping_friends)
 
         if user_id in self.bot.helping_friends.keys():  # this is the second case when the helper is invoked
@@ -19,17 +27,17 @@ class Answer:
             helper = self.bot.get_user(ctx.author.id) # the discord.User object of the helper
             help_for = self.bot.helping_friends[str(helper.id)]
 
-            player = self.bot.games[help_for]
+            game = self.bot.games[help_for]
 
-            val = player.last_question['answers'][letter + ')']
-            del player.last_question['answers'][letter + ')']
-            player.last_question['answers'][f'{letter})     {helper.name}'] = val
+            val = game.last_question['answers'][letter + ')']
+            del game.last_question['answers'][letter + ')']
+            game.last_question['answers'][f'{letter})     {helper.name}'] = val
 
-            print(player.last_question)
-            embed = QuestionEmbed(**player.last_question)
-            await player.last_embed.edit(embed=embed)
+            print(game.last_question)
+            game = QuestionEmbed(**game.last_question)
+            await game.last_embed.edit(embed=embed)
 
-            return 
+            return
 
         if user_id not in self.bot.games.keys():
             await ctx.send(f'<@{user_id}>, не си в игра.')
