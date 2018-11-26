@@ -17,7 +17,7 @@ class Files:
         general_questions.append(Path.general.joinpath(str(i).zfill(2) + end))
 
 
-class Image:
+class Sprite:
     jokers = {'ooo': 'https://i.imgur.com/aTzsSyO.png',
               'oox': 'https://i.imgur.com/4CUYpvv.png',
               'oxo': 'https://i.imgur.com/NYLgn73.png',

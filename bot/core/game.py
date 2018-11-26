@@ -1,7 +1,7 @@
 import random
 import discord
 
-from bot.constants import Image
+from bot.constants import Sprite
 from bot.json_util import load_question
 
 from bot.core.embeds import QuestionEmbed
@@ -105,7 +105,7 @@ class Game:
         n3 = int(self.audience)
 
         key = f'{lrs[n1]}{lrs[n2]}{lrs[n3]}'
-        return Image.jokers[key]
+        return Sprite.jokers[key]
 
     def return_money(self, wrong_answer=True)->int:
         if wrong_answer:

@@ -5,9 +5,9 @@ name = "pypi"
 
 [packages]
 "discord.py" = {ref = "rewrite", git = "https://github.com/Rapptz/discord.py"}
-"flake8" = "*"
 "html2text" = "*"
 requests = "*"
+pygithub = "*"
 
 [dev-packages]
 "pep8" = "*"

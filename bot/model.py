@@ -23,8 +23,6 @@ class Bot(commands.Bot):
         stats_cogs = [file.stem for file in Path('bot',
                       'cogs', 'stats').glob('*.py')]
 
-        print(general_cogs, game_cogs, stats_cogs)
-
         print('Loading general cogs:')
         for extension in general_cogs:
             try:

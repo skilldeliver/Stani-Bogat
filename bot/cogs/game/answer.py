@@ -11,11 +11,10 @@ class Answer:
 
     @commands.command(name='А', aliases=list("БВГабвг"))
     async def take_answer(self, ctx):
-        print('IN')
         user_id = str(ctx.author.id)  # id of the player or helper 
         print(self.bot.helping_friends)
+
         if user_id in self.bot.helping_friends.keys():  # this is the second case when the helper is invoked
-            print('IN')
             letter = ctx.message.content[1:].upper()
             helper = self.bot.get_user(ctx.author.id) # the discord.User object of the helper
             help_for = self.bot.helping_friends[str(helper.id)]
