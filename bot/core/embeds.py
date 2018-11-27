@@ -100,6 +100,53 @@ class JokersEmbed(Embed):
         self.set_image(url=image_url)
 
 
+class AudienceEmbed(Embed):
+    def __init__(self,
+                 player: str,
+                 player_thumbnail: str,
+                 question_level: int,
+                 count_votes: int,
+                 votes: dict,
+                 color: int,
+                 ):
+        super().__init__(color=color)
+
+        self.set_author(name=f'Играта на {player}. Гласуве на публиката за въпрос {question_level}',
+                        icon_url=player_thumbnail)
+        for vote in votes:
+            lines = votes[vote] * '|'
+            if not lines:
+                lines = u"\u2063"
+
+            self.add_field(name=f'{vote} {votes[vote]} %',
+                           value=f'{lines}',
+                           inline=False)
+
+        self.set_footer(text=f"Общо гласуве: {count_votes}.")
+
+
+class FriendEmbed(Embed):
+    def __init__(self,
+                 player: str,
+                 player_thumbnail: str,
+                 helper: str,
+                 helper_thumbnail: str,
+                 question_level: int,
+                 vote: dict,
+                 color: int,
+                 ):
+        super().__init__(color=color)
+
+        self.set_author(name=f'Играта на {player}. Предложението на {helper} за въпрос {question_level}.',
+                        icon_url=player_thumbnail)
+
+        self.add_field(name=f'{list(vote.keys())[0]}',
+                       value=f'{list(vote.values())[0]}',
+                       inline=False)
+
+        self.set_thumbnail(url=helper_thumbnail)
+
+
 class CommandsEmbed(Embed):
     pass
 

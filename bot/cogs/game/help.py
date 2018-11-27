@@ -3,10 +3,21 @@ import re
 
 from discord.ext import commands
 
+from bot.core.embeds import JokersEmbed, AudienceEmbed
+
 
 class Help:
     def __init__(self, bot):
         self.bot = bot
+
+    @commands.command(name='ембед')
+    async def test(self, ctx, arg):
+        letters = ['А)', 'Б)', 'В)', 'Г)']
+        pers = arg.replace(',', ' ').split()
+
+        adict = dict(zip(letters, map(int, pers)))
+        embed = AudienceEmbed(adict, color=0x77b255)
+        await ctx.send(embed=embed)
 
     @commands.command(name='помощ')
     async def get_help(self, ctx, arg):  # arg - приятел[tag] or публика
@@ -14,15 +25,24 @@ class Help:
         game = self.bot.games[str(user_id)]
 
         if arg == 'публика':
-            msg = await ctx.send('Нека публиката се включи сега! Оставящи 30 секунди.')
-            game.audience = False
+            if game.audience:
+                msg = await ctx.send('Нека публиката се включи сега! Оставящи 30 секунди.')
+                game.audience = False
 
-            game.waiting_audience_help = True
-            for i in range(29, -1, -1): # count seconds 
-                await asyncio.sleep(1)
-                await msg.edit(content=f'Нека публиката се включи сега! Оставящи {i} секунди.')
-            game.waiting_audience_help = False
-            await ctx.send(game.audience_votes)
+                game.waiting_audience_help = True
+                game.audience_channel = ctx.channel
+
+                for i in range(29, -1, -1): # count seconds 
+                    await asyncio.sleep(1)
+                    await msg.edit(content=f'Нека публиката се включи сега! Оставящи {i} секунди.')
+                game.waiting_audience_help = False
+                await ctx.send(game.audience_votes)
+            else:
+                await ctx.send(f'<@{user_id}>, използвал си помощ от публиката.')
+                embed = JokersEmbed(game.user.name,
+                                    game.user.avatar_url,
+                                    game.jokers_left())
+                await ctx.send(embed=embed)
 
         # TODO pack this shit into methods >>>>
         else:  # helper is invoked
@@ -40,7 +60,7 @@ class Help:
                             await asyncio.sleep(1)
                             await msg.edit(content=f'{help_user.name}, имаш {i} секунди да помогнеш на своят приятел.')
                     await msg.add_reaction('\u23f0')
-                    del self.bot.helping_friends[help_user_id] # remove the helper from the queue
+                    del self.bot.helping_friends[str(help_user_id)] # remove the helper from the queue
                 else:
                     await ctx.send(f'{user_id}, не може да искаш помощ от потребител в игра.')
 

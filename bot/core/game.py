@@ -9,27 +9,40 @@ from bot.core.embeds import QuestionEmbed
 
 class Game:
     def __init__(self, user: discord.User):
+        # the user - discord.User instance
         self.user = user
         self.question_level = 0
+
         self.letters = ['А)', 'Б)', 'В)', 'Г)']
-        self.color = self._get_rand_color()
-        self.right_answer = None
+        self.color = self._get_rand_color()  # color of the question embed
+        self.right_answer = None  # save the right answer
 
         # the jokers
         self.fifty = True
         self.friend = True
         self.audience = True
 
+        # save the last question dict and embed to change them later
         self.last_question = None
         self.last_embed = None
 
+        # boolean values to check if the joker is running
+        # similar with the previous ones - but those expire after 30 secs
         self.waiting_friend_help = False
         self.waiting_audience_help = False
+
+        # store the audience votes in a dictionary
         self.audience_votes = dict(zip(self.letters, [set(),
                                                       set(),
                                                       set(),
                                                       set()]))
 
+        # audience help should be only from one channel
+        # that's why we keep it - should take votes only from
+        # the same channel
+        self.audience_channel = str()
+
+        # price of every question
         self.question_amount_map = [0,
                                     50,
                                     100,
