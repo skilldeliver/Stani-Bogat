@@ -2,8 +2,7 @@ import asyncio
 
 from discord.ext import commands
 
-from bot.core.embeds import QuestionEmbed, RightAnswerEmbed, WrongAnswerEmbed,
-FriendEmbed
+from bot.core.embeds import QuestionEmbed, RightAnswerEmbed, WrongAnswerEmbed, FriendEmbed
 
 
 class Answer:
@@ -14,9 +13,12 @@ class Answer:
 
     @commands.command(name='А', aliases=list("БВГабвг"))
     async def take_answer(self, ctx):
-        self.player_id = str(ctx.author.id)  # id of the player or helper
+        # TODO user_id instead of player_id
+        self.player_id = str(ctx.author.id)
+        # player, just user, audience voter or friend
         self.ctx = ctx
 
+        print(self.bot.helping_friends.keys())
         # first of all take the vote from the audience
         if self._take_vote_from_audience():
             # the audience voter vote is taken so the method 'breaks'
@@ -86,49 +88,81 @@ class Answer:
 
                 embed = FriendEmbed(player=game.user.name,
                                     player_thumbnail=game.user.avatar_url,
-                                    helper=helper.name,
-                                    helper_thumbnail=helper.avatar_url,
+                                    helper=friend.name,
+                                    helper_thumbnail=friend.avatar_url,
                                     question_level=game.question_level,
                                     vote=vote,
                                     color=game.color)
                 # make Friend embed and send it in the chat
                 await self.ctx.send(embed=embed)
+                game.waiting_friend_help = False
+
                 return True
 
     async def _user_not_in_game(self)->bool:
+        """
+        Returns True if the user is not playing game yet.
+        """
         if self.player_id not in self.bot.games.keys():
             await self.ctx.send(f'<@{self.player_id}>, не си в игра.')
             return True
 
     async def _take_player_answer(self):
-            game = self.bot.games[self.player_id]  # the game of the player
-            await asyncio.sleep(0.5)
-            answer = self.ctx.message.content[1:].upper()
+        """
+        Takes player answer.
+        Asks new question - if the answer is correct.
+        Terminates the game - if the answer is wrong.
+        """
+        player = self.player_id
+        game = self.bot.games[self.player_id]
+        # get the game of the player
 
-            if self.bot.games[self.player_id].correct_answer(answer):
-                await self.ctx.message.add_reaction('\u2705')
-                embed = RightAnswerEmbed()
-                await self.ctx.send(embed=embed)
+        await asyncio.sleep(0.5)
+        answer = self.ctx.message.content[1:].upper()
+        # take the letter
 
-                await asyncio.sleep(1.5)
-                question_data = self.bot.games[self.player_id].ask()
-                embed = QuestionEmbed(**question_data)
+        if game.correct_answer(answer):
+            await self._right_answer()
 
-                game.waiting_audience_help = False
+            await asyncio.sleep(1.5)
+            question_data = self.bot.games[player].ask()
+            embed = QuestionEmbed(**question_data)
+
+            game.last_question = question_data
+            game.last_embed = await self.ctx.send(embed=embed)
+
+            if game.waiting_friend_help:
                 game.waiting_friend_help = False
 
-                game.last_question = question_data
-                game.last_embed = await self.ctx.send(embed=embed)
-            else:
-                await self.ctx.message.add_reaction('\u274C')
-                embed = WrongAnswerEmbed()
-                await self.ctx.send(embed=embed)
+            if game.waiting_audience_help:
+                game.waiting_audience_help = False
 
-                del self.bot.games[self.player_id]
+        else:
+            await self._wrong_answer()
 
-                await asyncio.sleep(1.5)
-                await self.ctx.send(f'<@{self.player_id}>, твоята игра приключи. \
+            del self.bot.games[player]
+
+            await asyncio.sleep(1.5)
+            await self.ctx.send(f'<@{player}>, твоята игра приключи. \
 Тръгваш си с - {game.return_money()} лева.')
+
+    async def _right_answer(self):
+        """
+        Adds correct react to the answer.
+        Sends right answer embed in the chat.
+        """
+        await self.ctx.message.add_reaction('\u2705')
+        embed = RightAnswerEmbed()
+        await self.ctx.send(embed=embed)
+
+    async def _wrong_answer():
+        """
+        Adds mistaken react to the answer.
+        Sends wrong answer embed in the chat.
+        """
+        await self.ctx.message.add_reaction('\u274C')
+        embed = WrongAnswerEmbed()
+        await self.ctx.send(embed=embed)
 
 
 def setup(bot):

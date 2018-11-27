@@ -55,10 +55,14 @@ class Help:
                         msg = await ctx.send(f'{help_user.name}, имаш 30 секунди да помогнеш на своят приятел.')
                         game.friend = False # the joker is gone
                         self.bot.helping_friends[str(help_user_id)] = str(user_id) # add the helper to the queue and bind the player id
+                        game.waiting_friend_help = True
                         print(self.bot.helping_friends)
-                        for i in range(29, -1, -1): # count seconds 
+                        for i in range(29, -1, -1): # count seconds
+                            if not game.waiting_friend_help:
+                                break
                             await asyncio.sleep(1)
                             await msg.edit(content=f'{help_user.name}, имаш {i} секунди да помогнеш на своят приятел.')
+                        game.waiting_friend_help = False
                     await msg.add_reaction('\u23f0')
                     del self.bot.helping_friends[str(help_user_id)] # remove the helper from the queue
                 else:
