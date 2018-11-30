@@ -62,19 +62,17 @@ class Game:
 
     def ask(self)->dict:
         self.question_level += 1
-        questions = load_question(str(self.question_level).zfill(2),
-                                  'general')
-
         amount = self.question_amount_map[self.question_level]
-        unpack = questions['1']
 
-        question = f'{self.question_level}. {list(unpack.keys())[0]}'
-        choices = list(unpack.values())[0]
+        data = load_question(str(self.question_level).zfill(2),
+                             'general')
+
+        author = data["author"]
+        author_thumbnail = data["author_thumbnail"]
+
+        question = data["question"]
+        choices = data["choices"]
         self.right_answer = choices[0]
-
-        author = 'Skilldeliver'
-        author_url = 'https://github.com/skilldeliver'
-        author_thumbnail = 'https://i.imgur.com/GXTzOA0.png'
 
         random.shuffle(choices)
         self.answers = dict(zip(self.letters, choices))
@@ -83,6 +81,7 @@ class Game:
                     player_thumbnail=self.user.avatar_url,
                     question=question,
                     question_leva=amount,
+                    question_level=self.question_level,
                     answers=self.answers,
                     color=self.color,
                     author=author,
@@ -123,6 +122,26 @@ class Game:
 
         key = f'{lrs[n1]}{lrs[n2]}{lrs[n3]}'
         return Sprite.jokers[key]
+
+    def get_audience_votes(self)->dict:
+        votes = dict()
+        count_votes = int()
+
+        for letter in self.audience_votes:
+            votes[letter] = len(self.audience_votes[letter])
+            count_votes += len(self.audience_votes[letter])
+
+        coef = 100 / count_votes
+
+        for letter in votes:
+            votes[letter] = int(round(votes[letter] * coef, 0))
+
+        return dict(player=self.user.name,
+                    player_thumbnail=self.user.avatar_url,
+                    question_level=self.question_level,
+                    count_votes=count_votes,
+                    votes=votes,
+                    color=self.color)
 
     def return_money(self, wrong_answer=True)->int:
         if wrong_answer:

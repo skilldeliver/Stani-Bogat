@@ -8,15 +8,14 @@ from bot.core.embeds import QuestionEmbed, RightAnswerEmbed, WrongAnswerEmbed, F
 class Answer:
     def __init__(self, bot):
         self.bot = bot
-        self.player_id = str()
-        self.ctx = str()
+        self.user_id = str()
+        self.ctx = None
 
     @commands.command(name='А', aliases=list("БВГабвг"))
     async def take_answer(self, ctx):
-        # TODO user_id instead of player_id
-        self.player_id = str(ctx.author.id)
-        # player, just user, audience voter or friend
         self.ctx = ctx
+        self.user_id = str(ctx.author.id)
+        # player, just user, audience voter or friend
 
         print(self.bot.helping_friends.keys())
         # first of all take the vote from the audience
@@ -42,20 +41,20 @@ class Answer:
         Asserts key conditions to be valid audience vote.
         Returns True if the audience voter vote is taken.
         """
-        voter = self.player_id
+        voter = self.user_id  # appropriate variable name
 
         # iterate all current games.
-        for game in self.bot.games.values():
-            if game.waiting_audience_help:
+        for player_game in self.bot.games.values():
+            if player_game.waiting_audience_help:
                 # Asserts that any of the players is waiting for help.
-                if voter != str(game.user.id) and \
-                   self.ctx.channel != game.audience_channel:
+                if voter != str(player_game.user.id) and \
+                   self.ctx.channel == player_game.audience_channel:
                     # Asserts that the audience voter it's not the player.
                     # Asserts that the audience voter is in the same channel.
 
                     letter = self.ctx.message.content[1:].upper() + ')'
                     # takes the letter suggested from the audience voter
-                    game.audience_votes[f'{letter}'].add(voter)
+                    player_game.audience_votes[f'{letter}'].add(voter)
                     # add the audience voter vote
                     return True
 
@@ -64,7 +63,7 @@ class Answer:
         Asserts key conditions to be valid friend help (vote).
         Returns True if the friend vote is taken.
         """
-        friend_id = self.player_id
+        friend_id = self.user_id
 
         if friend_id in self.bot.helping_friends.keys():
             # Asserts that the friend id  tagged by another player
@@ -103,8 +102,8 @@ class Answer:
         """
         Returns True if the user is not playing game yet.
         """
-        if self.player_id not in self.bot.games.keys():
-            await self.ctx.send(f'<@{self.player_id}>, не си в игра.')
+        if self.user_id not in self.bot.games.keys():
+            await self.ctx.send(f'<@{self.user_id}>, не си в игра.')
             return True
 
     async def _take_player_answer(self):
@@ -113,8 +112,8 @@ class Answer:
         Asks new question - if the answer is correct.
         Terminates the game - if the answer is wrong.
         """
-        player = self.player_id
-        game = self.bot.games[self.player_id]
+        player = self.user_id
+        game = self.bot.games[self.user_id]
         # get the game of the player
 
         await asyncio.sleep(0.5)
@@ -155,7 +154,7 @@ class Answer:
         embed = RightAnswerEmbed()
         await self.ctx.send(embed=embed)
 
-    async def _wrong_answer():
+    async def _wrong_answer(self):
         """
         Adds mistaken react to the answer.
         Sends wrong answer embed in the chat.

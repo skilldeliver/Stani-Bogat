@@ -6,3 +6,22 @@ user.discriminator         - This is the user tag
 
 БРАТЯ ГРИМ са
 Кой е създал кирилицата?
+
+
+model of json question
+
+"Author Name":
+{
+    "author_img": "http://link.to/image",
+    "questions":
+    [
+        {
+            "question": "Here goes the question?",
+            "answers": ["right", "random", "random", "random"]
+        },
+        {
+            "question2": "Here goes the question?2",
+            "answers2": ["right2", "random2", "random2", "random2"]
+        }
+    ]
+}

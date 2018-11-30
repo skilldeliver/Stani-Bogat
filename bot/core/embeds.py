@@ -4,7 +4,7 @@ import github
 import discord
 from discord import Embed
 
-g = github.Github('none', 'none')
+g = github.Github('ноне', 'ноне')
 
 
 class QuestionEmbed(Embed):
@@ -13,6 +13,7 @@ class QuestionEmbed(Embed):
                  player_thumbnail: str,
                  question: str,
                  question_leva: int,
+                 question_level: int,
                  answers: dict,
                  color: int,
                  author: str,
@@ -22,7 +23,7 @@ class QuestionEmbed(Embed):
                          title=question,
                          color=color)
 
-        self.set_author(name=f'Играта на {player}. Въпрос за {question_leva} лева.',
+        self.set_author(name=f'{question_level}. Играта на {player}. Въпрос за {question_leva} лева.',
                         icon_url=player_thumbnail)
 
         for key in answers:
@@ -111,7 +112,7 @@ class AudienceEmbed(Embed):
                  ):
         super().__init__(color=color)
 
-        self.set_author(name=f'Играта на {player}. Гласуве на публиката за въпрос {question_level}',
+        self.set_author(name=f'Играта на {player}. Гласoве на публиката за въпрос {question_level}.',
                         icon_url=player_thumbnail)
         for vote in votes:
             lines = votes[vote] * '|'
@@ -122,7 +123,7 @@ class AudienceEmbed(Embed):
                            value=f'{lines}',
                            inline=False)
 
-        self.set_footer(text=f"Общо гласуве: {count_votes}.")
+        self.set_footer(text=f"Общо гласoве: {count_votes}.")
 
 
 class FriendEmbed(Embed):

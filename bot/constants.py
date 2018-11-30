@@ -10,6 +10,10 @@ class Path(NamedTuple):
     general = questions.joinpath('general/')
 
 
+class File(NamedTuple):
+    json = '/questions.json'
+
+
 class Sprite(NamedTuple):
     jokers = {'ooo': 'https://i.imgur.com/aTzsSyO.png',
               'oox': 'https://i.imgur.com/4CUYpvv.png',
@@ -22,8 +26,5 @@ class Sprite(NamedTuple):
               }
 
 
-class File(NamedTuple):
-    general_questions = list()
-    end = '/questions.json'
-    for i in range(1, 16):
-        general_questions.append(Path.general.joinpath(str(i).zfill(2) + end))
+class Emoji(NamedTuple):
+    clock = '\u23f0'
