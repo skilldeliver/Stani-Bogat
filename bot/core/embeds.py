@@ -36,7 +36,7 @@ class QuestionEmbed(Embed):
 
 
 class InfoEmbed(Embed):
-    def __init__(self, connected_servers: int):
+    def __init__(self, connected_servers: int, total_members: int):
         pc = uname()
         super().__init__(color=0x000000)
 
@@ -49,26 +49,28 @@ class InfoEmbed(Embed):
 
         self.set_author(name=f'ГитХъб репо. {stars} \u2b50 {forks} 🍴 {issues} \u2757',
                         url='https://github.com/skilldeliver/Stani-Bogat',
-                        icon_url='https://camo.githubusercontent.com/7710b43d0476b6f6d4b4b2865e35c108f69991f3/68747470733a2f2f7777772e69636f6e66696e6465722e636f6d2f646174612f69636f6e732f6f637469636f6e732f313032342f6d61726b2d6769746875622d3235362e706e67')
-        self.add_field(name=f'Дискорд сървъри:',
+                        icon_url='https://avatars0.githubusercontent.com/u/9919?s=280&v=4')
+        self.add_field(name=f'🏴 Дискорд сървъри:',
                        value=f'{connected_servers}',
-                       inline=False)
-        self.add_field(name=f'Хост:',
+                       inline=True)
+        self.add_field(name=f':busts_in_silhouette: Потребители:',
+                       value=f'{total_members}',
+                       inline=True)
+        self.add_field(name=f'💻 Хост:',
                        value=f'{pc.node}\n{pc.system} {pc.release}',
                        inline=False)
-        self.add_field(name='Използвани технологии:',
+        self.add_field(name='🛠️ Използвани технологии:',
                        value=f'''Python {python_version()} :snake:
 discord.py rewrite branch {discord.__version__},
 PyGithub
 Pipenv''',
                        inline=False)
-        self.add_field(name='Автор:',
+        self.add_field(name='📝 Автор:',
                        value='Владислав Михов',
                        inline=False)
-        self.add_field(name='Топ сътрудници(contributors):',
+        self.add_field(name='👷 Топ сътрудници(contributors):',
                        value=':one: skilldeliver \n:two: surister',
                        inline=False)
-
 
 class WrongAnswerEmbed(Embed):
     def __init__(self):

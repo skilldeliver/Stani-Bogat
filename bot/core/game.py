@@ -131,7 +131,10 @@ class Game:
             votes[letter] = len(self.audience_votes[letter])
             count_votes += len(self.audience_votes[letter])
 
-        coef = 100 / count_votes
+        try:
+            coef = 100 / count_votes
+        except ZeroDivisionError:
+            coef = 0
 
         for letter in votes:
             votes[letter] = int(round(votes[letter] * coef, 0))
