@@ -84,4 +84,8 @@ def how_many_questions(author,
     with open(file, 'r',
               encoding="utf8") as f:
         data = json.load(f)
-        print(len(data[author]['questions']))
+        questions = data[author]['questions']
+
+        for question in questions:
+            print(question)
+        print(len(questions))
