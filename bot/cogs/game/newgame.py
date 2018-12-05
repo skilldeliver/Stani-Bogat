@@ -5,6 +5,7 @@ from discord.ext import commands
 
 from bot.core.game import Game
 from bot.core.embeds import QuestionEmbed
+from bot.core.replies import Reply
 
 
 class NewGame:
@@ -27,8 +28,7 @@ class NewGame:
         self._get_player()
 
         if self.player_id in self.bot.games.keys():
-            await ctx.send(f'<@{self.player_id}>, все още не си\
- приключил играта ти.')
+            await ctx.send(Reply.not_finished(self.player_id))
             return
 
         await self._create_new_game()
@@ -42,7 +42,7 @@ class NewGame:
     async def _create_new_game(self):
         # Create new Game and bind it to the user_id in the queue
         self.bot.games[self.player_id] = Game(self.player)
-        await self.ctx.send(f'<@{self.player_id}>, твоята игра започва сега!')
+        await self.ctx.send(Reply.start_game(self.player_id))
         await asyncio.sleep(1)
 
     async def _send_first_question(self):

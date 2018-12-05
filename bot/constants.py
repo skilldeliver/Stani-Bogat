@@ -8,6 +8,7 @@ class Path(NamedTuple):
 
     questions = data.joinpath('questions/')
     general = questions.joinpath('general/')
+    IT = questions.joinpath('IT/')
 
 
 class File(NamedTuple):

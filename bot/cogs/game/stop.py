@@ -1,5 +1,7 @@
 from discord.ext import commands
 
+from bot.core.replies import Reply
+
 
 class Stop:
     def __init__(self, bot):

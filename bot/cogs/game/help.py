@@ -4,6 +4,7 @@ import re
 from discord.ext import commands
 
 from bot.core.embeds import JokersEmbed, AudienceEmbed
+from bot.core.replies import Reply
 from bot.constants import Emoji
 
 
@@ -29,7 +30,9 @@ class Help:
 
         self.user_id = str(ctx.author.id)
 
-        await self._request_help_from_audience()
+        if await self._request_help_from_audience():
+            return
+
         await self._request_help_from_friend()
 
     async def _request_help_from_audience(self):
@@ -37,20 +40,20 @@ class Help:
             return
 
         if self.user_id not in self.bot.games.keys():
-            await self.ctx.send(f'<@{self.user_id}>, не си в игра.')
-            return
+            await self.ctx.send(Reply.not_in_game(self.user_id))
+            return True
 
         player_game = self.bot.games[self.user_id]
         if not player_game.audience:
-            await self.ctx.send(f'<@{self.user_id}>, използвал си помощ от публиката.')
+            await self.ctx.send(Reply.used_audience(self.user_id))
 
             embed = JokersEmbed(player_game.user.name,
                                 player_game.user.avatar_url,
                                 player_game.jokers_left())
             await self.ctx.send(embed=embed)
-            return
+            return True
 
-        msg = await self.ctx.send('Нека публиката се включи сега! Оставящи 30 секунди.')
+        msg = await self.ctx.send(Reply.audience_help(30))
         player_game.audience = False
         player_game.audience_channel = self.ctx.channel
 
@@ -67,18 +70,19 @@ class Help:
 
     async def _request_help_from_friend(self):
         if self.user_id not in self.bot.games.keys():
-            await self.ctx.send(f'<@{self.user_id}>, не си в игра.')
+            print('exe')
+            await self.ctx.send(Reply.not_in_game(self.user_id))
             return
 
         player_game = self.bot.games[self.user_id]
         helper_id = self._extract_id_from_tag(self.arg)
 
         if not helper_id:
-            await self.ctx.send(f'<@{self.user_id}>, не разпознат втори аргумент.')
+            await self.ctx.send(Reply.unknown_2_arg(self.user_id))
             return
 
         if not player_game.friend:
-            await self.ctx.send(f'<@{self.user_id}>, използвал си помощ от приятел.')
+            await self.ctx.send(Reply.used_friend(self.user_id))
 
             embed = JokersEmbed(player_game.user.name,
                                 player_game.user.avatar_url,
@@ -87,22 +91,22 @@ class Help:
             return
 
         if str(helper_id) == self.user_id:
-            await self.ctx.send(f'<@{self.user_id}>, не може да искаш помощ от себе си.')
+            await self.ctx.send(Reply.no_yourself(self.user_id))
             return
 
         if str(helper_id) in self.bot.games.keys():
-            await self.ctx.send(f'<@{self.user_id}>, не може да искаш помощ от потребител в игра.')
+            await self.ctx.send(Reply.no_player(self.user_id))
             return
 
         helper = self.bot.get_user(helper_id)
         # get discord.User object of the helper
 
         if helper.bot:
-            await self.ctx.send(f'<@{self.user_id}>, не може да искаш помощ от бот.')
+            await self.ctx.send(Reply.no_bot(self.user_id))
             return
 
         # Asserts that the helper is not a bot or the player itself
-        msg = await self.ctx.send(f'{helper.name}, имаш 30 секунди да помогнеш на своят приятел.')
+        msg = await self.ctx.send(Reply.friend_help(helper.name, 30))
         player_game.friend = False
         # the joker is gone
 
@@ -136,7 +140,7 @@ class Help:
             await asyncio.sleep(1)
             if not player_game.waiting_audience_help:
                 break
-            await message.edit(content=f'Нека публиката се включи сега! Оставящи {i} секунди.')
+            await message.edit(content=Reply.audience_help(i))
 
     @staticmethod
     async def _count_seconds_down_friend(player_game,
@@ -147,7 +151,7 @@ class Help:
             await asyncio.sleep(1)
             if not player_game.waiting_friend_help:
                 break
-            await message.edit(content=f'{helper_name}, имаш {i} секунди да помогнеш на своят приятел.')
+            await message.edit(content=Reply.friend_help(helper_name, i))
 
 
 def setup(bot):

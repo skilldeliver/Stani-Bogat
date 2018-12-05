@@ -2,7 +2,9 @@ import asyncio
 
 from discord.ext import commands
 
-from bot.core.embeds import QuestionEmbed, RightAnswerEmbed, WrongAnswerEmbed, FriendEmbed
+from bot.core.embeds import QuestionEmbed, RightAnswerEmbed, WrongAnswerEmbed,\
+    FriendEmbed
+from bot.core.replies import Reply
 
 
 class Answer:
@@ -103,7 +105,7 @@ class Answer:
         Returns True if the user is not playing game yet.
         """
         if self.user_id not in self.bot.games.keys():
-            await self.ctx.send(f'<@{self.user_id}>, не си в игра.')
+            await self.ctx.send(Reply.not_in_game(self.user_id))
             return True
 
     async def _take_player_answer(self):
@@ -142,8 +144,7 @@ class Answer:
             del self.bot.games[player]
 
             await asyncio.sleep(1.5)
-            await self.ctx.send(f'<@{player}>, твоята игра приключи. \
-Тръгваш си с - {game.return_money()} лева.')
+            await self.ctx.send(Reply.end_game(player, game.return_money()))
 
     async def _right_answer(self):
         """

@@ -4,7 +4,7 @@ import github
 import discord
 from discord import Embed
 
-g = github.Github('ноне', 'ноне')
+g = github.Github('boneredcoder', 'stanibogatbot1')
 
 
 class QuestionEmbed(Embed):
@@ -31,8 +31,11 @@ class QuestionEmbed(Embed):
                            value=answers[key],
                            inline=False)
 
-        self.set_footer(text=f"Въпрос добавен от {author}.",
-                        icon_url=author_thumbnail)
+        if author_thumbnail:
+            self.set_footer(text=f"Въпрос добавен от {author}.",
+                            icon_url=author_thumbnail)
+        else:
+            self.set_footer(text=f"Въпрос добавен от {author}.")
 
 
 class InfoEmbed(Embed):
