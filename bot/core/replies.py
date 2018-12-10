@@ -50,4 +50,25 @@ class Reply:
 
     @staticmethod
     def start_game(player):
-        return f'<@{player}>, твоята игра започва сега!'    
+        return f'<@{player}>, твоята игра започва сега!'
+
+    @staticmethod
+    def game_title(question_level, player, question_leva):
+        return f'{question_level}. Играта на {player}. Въпрос за {question_leva} лева.'
+
+    @staticmethod
+    def question_added_by(author):
+        return f"Въпрос добавен от {author}."
+
+    @staticmethod
+    def github_repo(stars, forks, issues):
+        return f'ГитХъб репо. {stars} \u2b50 {forks} 🍴 {issues} \u2757'
+
+    @staticmethod
+    def used_tech(python_version, discord_version):
+        return f'''
+Python {python_version} :snake:
+discord.py rewrite branch {discord_version}
+PyGithub
+Pipenv
+'''

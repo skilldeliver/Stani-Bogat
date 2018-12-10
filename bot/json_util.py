@@ -30,22 +30,34 @@ def load_question(question_level, theme):
                     )
 
 
-def temp():
-    for i in range(1, 16):
-        path = f'data/questions/IT/{str(i).zfill(2)}'
+def save_player_money(player, money):
+    file = Path.global_stats.joinpath(File.players)
 
-        with open(f'{path}/questions.json', "a") as f:
-            adict = {
-                "Skilldeliver": {
-                    "author_img": "https://i.imgur.com/AqoLZQH.png",
-                    "questions": []
-                    }
-                }
-            json.dump(adict, f)
+    with open(file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
 
-        # path = f'data/questions/IT/{str(i).zfill(2)}'
-        # os.mkdir(path)
-        # open(f'{path}/questions.json', "w")
+    if player not in data.keys():
+        data[player] = int()
+
+    data[player] += money
+
+    with open(file, 'w', encoding='utf-8') as f:
+        json.dump(data, f)
+
+
+def append_to_authors(author):
+    file = Path.global_stats.joinpath(File.authors)
+
+    with open(file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    if author not in data.keys():
+        data[author] = int()
+
+    data[author] += 1
+
+    with open(file, 'w', encoding='utf-8') as f:
+        json.dump(data, f)
 
 
 def add_question(author,
@@ -72,8 +84,26 @@ def add_question(author,
     data[author]['questions'].append(dict(question=question,
                                           choices=choices))
 
+    append_to_authors(author)
+
     with open(file, 'w', encoding='utf-8') as f:
         json.dump(data, f)
+
+
+def return_top(target, how):
+    if target == 'authors':
+        file = Path.global_stats.joinpath(File.authors)
+    elif target == 'players':
+        file = Path.global_stats.joinpath(File.players)
+
+    with open(file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    authors_n = sorted(data.items(), key=lambda kv: kv[1], reverse=True)
+
+    if len(authors_n) > how:
+        return authors_n[:how]
+    return authors_n
 
 
 def how_many_questions(author,

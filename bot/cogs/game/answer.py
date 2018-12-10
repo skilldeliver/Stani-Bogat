@@ -5,6 +5,7 @@ from discord.ext import commands
 from bot.core.embeds import QuestionEmbed, RightAnswerEmbed, WrongAnswerEmbed,\
     FriendEmbed
 from bot.core.replies import Reply
+from bot.json_util import save_player_money
 
 
 class Answer:
@@ -19,7 +20,7 @@ class Answer:
         self.user_id = str(ctx.author.id)
         # player, just user, audience voter or friend
 
-        print(self.bot.helping_friends.keys())
+        # print(self.bot.helping_friends.keys())
         # first of all take the vote from the audience
         if self._take_vote_from_audience():
             # the audience voter vote is taken so the method 'breaks'
@@ -115,7 +116,7 @@ class Answer:
         Terminates the game - if the answer is wrong.
         """
         player = self.user_id
-        game = self.bot.games[self.user_id]
+        game = self.bot.games[player]
         # get the game of the player
 
         await asyncio.sleep(0.5)
@@ -143,8 +144,14 @@ class Answer:
 
             del self.bot.games[player]
 
+            player_name = f'{game.user.name}#{game.user.discriminator}'
+            money = game.return_money()
+
+            if money:
+                save_player_money(player_name, money)
+
             await asyncio.sleep(1.5)
-            await self.ctx.send(Reply.end_game(player, game.return_money()))
+            await self.ctx.send(Reply.end_game(player, money))
 
     async def _right_answer(self):
         """

@@ -5,12 +5,13 @@ name = "pypi"
 
 [packages]
 "discord.py" = {ref = "rewrite", git = "https://github.com/Rapptz/discord.py"}
-"html2text" = "*"
-requests = "*"
 pygithub = "*"
+psutil = "*"
 
 [dev-packages]
 "pep8" = "*"
+"html2text" = "*"
+requests = "*"
 
 [requires]
 python_version = "3.7"

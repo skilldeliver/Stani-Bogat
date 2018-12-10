@@ -65,7 +65,7 @@ class Game:
         amount = self.question_amount_map[self.question_level]
 
         data = load_question(str(self.question_level).zfill(2),
-                             'IT')
+                             'general')
 
         author = data["author"]
         author_thumbnail = data["author_thumbnail"]

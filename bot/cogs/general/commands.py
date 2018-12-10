@@ -1,5 +1,7 @@
 from discord.ext import commands
 
+from bot.core.embeds import CommandsEmbed
+
 
 class Commands:
     """ Handles this cog - команди"""
@@ -8,12 +10,8 @@ class Commands:
 
     @commands.command(name='команди')
     async def print_info(self, ctx):
-        await ctx.send(f"""
-        <@{ctx.author.id}>, *игра, *[A, B, C, D], *помощ [приятел(tag)], *помощ публика,
-        *50/50, *правила, *жокери, *спирам, *топ10, *статс, *инфо, *команди, *команда [команда]
-        """)
+        await ctx.send(embed=CommandsEmbed())
 
 
 def setup(bot):
     bot.add_cog(Commands(bot))
-    

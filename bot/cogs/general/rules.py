@@ -1,5 +1,7 @@
 from discord.ext import commands
 
+from bot.core.embeds import RulesEmbed
+
 
 class Rules:
     """ Handles this cog - правила"""
@@ -8,7 +10,7 @@ class Rules:
 
     @commands.command(name='правила')
     async def print_rules(self, ctx):
-        await ctx.send(f'<@{ctx.author.id}>, отпечатват се правилата.')
+        await ctx.send(embed=RulesEmbed())
 
 
 def setup(bot):

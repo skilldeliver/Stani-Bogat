@@ -7,12 +7,17 @@ class Path(NamedTuple):
     data = project.joinpath('data/')
 
     questions = data.joinpath('questions/')
+    statistics = data.joinpath('statistics/')
+    global_stats = statistics.joinpath('global/')
+
     general = questions.joinpath('general/')
     IT = questions.joinpath('IT/')
 
 
 class File(NamedTuple):
     json = '/questions.json'
+    players = 'top_players.json'
+    authors = 'top_authors.json'
 
 
 class Sprite(NamedTuple):
