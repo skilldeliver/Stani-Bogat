@@ -9,6 +9,7 @@ class Jokers:
         self.bot = bot
         self.user_id = str()
 
+    @commands.guild_only()
     @commands.command(name='жокери', aliases=['жокер'])
     async def jokers(self, ctx):
         self.user_id = str(ctx.author.id)

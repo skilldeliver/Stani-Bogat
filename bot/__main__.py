@@ -2,7 +2,8 @@ from bot.model import Bot
 
 
 def main():
-    bot = Bot(prefix='*')
+    bot = Bot(prefix='$',
+              activity="$команди")
     bot.load_cogs()
     bot.run('none')
 

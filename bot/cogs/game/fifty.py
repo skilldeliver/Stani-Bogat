@@ -9,6 +9,7 @@ class Fifty:
         self.bot = bot
         self.user_id = str()
 
+    @commands.guild_only()
     @commands.command(name='50:50', aliases=['50/50', '5050', '50%50'])
     async def cut_2_answers(self, ctx):
         self.user_id = str(ctx.author.id)

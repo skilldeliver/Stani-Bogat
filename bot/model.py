@@ -1,14 +1,21 @@
 from pathlib import Path
 
+import discord
 from discord.ext import commands
 
 
 class Bot(commands.Bot):
     def __init__(self,
                  prefix: str,
-                 ):
+                 activity: str):
+
+        what = discord.Activity(name=activity,
+                                type=discord.ActivityType.listening)
+
         commands.Bot.__init__(self,
-                              command_prefix=prefix)
+                              command_prefix=prefix,
+                              command_not_found="No command called {} found.",
+                              activity=what)
 
         self.games = dict()
         self.helping_friends = dict()
@@ -46,3 +53,7 @@ class Bot(commands.Bot):
                 print(f'    Successfully loaded game cog: {extension}')
             except Exception as e:
                 print(f'    Failed to load game cog {extension}: {repr(e)}')
+
+    async def activity(self):
+        game = discord.Game("with the API")
+        await self.change_presence(status=discord.Status.idle, activity=game)

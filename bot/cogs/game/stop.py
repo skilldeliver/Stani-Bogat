@@ -9,6 +9,7 @@ class Stop:
         self.bot = bot
         self.user_id = str()
 
+    @commands.guild_only()
     @commands.command(name='спирам')
     async def terminate(self, ctx):
         self.user_id = str(ctx.author.id)

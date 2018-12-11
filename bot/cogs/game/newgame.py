@@ -16,6 +16,7 @@ class NewGame:
         self.player = None
         self.player_id = str()
 
+    @commands.guild_only()
     @commands.command(name='игра', aliases=['новаигра'])
     async def new_game(self, ctx):
         '''

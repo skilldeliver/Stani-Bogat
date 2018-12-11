@@ -14,6 +14,7 @@ class Answer:
         self.user_id = str()
         self.ctx = None
 
+    @commands.guild_only()
     @commands.command(name='А', aliases=list("БВГабвг"))
     async def take_answer(self, ctx):
         self.ctx = ctx

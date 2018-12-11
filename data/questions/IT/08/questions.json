@@ -1,1 +1,34 @@
-{"Skilldeliver": {"author_img": "https://i.imgur.com/AqoLZQH.png", "questions": []}}
+{
+  "Skilldeliver": {
+    "author_img": "https://i.imgur.com/AqoLZQH.png",
+    "questions": [
+      {
+        "question": "Къде стои <meta> тагът в HTML документа?",
+        "choices": [
+          "В <head>",
+          "В <body>",
+          "В <div>",
+          "В <script>"
+        ]
+      },
+      {
+        "question": "В PHP, коя от следните функции се използва, за да вкара съдържанието на PHP файл в друг PHP файл",
+        "choices": [
+          "include()",
+          "$include[]",
+          "$include{}",
+          "#include[]"
+        ]
+      },
+      {
+        "question": "Кое от следните IP-та е private?",
+        "choices": [
+          "192.168.24.43",
+          "172.15.14.36",
+          "168.172.19.39",
+          "12.0.0.1"
+        ]
+      }
+    ]
+  }
+}

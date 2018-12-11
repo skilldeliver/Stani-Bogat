@@ -13,7 +13,7 @@ class Info:
     """ Handles this cog - инфо"""
     def __init__(self, bot):
         self.bot = bot
-        self.g = github.Github('none', 'none')
+        self.g = github.Github('boneredcoder', 'stanibogatbot1')
 
     @commands.command(name='инфо')
     async def print_info(self, ctx):

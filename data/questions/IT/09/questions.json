@@ -1,1 +1,34 @@
-{"Skilldeliver": {"author_img": "https://i.imgur.com/AqoLZQH.png", "questions": []}}
+{
+  "Skilldeliver": {
+    "author_img": "https://i.imgur.com/AqoLZQH.png",
+    "questions": [
+      {
+        "question": "Колко storage class specifiers има в C езика?",
+        "choices": [
+          "4",
+          "5",
+          "3",
+          "6"
+        ]
+      },
+      {
+        "question": "В JS синтаксиса на Eval е?",
+        "choices": [
+          "[objectName.]eval(string)",
+          "[objectName.]eval(numeriC).content",
+          "[EvalName.]eval(numeriC).content",
+          "[EvalName.]eval(string)"
+        ]
+      },
+      {
+        "question": "Кой PPP протокол предоставя динамично адресиране, автентикация и multilink?",
+        "choices": [
+          "LCP",
+          "NCP",
+          "HDLC",
+          "X.25"
+        ]
+      }
+    ]
+  }
+}

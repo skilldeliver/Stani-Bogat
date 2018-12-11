@@ -14,6 +14,7 @@ class Help:
         self.user_id = str()
         self.ctx = None
 
+    @commands.guild_only()
     @commands.command(name='ембед')
     async def test(self, ctx, arg):
         letters = ['А)', 'Б)', 'В)', 'Г)']
