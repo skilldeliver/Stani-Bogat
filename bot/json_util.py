@@ -1,4 +1,3 @@
-import os
 import json
 import random
 
@@ -42,7 +41,7 @@ def save_player_money(player, money):
     data[player] += money
 
     with open(file, 'w', encoding='utf-8') as f:
-        json.dump(data, f)
+        json.dump(data, f, ensure_ascii=False)
 
 
 def append_to_authors(author):
@@ -57,7 +56,7 @@ def append_to_authors(author):
     data[author] += 1
 
     with open(file, 'w', encoding='utf-8') as f:
-        json.dump(data, f)
+        json.dump(data, f, ensure_ascii=False)
 
 
 def add_question(author,
@@ -87,10 +86,11 @@ def add_question(author,
     append_to_authors(author)
 
     with open(file, 'w', encoding='utf-8') as f:
-        json.dump(data, f)
+        json.dump(data, f, ensure_ascii=False)
 
 
 def return_top(target, how):
+    file = str()
     if target == 'authors':
         file = Path.global_stats.joinpath(File.authors)
     elif target == 'players':
@@ -106,6 +106,19 @@ def return_top(target, how):
     return authors_n
 
 
+def append_to_pending(alist):
+    file = Path.pending.joinpath(File.pending_questions)
+
+    with open(file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    for item in alist:
+        data['queue'].append(item)
+
+    with open(file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False)
+
+
 def how_many_questions(author,
                        theme,
                        question_level):
@@ -119,3 +132,17 @@ def how_many_questions(author,
         for question in questions:
             print(question)
         print(len(questions))
+
+
+def refactor():
+    for theme in ('general', 'IT'):
+        for i in range(1, 16):
+            path = eval(f'Path.{theme}')
+            path = path.joinpath(str(i).zfill(2))
+            file = path.joinpath('questions.json')
+
+            with open(file, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+
+            with open(file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, ensure_ascii=False)

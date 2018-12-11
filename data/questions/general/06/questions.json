@@ -1,11 +1,16 @@
 {
-    "Skilldeliver": {
-        "author_img": "https://i.imgur.com/AqoLZQH.png",
-        "questions": [
-            {
-                "question": "Какво е комодския варан?",
-                "choices": ["гушер", "паяк", "птица", "риба"]
-            }
+  "Skilldeliver": {
+    "author_img": "https://i.imgur.com/AqoLZQH.png",
+    "questions": [
+      {
+        "question": "Какво е комодския варан?",
+        "choices": [
+          "гушер",
+          "паяк",
+          "птица",
+          "риба"
         ]
-    }
+      }
+    ]
+  }
 }

@@ -1,11 +1,16 @@
 {
-    "Skilldeliver": {
-        "author_img": "https://i.imgur.com/AqoLZQH.png",
-        "questions": [
-            {
-                "question": "Как се нарича най-чистата храна според Йога?",
-                "choices": ["сатвична", "раджастична", "тамасична", "кадалична"]
-            }
+  "Skilldeliver": {
+    "author_img": "https://i.imgur.com/AqoLZQH.png",
+    "questions": [
+      {
+        "question": "Как се нарича най-чистата храна според Йога?",
+        "choices": [
+          "сатвична",
+          "раджастична",
+          "тамасична",
+          "кадалична"
         ]
-    }
+      }
+    ]
+  }
 }

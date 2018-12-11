@@ -1,11 +1,16 @@
 {
-    "Skilldeliver": {
-        "author_img": "https://i.imgur.com/AqoLZQH.png",
-        "questions": [
-            {
-                "question": "С кой кораб американците Нийл Армстронг и Едуин Олдрин кацат на луната?",
-                "choices": ["Аполо 11", "Аполо 9", "Аполо 10", "Аполо 12"]
-            }
+  "Skilldeliver": {
+    "author_img": "https://i.imgur.com/AqoLZQH.png",
+    "questions": [
+      {
+        "question": "С кой кораб американците Нийл Армстронг и Едуин Олдрин кацат на луната?",
+        "choices": [
+          "Аполо 11",
+          "Аполо 9",
+          "Аполо 10",
+          "Аполо 12"
         ]
-    }
+      }
+    ]
+  }
 }

@@ -8,6 +8,8 @@ class Path(NamedTuple):
 
     questions = data.joinpath('questions/')
     statistics = data.joinpath('statistics/')
+    pending = data.joinpath('pending/')
+
     global_stats = statistics.joinpath('global/')
 
     general = questions.joinpath('general/')
@@ -18,6 +20,7 @@ class File(NamedTuple):
     json = '/questions.json'
     players = 'top_players.json'
     authors = 'top_authors.json'
+    pending_questions = 'pending_questions.json'
 
 
 class Sprite(NamedTuple):
@@ -34,3 +37,5 @@ class Sprite(NamedTuple):
 
 class Emoji(NamedTuple):
     clock = '\u23f0'
+    thumb_down = '👎'
+    thumb_up = '👍'

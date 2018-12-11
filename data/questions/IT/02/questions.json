@@ -1,1 +1,52 @@
-{"Skilldeliver": {"author_img": "https://i.imgur.com/AqoLZQH.png", "questions": [{"question": "HTTP \u0435 \u0430\u0431\u0440\u0435\u0432\u0438\u0430\u0442\u0443\u0440\u0430 \u043d\u0430 \u043a\u043e\u0435 \u043d\u0430\u0438\u043c\u0435\u043d\u0443\u0432\u0430\u043d\u0438\u0435?", "choices": ["Hypertext Transfer Protocol", "HTML Transcontinental Transfer Packager", "Hierarchical Telecommunicating & Transfering Protocol", "Hosting Troubleshooting Tied Pager"]}, {"question": "\u041f\u0440\u043e\u043c\u0435\u043d\u043b\u0438\u0432\u0430\u0442\u0430 \u0435 \u043c\u044f\u0441\u0442\u043e, \u043a\u044a\u0434\u0435\u0442\u043e \u0441\u0435 \u0441\u044a\u0445\u0440\u0430\u043d\u044f\u0432\u0430\u0442?", "choices": ["\u0441\u0442\u043e\u0439\u043d\u043e\u0441\u0442\u0438", "\u043a\u043e\u0434\u043e\u0432\u0435", "\u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0438", "\u0441\u0432\u043e\u0439\u0441\u0442\u0432\u0430"]}, {"question": "\u041e\u043f\u0435\u0440\u0430\u0442\u043e\u0440\u0438\u0442\u0435 AND, OR, NOT \u0438 XOR \u0441\u0430?", "choices": ["\u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438", "\u043c\u0430\u0442\u0435\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438", "\u0432\u0445\u043e\u0434\u043d\u043e-\u0438\u0437\u0445\u043e\u0434\u043d\u0438", "\u043d\u0438\u0442\u043e \u0435\u0434\u0438\u043d \u043e\u0442 \u043f\u043e\u0441\u043e\u0447\u0435\u043d\u0438\u0442\u0435 \u043e\u0442\u0433\u043e\u0432\u043e\u0440\u0438"]}, {"question": "\u041a\u043e\u0435 \u043e\u0442 \u0438\u0437\u0431\u0440\u043e\u0435\u043d\u0438\u0442\u0435 \u043d\u0435 \u0435 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u043e\u043d\u043d\u0430 \u0441\u0438\u0441\u0442\u0435\u043c\u0430?", "choices": ["C", "DOS", "Mac", "Linux"]}, {"question": "\u041a\u043e\u044f \u0431\u0440\u043e\u0439\u043d\u0430 \u0441\u0438\u0441\u0442\u0435\u043c\u0430 \u0441\u0435 \u0438\u0437\u043f\u043e\u043b\u0437\u0432\u0430 \u043e\u0442 \u043a\u043e\u043c\u043f\u044e\u0442\u0440\u0438\u0442\u0435 \u0437\u0430 \u043a\u0430\u043b\u043a\u0443\u043b\u0430\u0446\u0438\u0438 \u0438 \u0441\u044a\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0435?", "choices": ["\u0434\u0432\u043e\u0438\u0447\u043d\u0430", "\u0434\u0435\u0441\u0435\u0442\u0438\u0447\u043d\u0430", "\u0448\u0435\u0441\u0442\u043d\u0430\u0434\u0435\u0441\u0435\u0442\u0438\u0447\u043d\u0430", "\u043e\u0441\u043c\u0438\u0447\u043d\u0430"]}]}}
+{
+  "Skilldeliver": {
+    "author_img": "https://i.imgur.com/AqoLZQH.png",
+    "questions": [
+      {
+        "question": "HTTP е абревиатура на кое наименувание?",
+        "choices": [
+          "Hypertext Transfer Protocol",
+          "HTML Transcontinental Transfer Packager",
+          "Hierarchical Telecommunicating & Transfering Protocol",
+          "Hosting Troubleshooting Tied Pager"
+        ]
+      },
+      {
+        "question": "Променливата е място, където се съхраняват?",
+        "choices": [
+          "стойности",
+          "кодове",
+          "програми",
+          "свойства"
+        ]
+      },
+      {
+        "question": "Операторите AND, OR, NOT и XOR са?",
+        "choices": [
+          "логически",
+          "математически",
+          "входно-изходни",
+          "нито един от посочените отговори"
+        ]
+      },
+      {
+        "question": "Кое от изброените не е операционна система?",
+        "choices": [
+          "C",
+          "DOS",
+          "Mac",
+          "Linux"
+        ]
+      },
+      {
+        "question": "Коя бройна система се използва от компютрите за калкулации и съхранение?",
+        "choices": [
+          "двоична",
+          "десетична",
+          "шестнадесетична",
+          "осмична"
+        ]
+      }
+    ]
+  }
+}
