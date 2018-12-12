@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "a851c483b7e0aa900c53a74c0ff502e86c9e8782e066967e9dd3d3d29de9d294"
+            "sha256": "3bf95c16b18f623d0a1c7e39b07e53cf547dd80f5dd72a60add59cf173176328"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -45,20 +45,12 @@
             "git": "https://github.com/Rapptz/discord.py",
             "ref": "rewrite"
         },
-        "html2text": {
-            "hashes": [
-                "sha256:490db40fe5b2cd79c461cf56be4d39eb8ca68191ae41ba3ba79f6cb05b7dd662",
-                "sha256:627514fb30e7566b37be6900df26c2c78a030cc9e6211bda604d8181233bcdd4"
-            ],
-            "index": "pypi",
-            "version": "==2018.1.9"
-        },
         "idna": {
             "hashes": [
-                "sha256:156a6814fb5ac1fc6850fb002e0852d56c0c8d2531923a51032d1b70760e186e",
-                "sha256:684a38a6f903c1d71d6d5fac066b58d7768af4de2b832e426ec79c30daa94a16"
+                "sha256:c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407",
+                "sha256:ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"
             ],
-            "version": "==2.7"
+            "version": "==2.8"
         },
         "psutil": {
             "hashes": [
@@ -91,11 +83,10 @@
         },
         "requests": {
             "hashes": [
-                "sha256:65b3a120e4329e33c9889db89c80976c5272f56ea92d3e74da8a463992e3ff54",
-                "sha256:ea881206e59f41dbd0bd445437d792e43906703fff75ca8ff43ccdb11f33f263"
+                "sha256:502a824f31acdacb3a35b6690b5fbf0bc41d63a24a45c4004352b0242707598e",
+                "sha256:7bf2a778576d825600030a110f3c0e3e8edc51dfaafe1c146e39a2027784957b"
             ],
-            "index": "pypi",
-            "version": "==2.20.1"
+            "version": "==2.21.0"
         },
         "urllib3": {
             "hashes": [
@@ -106,12 +97,42 @@
         },
         "wrapt": {
             "hashes": [
+                "sha256:b6b095a8beffd8dbff500827cac3e59f1cb719260dc5dd7911ee92ee14a0b20d",
                 "sha256:d4d560d479f2c21e1b5443bbd15fe7ec4b37fe7e53d335d3b9b0a7b1226fe3c6"
             ],
             "version": "==1.10.11"
         }
     },
     "develop": {
+        "certifi": {
+            "hashes": [
+                "sha256:47f9c83ef4c0c621eaef743f133f09fa8a74a9b75f037e8624f83bd1b6626cb7",
+                "sha256:993f830721089fef441cdfeb4b2c8c9df86f0c63239f06bd025a76a7daddb033"
+            ],
+            "version": "==2018.11.29"
+        },
+        "chardet": {
+            "hashes": [
+                "sha256:84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae",
+                "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"
+            ],
+            "version": "==3.0.4"
+        },
+        "html2text": {
+            "hashes": [
+                "sha256:490db40fe5b2cd79c461cf56be4d39eb8ca68191ae41ba3ba79f6cb05b7dd662",
+                "sha256:627514fb30e7566b37be6900df26c2c78a030cc9e6211bda604d8181233bcdd4"
+            ],
+            "index": "pypi",
+            "version": "==2018.1.9"
+        },
+        "idna": {
+            "hashes": [
+                "sha256:c357b3f628cf53ae2c4c05627ecc484553142ca23264e593d327bcde5e9c3407",
+                "sha256:ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"
+            ],
+            "version": "==2.8"
+        },
         "pep8": {
             "hashes": [
                 "sha256:b22cfae5db09833bb9bd7c8463b53e1a9c9b39f12e304a8d0bba729c501827ee",
@@ -119,6 +140,20 @@
             ],
             "index": "pypi",
             "version": "==1.7.1"
+        },
+        "requests": {
+            "hashes": [
+                "sha256:502a824f31acdacb3a35b6690b5fbf0bc41d63a24a45c4004352b0242707598e",
+                "sha256:7bf2a778576d825600030a110f3c0e3e8edc51dfaafe1c146e39a2027784957b"
+            ],
+            "version": "==2.21.0"
+        },
+        "urllib3": {
+            "hashes": [
+                "sha256:61bf29cada3fc2fbefad4fdf059ea4bd1b4a86d2b6d15e1c7c0b582b9752fe39",
+                "sha256:de9529817c93f27c8ccbfead6985011db27bd0ddfcdb2d86f3f663385c6a9c22"
+            ],
+            "version": "==1.24.1"
         }
     }
 }

@@ -5,7 +5,7 @@ def main():
     bot = Bot(prefix='$',
               activity="$команди")
     bot.load_cogs()
-    bot.run('none')
+    bot.run('')
 
 
 if __name__ == '__main__':
