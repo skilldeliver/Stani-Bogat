@@ -23,6 +23,12 @@ class File(NamedTuple):
     pending_questions = 'pending_questions.json'
 
 
+class Link(NamedTuple):
+    github_repo = 'https://github.com/skilldeliver/Stani-Bogat'
+    github_icon = 'https://avatars0.githubusercontent.com/u/9919?s=280&v=4'
+    leader_board_icon = 'https://i.imgur.com/F7VUqZV.png'
+
+
 class Sprite(NamedTuple):
     jokers = {'ooo': 'https://i.imgur.com/aTzsSyO.png',
               'oox': 'https://i.imgur.com/4CUYpvv.png',

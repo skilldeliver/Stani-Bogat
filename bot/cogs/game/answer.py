@@ -131,6 +131,8 @@ class Answer:
             question_data = self.bot.games[player].ask()
             embed = QuestionEmbed(**question_data)
 
+            await game.last_embed.delete()
+
             game.last_question = question_data
             game.last_embed = await self.ctx.send(embed=embed)
 
@@ -152,6 +154,7 @@ class Answer:
                 save_player_money(player_name, money)
 
             await asyncio.sleep(1.5)
+            await game.last_embed.delete()
             await self.ctx.send(Reply.end_game(player, money))
 
     async def _right_answer(self):
@@ -161,7 +164,7 @@ class Answer:
         """
         await self.ctx.message.add_reaction('\u2705')
         embed = RightAnswerEmbed()
-        await self.ctx.send(embed=embed)
+        await self.ctx.send(embed=embed, delete_after=1.5)
 
     async def _wrong_answer(self):
         """
@@ -170,7 +173,7 @@ class Answer:
         """
         await self.ctx.message.add_reaction('\u274C')
         embed = WrongAnswerEmbed()
-        await self.ctx.send(embed=embed)
+        await self.ctx.send(embed=embed, delete_after=1.5)
 
 
 def setup(bot):

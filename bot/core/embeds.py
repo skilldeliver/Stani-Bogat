@@ -1,5 +1,6 @@
 from discord import Embed
 
+from bot.constants import Link
 from bot.core.replies import Reply
 
 
@@ -49,8 +50,8 @@ class InfoEmbed(Embed):
         super().__init__(color=0x000000)
 
         self.set_author(name=Reply.github_repo(stars, forks, issues),
-                        url='https://github.com/skilldeliver/Stani-Bogat',
-                        icon_url='https://avatars0.githubusercontent.com/u/9919?s=280&v=4')
+                        url=Link.github_repo,
+                        icon_url=Link.github_icon)
         self.add_field(name=f'🏴 Дискорд сървъри:',
                        value=f'{connected_servers}',
                        inline=True)
@@ -205,7 +206,7 @@ class Top10Embed(Embed):
             title = 'ТОП 10 играчи с най-много спечелени пари.'
 
         self.set_author(name=title,
-                        icon_url='https://i.imgur.com/F7VUqZV.png')
+                        icon_url=Link.leader_board_icon)
 
         for i in range(len(authors_n)):
             item = authors_n[i]
