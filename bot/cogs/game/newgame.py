@@ -53,7 +53,7 @@ class NewGame:
 
         self.bot.games[self.player_id].last_question = question_data
         self.bot.games[self.player_id].last_embed = \
-            await self.ctx.send(content='30', embed=embed)
+            await self.ctx.send(embed=embed)
 
 
 def setup(bot):

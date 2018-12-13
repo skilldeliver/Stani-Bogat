@@ -1,6 +1,12 @@
 from pathlib import PurePath
 from typing import NamedTuple
 
+MODS = [
+    365859941292048384,
+    374537025983873024,
+    261115722007183362,
+    247028507903918083
+]
 
 class Path(NamedTuple):
     project = PurePath(__file__).parent.parent

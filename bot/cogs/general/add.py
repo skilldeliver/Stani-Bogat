@@ -1,4 +1,5 @@
 import re
+import datetime
 from discord.ext import commands
 
 from bot.json_util import  append_to_pending
@@ -59,12 +60,19 @@ class Add:
                 adict = match.groupdict()
 
                 for k in adict:
-                    new_item = adict[k].strip()
+                    if adict[k]:
+                        new_item = adict[k].strip()
+                    else:
+                        new_item = None
+
                     if new_item:
                         adict[k] = new_item
                     else:
                         adict[k] = None
 
+                adict['user'] = f'{self.user.name}#{self.user.discriminator}'
+                adict['user_id'] = str(ctx.author.id)
+                adict['date'] = str(datetime.datetime.now())
                 questions.append(adict)
             else:
                 await pin.add_reaction(Emoji.thumb_down)

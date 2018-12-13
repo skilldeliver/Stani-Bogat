@@ -125,6 +125,9 @@ def get_pending():
     with open(file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
+    if not data['queue']:
+        return None
+
     question = data['queue'][-1]
     del data['queue'][-1]
 
