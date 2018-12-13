@@ -58,6 +58,10 @@ class Answer:
 
                     letter = self.ctx.message.content[1:].upper() + ')'
                     # takes the letter suggested from the audience voter
+                    for value in player_game.values():
+                        for v in value:
+                            if voter == v:
+                                value.remove(v)
                     player_game.audience_votes[f'{letter}'].add(voter)
                     # add the audience voter vote
                     return True
@@ -134,7 +138,7 @@ class Answer:
             await game.last_embed.delete()
 
             game.last_question = question_data
-            game.last_embed = await self.ctx.send(embed=embed)
+            game.last_embed = await self.ctx.send(content='30', embed=embed)
 
             if game.waiting_friend_help:
                 game.waiting_friend_help = False

@@ -42,17 +42,30 @@ class Add:
             return
 
         pattern = r'Име:(?P<name>.*)\n(Фото:(?P<image>.*)\n)?Тема:(?P<theme>.*)\nНиво:(?P<level>.*)\nВъпрос:(?P<question>.*)\nОтговор:(?P<answer>.*)\nДруг:(?P<other1>.*)\nДруг:(?P<other2>.*)\nДруг:(?P<other3>.*)'
+
         success = int()
         questions = list()
 
         for pin in pins:
-            match = re.match(pattern, pin.content)
+            content = pin.content
+            print(content)
+            match = re.search(pattern, content)
 
             if match:
                 success += 1
                 await pin.add_reaction(Emoji.thumb_up)
                 await pin.unpin()
-                questions.append(match.groupdict())
+
+                adict = match.groupdict()
+
+                for k in adict:
+                    new_item = adict[k].strip()
+                    if new_item:
+                        adict[k] = new_item
+                    else:
+                        adict[k] = None
+
+                questions.append(adict)
             else:
                 await pin.add_reaction(Emoji.thumb_down)
                 await pin.unpin()

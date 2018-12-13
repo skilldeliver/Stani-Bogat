@@ -118,6 +118,22 @@ def append_to_pending(alist):
     with open(file, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
 
+def get_pending():
+
+    file = Path.pending.joinpath(File.pending_questions)
+
+    with open(file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    question = data['queue'][-1]
+    del data['queue'][-1]
+
+    with open(file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False)
+
+    return question
+
+
 
 def how_many_questions(author,
                        theme,

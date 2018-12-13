@@ -30,6 +30,9 @@ class Bot(commands.Bot):
         stats_cogs = [file.stem for file in Path('bot',
                       'cogs', 'stats').glob('*.py')]
 
+        mod_cogs = [file.stem for file in Path('bot',
+                      'cogs', 'mod').glob('*.py')]
+
         print('Loading general cogs:')
         for extension in general_cogs:
             try:
@@ -54,6 +57,10 @@ class Bot(commands.Bot):
             except Exception as e:
                 print(f'    Failed to load game cog {extension}: {repr(e)}')
 
-    async def activity(self):
-        game = discord.Game("with the API")
-        await self.change_presence(status=discord.Status.idle, activity=game)
+        print('\nLoading mod cogs:')
+        for extension in mod_cogs:
+            try:
+                self.load_extension(f'bot.cogs.mod.{extension}')
+                print(f'    Successfully loaded game cog: {extension}')
+            except Exception as e:
+                print(f'    Failed to load game cog {extension}: {repr(e)}')

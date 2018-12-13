@@ -15,15 +15,6 @@ class Help:
         self.ctx = None
 
     @commands.guild_only()
-    @commands.command(name='ембед')
-    async def test(self, ctx, arg):
-        letters = ['А)', 'Б)', 'В)', 'Г)']
-        pers = arg.replace(',', ' ').split()
-
-        adict = dict(zip(letters, map(int, pers)))
-        embed = AudienceEmbed(adict, color=0x77b255)
-        await ctx.send(embed=embed)
-
     @commands.command(name='помощ')
     async def get_help(self, ctx, arg):  # arg - приятел[tag] or публика
         self.ctx = ctx
