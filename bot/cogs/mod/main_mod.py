@@ -17,6 +17,22 @@ class Approve:
         self.question = None
 
     @is_mod()
+    @commands.command(name='mod')
+    async def get_info(self, ctx):
+        await ctx.send(f"""```css
+mod - дава информация за командите на модераторите
+pending - отваря последният въпрос
+open image - опитва се да отвори изображението предоставено от автора
+approve image - удобрява въпроса заедно с предоставенето изображение
+approve noimage - удобрява въпроса без предоставенето изображение
+reject [text] - отхвърля въпроса, където text е причината
+change [key] [value] - променя стойноста на [key] с нова стойност [value],
+                    където [key] е ключ във въпроса e.g. name, question, other2 etc
+get [key] - изпраща стойността на ключ във въпроса
+```
+""")
+
+    @is_mod()
     @commands.command(name='pending')
     async def get_question(self, ctx):
         self.ctx = ctx

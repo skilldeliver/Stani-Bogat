@@ -1,6 +1,6 @@
 from discord import Embed
 
-from bot.constants import Link
+from bot.constants import PREFIX as P, Link, Text, LargeText, Color
 from bot.core.replies import Reply
 
 
@@ -24,8 +24,8 @@ class QuestionEmbed(Embed):
                         icon_url=player_thumbnail)
 
         for key in answers:
-            self.add_field(name=key,
-                           value=answers[key],
+            self.add_field(name=f'**{key}** {answers[key]}',
+                           value=Text.invisible,
                            inline=False)
 
         if author_thumbnail:
@@ -47,50 +47,46 @@ class InfoEmbed(Embed):
                  pc,
                  cpu_use,
                  ram):
-        super().__init__(color=0x000000)
+        super().__init__(color=Color.info)
 
         self.set_author(name=Reply.github_repo(stars, forks, issues),
                         url=Link.github_repo,
                         icon_url=Link.github_icon)
-        self.add_field(name=f'🏴 Дискорд сървъри:',
+        self.add_field(name=Text.discord_servers,
                        value=f'{connected_servers}',
                        inline=True)
-        self.add_field(name=f':busts_in_silhouette: Потребители:',
+        self.add_field(name=Text.users,
                        value=f'{total_members}',
                        inline=True)
-        self.add_field(name=f'💻 Хост:',
-                       value=f'{pc.node}\n{pc.system} {pc.release}\n\
-CPU usage: {cpu_use} % \n\
-RAM usage: {ram} MiB',
+        self.add_field(name=Text.host,
+                       value=Reply.system_info(pc.node,
+                                               pc.system,
+                                               pc.release,
+                                               cpu_use,
+                                               ram),
                        inline=False)
-        self.add_field(name='🛠️ Използвани технологии:',
+        self.add_field(name=Text.used_technologies,
                        value=Reply.used_tech(python_version,
                                              discord_version),
                        inline=False)
-        self.add_field(name='📝 Автор:',
-                       value='Владислав Михов (skilldeliver)',
+        self.add_field(name=Text.author,
+                       value=Text.me,
                        inline=False)
-        self.add_field(name='👷 Топ сътрудници(contributors):',
-                       value=':one: skilldeliver \n:two: surister',
+        self.add_field(name=Text.top_contributors,
+                       value=Text.conributors,
                        inline=False)
-
-
-class WrongAnswerEmbed(Embed):
-    def __init__(self):
-        text = f'Грешен отговор!'
-        color = 0xdd2e44
-
-        super().__init__(title=text,
-                         color=color)
 
 
 class RightAnswerEmbed(Embed):
     def __init__(self):
-        text = f'Верен отговор!'
-        color = 0x77b255
+        super().__init__(title=Text.right,
+                         color=Color.right)
 
-        super().__init__(title=text,
-                         color=color)
+
+class WrongAnswerEmbed(Embed):
+    def __init__(self):
+        super().__init__(title=Text.wrong,
+                         color=Color.wrong)
 
 
 class JokersEmbed(Embed):
@@ -122,13 +118,13 @@ class AudienceEmbed(Embed):
         for vote in votes:
             lines = votes[vote] * '|'
             if not lines:
-                lines = u"\u2063"
+                lines = Text.invisible
 
-            self.add_field(name=f'{vote} {votes[vote]} %',
-                           value=f'{lines}',
+            self.add_field(name=Reply.letter_percent(vote, votes[vote]),
+                           value=lines,
                            inline=False)
 
-        self.set_footer(text=f"Общо гласoве: {count_votes}.")
+        self.set_footer(text=Reply.total_votes(count_votes))
 
 
 class FriendEmbed(Embed):
@@ -156,37 +152,22 @@ class FriendEmbed(Embed):
 class CommandsEmbed(Embed):
 
     def __init__(self):
-        super().__init__(color=0x3351B6)
-        self.add_field(name='📦 Основни команди.',
-                       value='**$инфо** - изпраща информация за бота.\n\
-**$правила** - изпраща правилата на играта.\n\
-**$команди** - изпраща всички команди с пояснение.\n\
-**$добави** - изпраща информация как да добавиш въпрос.\n\
-**$добавям** - ботът събира твоите въпроси (pin-нати съобщения в личния чат)\n\
-**$форма** - ботът изпраща формата за въпроса.')
-        self.add_field(name='📊 Статистики - команди.',
-                       value='**$топ10 автори** - изпраща класацията на потребителите с най-много добавени въпроси.\n\
-**$топ10 играчи** - изпраща класацията на потребителите с най-много спечелени пари от игрите.')
+        super().__init__(color=Color.commands)
+        self.add_field(name=Text.main_commands,
+                       value=Reply.list_general_commands(P))
+        self.add_field(name=Text.statistics,
+                       value=Reply.list_stat_commands(P))
 
-        self.add_field(name='🎮 Игрови команди.',
-                       value='**$игра** - стартира се нова игра за потребителя.\n\
-**$[А, Б, В, Г]** - отговор на въпроса.\n\
-**$50:50** - жокер, два грешни отговора се премахват.\n\
-**$помощ [таг]** - жокер, 30 секунди се изчаква помощ от тагнатият.\n\
-**$помощ публика** - жокери, 30 секунди се изчакват отговори в същият канал.\n\
-**$жокери** - изпраща се илюстрация на наличните жокери.\n\
-**$спирам** - играча се отказва от играта и се запазват парите от последният отговорен въпрос.')
+        self.add_field(name=Text.game_commands,
+                       value=Reply.list_game_commands(P))
 
 
 class RulesEmbed(Embed):
     def __init__(self):
-        super().__init__(color=0x3351B6)
+        super().__init__(color=Color.rules)
 
-        self.add_field(name='📜 Правила:',
-value='1. Един потребител може да бъде само в една игра.\n\
-2. Можещ да играеш с бота само в сървър канал.\n\
-3. Не може да искаш помощ от бот или приятел в игра.\n\
-4. Грешен отговор - играта ти приключва и се запазват парите от достигнатата сигурна сума.')
+        self.add_field(name=Text.rules,
+value=LargeText.list_rules)
 
 
 class StatsEmbed(Embed):
@@ -195,15 +176,15 @@ class StatsEmbed(Embed):
 
 class Top10Embed(Embed):
     def __init__(self, target, authors_n):
-        super().__init__(color=0x8a2be2)
+        super().__init__(color=Color.top)
         title = what = str()
 
         if target == 'authors':
-            title = 'ТОП 10 потребители с най-много добавени въпроси.'
-            what = 'добавени въпроса.'
+            title = Text.top_authors
+            what = Text.added_questions
         elif target == 'players':
-            what = 'лева.'
-            title = 'ТОП 10 играчи с най-много спечелени пари.'
+            what = Text.money
+            title = Text.top_players
 
         self.set_author(name=title,
                         icon_url=Link.leader_board_icon)
@@ -211,60 +192,33 @@ class Top10Embed(Embed):
         for i in range(len(authors_n)):
             item = authors_n[i]
             if i == 0:
-                self.add_field(name=f'{i+1}. **{item[0]}**🥇: {item[1]} {what}',
-                               value=u"\u2063",
+                self.add_field(name=Reply.first_place(i+1, item[0], item[1], what),
+                               value=Text.invisible,
                                inline=False)
             elif i == 1:
-                self.add_field(name=f'{i+1}. **{item[0]}**🥈: {item[1]} {what}',
-                               value=u"\u2063",
+                self.add_field(name=Reply.sec_place(i+1, item[0], item[1], what),
+                               value=Text.invisible,
                                inline=False)    
             elif i == 2:
-                self.add_field(name=f'{i+1}. **{item[0]}**🥉: {item[1]} {what}',
-                               value=u"\u2063",
+                self.add_field(name=Reply.third_place(i+1, item[0], item[1], what),
+                               value=Text.invisible,
                                inline=False)
             else:
-                self.add_field(name=f'{i+1}. **{item[0]}**: {item[1]} {what}',
-                               value=u"\u2063",
+                self.add_field(name=Reply.other_place(i+1, item[0], item[1], what),
+                               value=Text.invisible,
                                inline=False)
 
 
 class HowToAddEmbed(Embed):
     def __init__(self):
-        super().__init__(color=0xcae00d)
-
-        self.add_field(name='**?** Добавяне на въпрос',
-                       value="""\
-За да добавите въпрос, изпълнете следните инструкции:
-**1**. Копирайте и попълнета **формата**(по-долу).
-**2**. Изпратете я на **лично**(тук) на бота.
-**3**. **Pin**-нете съобщениeто в личният чат(тук).
-**4**. Изпълнете командата **$добавям**(тук) или в сървъра.
-
-**При повече въпроси**:
-Всеки въпрос трябва да е в отделно съобщение с отделна форма.
-// и не забравяйте да го pin-нете
-
-~ ботът ще провери и събере всички pin-нати съобщения в личният Ви чат
-~ ще unpin-не всяко от тях и ще реагира съответно с палец нагоре или надолу
-~ накрая ще Ви изпрати кратко съобщение с повече информация
-""")
+        super().__init__(color=Color.how_add)
+        self.add_field(name=Text.question_add,
+                       value=LargeText.instructions)
 
 
 class FormEmbed(Embed):
     def __init__(self):
-        super().__init__(color=0xcae00d)
-        self.add_field(name='Форма',
-                       value="""\
-```css
-Име: [тук поставяте Вашето име или никнейм]
-Фото: [линк към Ваша снимка или аватар](опционално)
-Тема: [общо, ИТ] - изберете някое от изброените
-Ниво: [число от 1 до 15]
-Въпрос: [тук поставяте вашият въпрос]
-Отговор: [тук поставяте верният отговор]
-Друг: [тук поставяте друг неверен отговор]
-Друг: [тук поставяте друг неверен отговор]
-Друг: [тук поставяте друг неверен отговор]
-```
-// Не пишете квадратните скоби 😅
-""")
+        super().__init__(color=Color.form)
+        self.add_field(name=Text.form,
+                       value=LargeText.form
+                       )
