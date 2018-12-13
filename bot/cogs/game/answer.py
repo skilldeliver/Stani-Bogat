@@ -58,10 +58,11 @@ class Answer:
 
                     letter = self.ctx.message.content[1:].upper() + ')'
                     # takes the letter suggested from the audience voter
-                    for value in player_game.values():
+                    for value in player_game.audience_votes.values():
                         for v in value:
                             if voter == v:
                                 value.remove(v)
+                                break
                     player_game.audience_votes[f'{letter}'].add(voter)
                     # add the audience voter vote
                     return True

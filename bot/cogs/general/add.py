@@ -50,6 +50,7 @@ class Add:
             content = pin.content
             print(content)
             match = re.search(pattern, content)
+            print(match)
 
             if match:
                 success += 1
