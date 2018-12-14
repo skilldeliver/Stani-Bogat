@@ -1,4 +1,5 @@
 import re
+from subprocess import call
 import datetime
 from discord.ext import commands
 
@@ -91,6 +92,10 @@ class Add:
             await dm.send('Pin-натите съобщения не отговарят на формата.')
         else:
             await dm.send(f'{success} от {len(pins)} успешно изпратени въпроса. Очаква се преглед от модератор. Ще Ви известим ако въпросите Ви са в игра.')
+
+        call(['git', 'add', '.'])
+        call(['git', 'commit', '-m', '"new data"'])
+        call(['git', 'push', 'origin', 'heroku'])
 
 def setup(bot):
     bot.add_cog(Add(bot))
