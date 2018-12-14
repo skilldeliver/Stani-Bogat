@@ -45,8 +45,8 @@ class Info:
         cpu = psutil.cpu_percent()
 
         total, used, free = shutil.disk_usage('/')
-        hdd_tot = round(total // (2**30), 2)
-        hdd = round(used // (2**30), 2)
+        hdd_tot = round(total // (2**20), 2)
+        hdd = round(used // (2**20), 2)
 
         embed = InfoEmbed(
                           python_version=python_v,

@@ -90,8 +90,8 @@ class Reply:
 CPU usage: {cpu} % \n\
 RAM total: {ram_tot} GB\n\
 RAM usage: {ram} GB\n\
-HDD total: {hdd_tot} GB\n\
-HDD usage: {hdd} GB'
+HDD total: {hdd_tot} MB\n\
+HDD usage: {hdd} MB'
 
     @staticmethod
     def choice(key, answer):
