@@ -44,7 +44,7 @@ class Info:
         ram_tot = round(ram_tot, 2)
         cpu = psutil.cpu_percent()
 
-        total, used, free = shutil.disk_usage("\\")
+        total, used, free = shutil.disk_usage('/')
         hdd_tot = round(total // (2**30), 2)
         hdd = round(used // (2**30), 2)
 
