@@ -4,7 +4,7 @@ attrs==18.2.0
 certifi==2018.11.29
 chardet==3.0.4
 Deprecated==1.2.4
-git+https://github.com/Rapptz/discord.py@rewrite#egg=discord.py[voice]
+discord.py
 html2text==2018.1.9
 idna==2.8
 mccabe==0.6.1
