@@ -1,10 +1,8 @@
 import random
 import discord
 
-from bot.constants import Sprite
-from bot.json_util import load_question
-
-from bot.core.embeds import QuestionEmbed
+from bot.core.constants import Sprite
+from bot.utilities.json import load_question
 
 
 class Game:

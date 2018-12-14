@@ -1,5 +1,6 @@
 from discord.ext import commands
 
+from bot.core.constants import Cogs
 from bot.core.embeds import QuestionEmbed, JokersEmbed
 from bot.core.replies import Reply
 
@@ -10,7 +11,7 @@ class Fifty:
         self.user_id = str()
 
     @commands.guild_only()
-    @commands.command(name='50:50', aliases=['50/50', '5050', '50%50'])
+    @commands.command(name=Cogs.Game.fifty, aliases=Cogs.Game.fifties)
     async def cut_2_answers(self, ctx):
         self.user_id = str(ctx.author.id)
 
@@ -27,7 +28,7 @@ class Fifty:
             await game.last_embed.edit(embed=embed)
             game.fifty = False
         else:
-            await ctx.send(Reply.used_50(self.player_id()))
+            await ctx.send(Reply.used_50(self.user_id))
             embed = JokersEmbed(game.user.name,
                                 game.user.avatar_url,
                                 game.jokers_left())

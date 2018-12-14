@@ -2,10 +2,11 @@ import asyncio
 
 from discord.ext import commands
 
+from bot.core.constants import Cogs, Emoji
 from bot.core.embeds import QuestionEmbed, RightAnswerEmbed, WrongAnswerEmbed,\
     FriendEmbed
 from bot.core.replies import Reply
-from bot.json_util import save_player_money
+from bot.utilities.json import save_player_money
 
 
 class Answer:
@@ -15,7 +16,7 @@ class Answer:
         self.ctx = None
 
     @commands.guild_only()
-    @commands.command(name='А', aliases=list("БВГабвг"))
+    @commands.command(name=Cogs.Game.letter, aliases=Cogs.Game.letters)
     async def take_answer(self, ctx):
         self.ctx = ctx
         self.user_id = str(ctx.author.id)
@@ -63,7 +64,7 @@ class Answer:
                             if voter == v:
                                 value.remove(v)
                                 break
-                    player_game.audience_votes[f'{letter}'].add(voter)
+                    player_game.audience_votes[str(letter)].add(voter)
                     # add the audience voter vote
                     return True
 
@@ -151,8 +152,7 @@ class Answer:
             await self._wrong_answer()
 
             del self.bot.games[player]
-
-            player_name = f'{game.user.name}#{game.user.discriminator}'
+            player_name = Reply.user_name(game.user.name, game.user.discriminator)
             money = game.return_money()
 
             if money:
@@ -167,7 +167,7 @@ class Answer:
         Adds correct react to the answer.
         Sends right answer embed in the chat.
         """
-        await self.ctx.message.add_reaction('\u2705')
+        await self.ctx.message.add_reaction(Emoji.right)
         embed = RightAnswerEmbed()
         await self.ctx.send(embed=embed, delete_after=1.5)
 
@@ -176,7 +176,7 @@ class Answer:
         Adds mistaken react to the answer.
         Sends wrong answer embed in the chat.
         """
-        await self.ctx.message.add_reaction('\u274C')
+        await self.ctx.message.add_reaction(Emoji.wrong)
         embed = WrongAnswerEmbed()
         await self.ctx.send(embed=embed, delete_after=1.5)
 

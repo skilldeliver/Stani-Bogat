@@ -5,7 +5,7 @@ from discord.ext import commands
 
 from bot.core.embeds import JokersEmbed, AudienceEmbed
 from bot.core.replies import Reply
-from bot.constants import Emoji
+from bot.core.constants import Cogs, Emoji, Regex
 
 
 class Help:
@@ -15,7 +15,7 @@ class Help:
         self.ctx = None
 
     @commands.guild_only()
-    @commands.command(name='помощ')
+    @commands.command(name=Cogs.Game.help)
     async def get_help(self, ctx, arg):  # arg - приятел[tag] or публика
         self.ctx = ctx
         self.arg = arg
@@ -28,7 +28,7 @@ class Help:
         await self._request_help_from_friend()
 
     async def _request_help_from_audience(self):
-        if self.arg != 'публика':
+        if self.arg != Cogs.Game.audience:
             return
 
         if self.user_id not in self.bot.games.keys():
@@ -62,7 +62,6 @@ class Help:
 
     async def _request_help_from_friend(self):
         if self.user_id not in self.bot.games.keys():
-            print('exe')
             await self.ctx.send(Reply.not_in_game(self.user_id))
             return
 
@@ -115,11 +114,11 @@ class Help:
 
     @staticmethod
     def _extract_id_from_tag(tag):
-        if tag == 'публика':
+        if tag == Cogs.Game.audience:
             return True
 
         try:
-            user_id = re.search(r'<@(\d*)>', tag).group(1)
+            user_id = re.search(Regex.user_id, tag).group(1)
             return int(user_id)
         except Exception:
             return None

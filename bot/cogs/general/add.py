@@ -2,9 +2,10 @@ import re
 import datetime
 from discord.ext import commands
 
-from bot.json_util import  append_to_pending
-from bot.constants import Emoji
+from bot.utilities.json import append_to_pending
+from bot.core.constants import Cogs, Emoji, Regex
 from bot.core.embeds import HowToAddEmbed, FormEmbed
+from bot.core.replies import Reply
 
 
 class Add:
@@ -12,12 +13,12 @@ class Add:
         self.bot = bot
         self.user = str()
 
-    @commands.command(name='форма')
+    @commands.command(name=Cogs.General.form)
     async def print_form(self, ctx):
         embed = FormEmbed()
         await ctx.send(embed=embed)
 
-    @commands.command(name='добави')
+    @commands.command(name=Cogs.General.add)
     async def print_how_to_add(self, ctx):
         self.user = self.bot.get_user(ctx.author.id)
         dm = self.user.dm_channel
@@ -29,7 +30,7 @@ class Add:
         embed = FormEmbed()
         await dm.send(embed=embed)
 
-    @commands.command(name='добавям')
+    @commands.command(name=Cogs.General.adding)
     async def add_it(self, ctx):
         self.user = self.bot.get_user(ctx.author.id)
 
@@ -42,7 +43,7 @@ class Add:
             await dm.send('Няма pin-нати съобщения в този чат.')
             return
 
-        pattern = r'Име:(?P<name>.*)\n(Фото:(?P<image>.*)\n)?Тема:(?P<theme>.*)\nНиво:(?P<level>.*)\nВъпрос:(?P<question>.*)\nОтговор:(?P<answer>.*)\nДруг:(?P<other1>.*)\nДруг:(?P<other2>.*)\nДруг:(?P<other3>.*)'
+        pattern = Regex.form
 
         success = int()
         questions = list()
@@ -71,7 +72,7 @@ class Add:
                     else:
                         adict[k] = None
 
-                adict['user'] = f'{self.user.name}#{self.user.discriminator}'
+                adict['user'] = Reply.user_name(self.user.name, self.user.discriminator)
                 adict['user_id'] = str(ctx.author.id)
                 adict['date'] = str(datetime.datetime.now())
                 questions.append(adict)

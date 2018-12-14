@@ -1,7 +1,7 @@
 import json
 import random
 
-from bot.constants import Path, File
+from bot.core.constants import Path, File
 
 
 def load_question(question_level, theme):

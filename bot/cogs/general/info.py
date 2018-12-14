@@ -6,6 +6,7 @@ from discord.ext import commands
 import github
 import psutil
 
+from bot.core.constants import Cogs
 from bot.core.embeds import InfoEmbed
 
 
@@ -15,7 +16,7 @@ class Info:
         self.bot = bot
         self.g = github.Github('boneredcoder', 'stanibogatbot1')
 
-    @commands.command(name='инфо')
+    @commands.command(name=Cogs.General.info)
     async def print_info(self, ctx):
         # versions stuff
         python_v = python_version()

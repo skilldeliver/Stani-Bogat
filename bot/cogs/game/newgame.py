@@ -1,8 +1,8 @@
 import asyncio
 
-import discord
 from discord.ext import commands
 
+from bot.core.constants import Cogs
 from bot.core.game import Game
 from bot.core.embeds import QuestionEmbed
 from bot.core.replies import Reply
@@ -17,7 +17,7 @@ class NewGame:
         self.player_id = str()
 
     @commands.guild_only()
-    @commands.command(name='игра', aliases=['новаигра'])
+    @commands.command(name=Cogs.Game.game, aliases=[Cogs.Game.newgame])
     async def new_game(self, ctx):
         '''
         Creates new Game.

@@ -53,6 +53,10 @@ class Reply:
         return f'<@{player}>, твоята игра започва сега!'
 
     @staticmethod
+    def user_name(user, tag):
+        return f'{user}#{tag}'
+
+    @staticmethod
     def game_title(question_level, player, question_leva):
         return f'{question_level}. Играта на {player}. Въпрос за {question_leva} лева.'
 
@@ -87,6 +91,10 @@ CPU usage: {cpu} % \n\
 RAM usage: {ram} MiB'
 
     @staticmethod
+    def choice(key, answer):
+        return f'**{key}** {answer}'
+
+    @staticmethod
     def total_votes(votes):
         return f"Общо гласoве: {votes}."
 
@@ -102,6 +110,18 @@ discord.py rewrite branch {discord_version}
 PyGithub
 Pipenv
 '''
+
+    @staticmethod
+    def game_of(player):
+        return f'Играта на {player}.'
+
+    @staticmethod
+    def help_from_friend(player, helper, level):
+        return f'Играта на {player}. Предложението на {helper} за въпрос {level}.'
+
+    @staticmethod
+    def help_from_audience(player, level):
+        return f'Играта на {player}. Гласoве на публиката за въпрос {level}.'
 
     @staticmethod
     def list_general_commands(P):

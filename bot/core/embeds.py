@@ -1,6 +1,6 @@
 from discord import Embed
 
-from bot.constants import PREFIX as P, Link, Text, LargeText, Color
+from bot.core.constants import PREFIX as P, Link, Text, LargeText, Color
 from bot.core.replies import Reply
 
 
@@ -24,7 +24,7 @@ class QuestionEmbed(Embed):
                         icon_url=player_thumbnail)
 
         for key in answers:
-            self.add_field(name=f'**{key}** {answers[key]}',
+            self.add_field(name=Reply.choice(key, answers[key]),
                            value=Text.invisible,
                            inline=False)
 
@@ -42,8 +42,8 @@ class InfoEmbed(Embed):
                  stars,
                  forks,
                  issues,
-                 connected_servers: int,
-                 total_members: int,
+                 connected_servers,
+                 total_members,
                  pc,
                  cpu_use,
                  ram):
@@ -53,10 +53,10 @@ class InfoEmbed(Embed):
                         url=Link.github_repo,
                         icon_url=Link.github_icon)
         self.add_field(name=Text.discord_servers,
-                       value=f'{connected_servers}',
+                       value=str(connected_servers),
                        inline=True)
         self.add_field(name=Text.users,
-                       value=f'{total_members}',
+                       value=str(total_members),
                        inline=True)
         self.add_field(name=Text.host,
                        value=Reply.system_info(pc.node,
@@ -73,7 +73,7 @@ class InfoEmbed(Embed):
                        value=Text.me,
                        inline=False)
         self.add_field(name=Text.top_contributors,
-                       value=Text.conributors,
+                       value=Text.contributors,
                        inline=False)
 
 
@@ -97,7 +97,7 @@ class JokersEmbed(Embed):
         color = 0x1b87e7
         super().__init__(color=color)
 
-        self.set_author(name=f'Играта на {player}.',
+        self.set_author(name=Reply.game_of(player),
                         icon_url=player_thumbnail)
         self.set_image(url=image_url)
 
@@ -113,7 +113,7 @@ class AudienceEmbed(Embed):
                  ):
         super().__init__(color=color)
 
-        self.set_author(name=f'Играта на {player}. Гласoве на публиката за въпрос {question_level}.',
+        self.set_author(name=Reply.help_from_audience(player, question_level),
                         icon_url=player_thumbnail)
         for vote in votes:
             lines = votes[vote] * '|'
@@ -139,11 +139,11 @@ class FriendEmbed(Embed):
                  ):
         super().__init__(color=color)
 
-        self.set_author(name=f'Играта на {player}. Предложението на {helper} за въпрос {question_level}.',
+        self.set_author(name=Reply.help_from_friend(player, helper, question_level),
                         icon_url=player_thumbnail)
 
-        self.add_field(name=f'{list(vote.keys())[0]}',
-                       value=f'{list(vote.values())[0]}',
+        self.add_field(name=str(list(vote.keys())[0]),
+                       value=str(list(vote.values())[0]),
                        inline=False)
 
         self.set_thumbnail(url=helper_thumbnail)
@@ -168,10 +168,6 @@ class RulesEmbed(Embed):
 
         self.add_field(name=Text.rules,
 value=LargeText.list_rules)
-
-
-class StatsEmbed(Embed):
-    pass
 
 
 class Top10Embed(Embed):
@@ -222,3 +218,9 @@ class FormEmbed(Embed):
         self.add_field(name=Text.form,
                        value=LargeText.form
                        )
+
+class StatsEmbed(Embed):
+    #TODO stats embed
+    pass
+
+#TODO total games embed

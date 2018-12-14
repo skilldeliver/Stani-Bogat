@@ -1,7 +1,8 @@
 from discord.ext import commands
 
+from bot.core.constants import Cogs
 from bot.core.replies import Reply
-from bot.json_util import save_player_money
+from bot.utilities.json import save_player_money
 
 
 class Stop:
@@ -10,7 +11,7 @@ class Stop:
         self.user_id = str()
 
     @commands.guild_only()
-    @commands.command(name='спирам')
+    @commands.command(name=Cogs.Game.stop)
     async def terminate(self, ctx):
         self.user_id = str(ctx.author.id)
 
@@ -19,9 +20,10 @@ class Stop:
             return
 
         game = self.bot.games[self.user_id]
-        player = f'{game.user.name}#{game.user.discriminator}'
+        player = Reply.user_name(game.user.name, game.user.discriminator)
         money = game.return_money(wrong_answer=False)
 
+        await game.last_embed.delete()
         if money:
             save_player_money(player, money)
 

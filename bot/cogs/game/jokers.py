@@ -1,5 +1,6 @@
 from discord.ext import commands
 
+from bot.core.constants import Cogs
 from bot.core.embeds import JokersEmbed
 from bot.core.replies import Reply
 
@@ -10,7 +11,7 @@ class Jokers:
         self.user_id = str()
 
     @commands.guild_only()
-    @commands.command(name='жокери', aliases=['жокер'])
+    @commands.command(name=Cogs.Game.jokers, aliases=[Cogs.Game.joker])
     async def jokers(self, ctx):
         self.user_id = str(ctx.author.id)
 

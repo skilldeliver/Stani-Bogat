@@ -1,8 +1,8 @@
 from discord.ext import commands
 from discord import Embed
 
-from bot.constants import MODS
-from bot.json_util import get_pending, add_question
+from bot.core.constants import MODS, Cogs, LargeText
+from bot.utilities.json import get_pending, add_question
 
 
 def is_mod():
@@ -17,27 +17,16 @@ class Approve:
         self.question = None
 
     @is_mod()
-    @commands.command(name='mod')
+    @commands.command(name=Cogs.Mod.mod)
     async def get_info(self, ctx):
-        await ctx.send(f"""```css
-mod - дава информация за командите на модераторите
-pending - отваря последният въпрос
-open image - опитва се да отвори изображението предоставено от автора
-approve image - удобрява въпроса заедно с предоставенето изображение
-approve noimage - удобрява въпроса без предоставенето изображение
-reject [text] - отхвърля въпроса, където text е причината
-change [key] [value] - променя стойноста на [key] с нова стойност [value],
-                    където [key] е ключ във въпроса e.g. name, question, other2 etc
-get [key] - изпраща стойността на ключ във въпроса
-```
-""")
+        await ctx.send(LargeText.mod_cogs)
 
     @is_mod()
-    @commands.command(name='pending')
+    @commands.command(name=Cogs.Mod.pending)
     async def get_question(self, ctx):
         self.ctx = ctx
         if self.question:
-            await ctx.send('Незатворен въпрос!')
+            await ctx.send()
             await self._send_question()
             return
 
@@ -48,12 +37,12 @@ get [key] - изпраща стойността на ключ във въпро�
         await self._send_question()
 
     @is_mod()
-    @commands.command(name='approve')
+    @commands.command(name=Cogs.Mod.approve)
     async def approve_question(self, ctx, arg):
         theme_map = {'ИТ': 'IT', 'общо': 'general'}
         image = None
 
-        if arg == 'image':
+        if arg == Cogs.Mod.image:
             image = self.question['image']
         q = self.question
         choices = [q['answer'], q['other1'], q['other2'], q['other3']]
@@ -68,13 +57,14 @@ get [key] - изпраща стойността на ключ във въпро�
         await ctx.send('Въпросът е добавен!')
 
     @is_mod()
-    @commands.command(name='reject')
+    @commands.command(name=Cogs.Mod.reject)
     async def reject(self, ctx):
+        # TODO send explanation to the user for the rejecting reason
         self.question = None
         await ctx.send('Въпросът е отхвърлен!')
 
     @is_mod()
-    @commands.command(name='change')
+    @commands.command(name=Cogs.Mod.change)
     async def change_value(self, ctx, key, value):
         self.ctx = ctx
 
@@ -82,7 +72,7 @@ get [key] - изпраща стойността на ключ във въпро�
         await self._send_question()
 
     @is_mod()
-    @commands.command(name='open')
+    @commands.command(name=Cogs.Mod.open)
     async def open_image(self, ctx, arg):
         self.ctx = ctx
 
@@ -92,7 +82,7 @@ get [key] - изпраща стойността на ключ във въпро�
             await self.ctx.send(embed=embed)
 
     @is_mod()
-    @commands.command(name='get')
+    @commands.command(name=Cogs.Mod.get)
     async def get_key(self, ctx, arg):
         await ctx.send(self.question[arg])
 
