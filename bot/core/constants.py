@@ -1,7 +1,7 @@
 from pathlib import PurePath
 from typing import NamedTuple
 
-PREFIX = '?'
+PREFIX = '>'
 MODS = [
     365859941292048384,
     374537025983873024,

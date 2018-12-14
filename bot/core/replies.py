@@ -85,10 +85,13 @@ class Reply:
         return f'{place}. **{name}**: {count} {what}'
 
     @staticmethod
-    def system_info(node, sys, rel, cpu, ram):
+    def system_info(node, sys, rel, cpu, ram, ram_tot, hdd, hdd_tot):
         return f'{node}\n{sys} {rel}\n\
 CPU usage: {cpu} % \n\
-RAM usage: {ram} MiB'
+RAM total: {ram_tot} GB\n\
+RAM usage: {ram} GB\n\
+HDD total: {hdd_tot} GB\n\
+HDD usage: {hdd} GB'
 
     @staticmethod
     def choice(key, answer):

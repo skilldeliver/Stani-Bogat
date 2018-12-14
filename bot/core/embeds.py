@@ -46,7 +46,10 @@ class InfoEmbed(Embed):
                  total_members,
                  pc,
                  cpu_use,
-                 ram):
+                 ram,
+                 ram_tot,
+                 hdd,
+                 hdd_tot):
         super().__init__(color=Color.info)
 
         self.set_author(name=Reply.github_repo(stars, forks, issues),
@@ -63,7 +66,10 @@ class InfoEmbed(Embed):
                                                pc.system,
                                                pc.release,
                                                cpu_use,
-                                               ram),
+                                               ram,
+                                               ram_tot,
+                                               hdd,
+                                               hdd_tot),
                        inline=False)
         self.add_field(name=Text.used_technologies,
                        value=Reply.used_tech(python_version,

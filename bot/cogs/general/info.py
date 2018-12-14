@@ -1,3 +1,4 @@
+import shutil
 from platform import python_version, uname
 
 
@@ -37,9 +38,15 @@ class Info:
 
         # pc stuff
         pc = uname()
-        ram = dict(psutil.virtual_memory()._asdict())['used'] / 2 ** 20
+        ram = dict(psutil.virtual_memory()._asdict())['used'] / 2 ** 30
         ram = round(ram, 2)
+        ram_tot = dict(psutil.virtual_memory()._asdict())['total'] / 2 ** 30
+        ram_tot = round(ram_tot, 2)
         cpu = psutil.cpu_percent()
+
+        total, used, free = shutil.disk_usage("\\")
+        hdd_tot = round(total // (2**30), 2)
+        hdd = round(used // (2**30), 2)
 
         embed = InfoEmbed(
                           python_version=python_v,
@@ -51,7 +58,10 @@ class Info:
                           total_members=total_members,
                           pc=pc,
                           cpu_use=cpu,
-                          ram=ram)
+                          ram=ram,
+                          ram_tot=ram_tot,
+                          hdd=hdd,
+                          hdd_tot=hdd_tot)
         await ctx.send(embed=embed)
 
 
