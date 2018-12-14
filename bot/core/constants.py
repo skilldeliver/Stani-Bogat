@@ -8,9 +8,50 @@ MODS = [
     261115722007183362,
     247028507903918083
 ]
+class Cogs(NamedTuple):
+
+    class Game(NamedTuple):
+        letter = 'А'
+        fifty = '50:50'
+        help = 'помощ'
+        audience = 'публика'
+        jokers = 'жокери'
+        game = 'игра'
+        stop = 'спирам'
+
+        # aliases
+        newgame= 'новаигра'
+        letters = list("БВГабвг")
+        joker = 'жокер'
+        fifties = ['50/50', '5050', '50%50']
+
+    class General(NamedTuple):
+        form = 'форма'
+        add = 'добави'
+        adding = 'добавям'
+        commands = 'команди'
+        info = 'инфо'
+        rules = 'правила'
+
+    class Mod(NamedTuple):
+        mod = 'mod'
+        pending = 'pending'
+        approve = 'approve'
+        reject = 'reject'
+        change = 'change'
+        open = 'open'
+        image = 'image'
+        get = 'get'
+
+    class Stats(NamedTuple):
+        top10 = 'топ10'
+        top = 'топ'
+        authors = 'автори'
+        players = 'играчи'
+
 
 class Path(NamedTuple):
-    project = PurePath(__file__).parent.parent
+    project = PurePath(__file__).parent.parent.parent
     data = project.joinpath('data/')
 
     questions = data.joinpath('questions/')
@@ -47,11 +88,26 @@ class Sprite(NamedTuple):
               'xxx': 'https://i.imgur.com/ZPOM3Tc.png'
               }
 
+class Regex(NamedTuple):
+    #TODO add regex patterns here
+    form = (r'Име:(?P<name>.*)\n'
+            r'(Фото:(?P<image>.*)\n)?'
+            r'Тема:(?P<theme>.*)\n'
+            r'Ниво:(?P<level>.*)\n'
+            r'Въпрос:(?P<question>.*)\n'
+            r'Отговор:(?P<answer>.*)\n'
+            r'Друг:(?P<other1>.*)\n'
+            r'Друг:(?P<other2>.*)\n'
+            r'Друг:(?P<other3>.*)'
+            )
+    user_id = r'<@(\d*)>'
 
 class Emoji(NamedTuple):
     clock = '\u23f0'
     thumb_down = '👎'
     thumb_up = '👍'
+    wrong = '\u274C'
+    right = '\u2705'
 
 
 class Color(NamedTuple):
@@ -68,26 +124,34 @@ class Color(NamedTuple):
 
 class Text(NamedTuple):
     invisible = u"\u2063"
+
     discord_servers = '🏴 Дискорд сървъри:'
-    users = f':busts_in_silhouette: Потребители:'
     host = '💻 Хост:'
     used_technologies = '🛠️ Използвани технологии:'
     author = '📝 Автор:'
+    users = f':busts_in_silhouette: Потребители:'
+
     me = 'Владислав Михов (skilldeliver)'
     top_contributors = '👷 Топ сътрудници(contributors):'
-    conributors = ':one: skilldeliver \n:two: surister'
-    top_players = 'ТОП 10 играчи с най-много спечелени пари.'
-    top_authors = 'ТОП 10 потребители с най-много добавени въпроси.'
-    rules = '📜 Правила:'
+    contributors = ':one: skilldeliver \n:two: surister'
+
+    top_players = '**ТОП 10** играчи с най-много спечелени пари.'
+    top_authors = '**ТОП 10** потребители с най-много добавени въпроси.'
+
     right = 'Верен отговор!'
     wrong = 'Грешен отговор!'
+
     question_add = '**?** Добавяне на въпрос'
     form = 'Форма'
     added_questions = 'добавени въпроса.'
     money = 'лева.'
+
     main_commands = '📦 Основни команди.'
     game_commands = '🎮 Игрови команди.'
     statistics = '📊 Статистики - команди.'
+    rules = '📜 Правила:'
+
+    unclosed_question = 'Незатворен въпрос!'
 
 
 class LargeText(NamedTuple):
@@ -125,4 +189,16 @@ class LargeText(NamedTuple):
 Друг: [тук поставяте друг неверен отговор]
 ```
 // Не пишете квадратните скоби 😅
+"""
+    mod_cogs = f"""```css
+{Cogs.Mod.mod} - дава информация за командите на модераторите
+{Cogs.Mod.pending} - отваря последният въпрос
+{Cogs.Mod.open} {Cogs.Mod.image} - опитва се да отвори изображението предоставено от автора
+{Cogs.Mod.approve} {Cogs.Mod.image} - удобрява въпроса заедно с предоставенето изображение
+{Cogs.Mod.approve} noimage - удобрява въпроса без предоставенето изображение
+{Cogs.Mod.reject} [text] - отхвърля въпроса, където text е причината
+{Cogs.Mod.change} [key] [value] - променя стойноста на [key] с нова стойност [value],
+                    където [key] е ключ във въпроса e.g. name, question, other2 etc
+{Cogs.Mod.get} [key] - изпраща стойността на ключ във въпроса
+```
 """
