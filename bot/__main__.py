@@ -6,8 +6,8 @@ from bot.core.model import Bot
 def main():
     bot = Bot(prefix=P,
               activity=f"{P}команди")
-    bot.load_cogs(os.getenv('TOKEN'))
-    bot.run()
+    bot.load_cogs()
+    bot.run(os.getenv('TOKEN'))
 
 if __name__ == '__main__':
     main()
