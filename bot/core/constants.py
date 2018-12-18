@@ -2,12 +2,16 @@ from pathlib import PurePath
 from typing import NamedTuple
 
 PREFIX = '?'
+
+GOD = 365859941292048384
 MODS = [
     365859941292048384,
     374537025983873024,
     261115722007183362,
     247028507903918083
 ]
+
+
 class Cogs(NamedTuple):
 
     class Game(NamedTuple):
