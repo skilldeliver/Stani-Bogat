@@ -6,10 +6,15 @@ from bot.utilities.json import load_question
 
 
 class Game:
-    def __init__(self, user: discord.User):
+    def __init__(self,
+                 user: discord.User,
+                 start):
         # the user - discord.User instance
         self.user = user
+        self.start = start
+
         self.question_level = 0
+        self.ctx = None
 
         self.letters = ['А)', 'Б)', 'В)', 'Г)']
         self.color = self._get_rand_color()  # color of the question embed
@@ -20,9 +25,22 @@ class Game:
         self.friend = True
         self.audience = True
 
+        self.start_question = int()
         # save the last question dict and embed to change them later
         self.last_question = None
         self.last_embed = None
+        self.last_message =  None
+
+        self.helper_id = None
+
+        self.start_friend_help = int()
+        self.start_audience_help = int()
+
+        self.add_friend_reaction = False
+        self.add_audience_reaction = False
+
+        self.friend_msg = None
+        self.audience_msg = None
 
         # boolean values to check if the joker is running
         # similar with the previous ones - but those expire after 30 secs

@@ -29,16 +29,21 @@ def load_question(question_level, theme):
                     )
 
 
-def save_player_money(player, money):
+def save_player(player, money, time):
     file = Path.global_stats.joinpath(File.players)
 
     with open(file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
     if player not in data.keys():
-        data[player] = int()
+        data[player] = dict()
+        data[player]['games'] = int()
+        data[player]['money'] = int()
+        data[player]['time'] = int()
 
-    data[player] += money
+    data[player]['games'] += 1
+    data[player]['money'] += money
+    data[player]['time'] += time
 
     with open(file, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
@@ -57,7 +62,6 @@ def append_to_authors(author):
 
     with open(file, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
-
 
 def add_question(author,
                  theme,
@@ -89,12 +93,8 @@ def add_question(author,
         json.dump(data, f, ensure_ascii=False)
 
 
-def return_top(target, how):
-    file = str()
-    if target == 'authors':
-        file = Path.global_stats.joinpath(File.authors)
-    elif target == 'players':
-        file = Path.global_stats.joinpath(File.players)
+def return_top_authors(how):
+    file = Path.global_stats.joinpath(File.authors)
 
     with open(file, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -105,6 +105,28 @@ def return_top(target, how):
         return authors_n[:how]
     return authors_n
 
+
+def return_top_players(how):
+    file = Path.global_stats.joinpath(File.players)
+
+    with open(file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    adict = dict()
+
+    for name in data:
+        adict[name] = data[name]['money'] / data[name]['games']
+
+    players_n = sorted(adict.items(), key=lambda kv: kv[1], reverse=True)
+    final = list()
+
+    if len(players_n) < how:
+        for item in players_n:
+            final.append((item[0], int(item[1])))
+    else:
+        for i in range(how):
+            final.append((players_n[i][0], int(players_n[i][1])))
+    return final
 
 def append_to_pending(alist):
     file = Path.pending.joinpath(File.pending_questions)

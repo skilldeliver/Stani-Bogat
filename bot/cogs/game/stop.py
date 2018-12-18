@@ -2,7 +2,7 @@ from discord.ext import commands
 
 from bot.core.constants import Cogs
 from bot.core.replies import Reply
-from bot.utilities.json import save_player_money
+from bot.utilities.json import save_player
 
 
 class Stop:
@@ -22,10 +22,10 @@ class Stop:
         game = self.bot.games[self.user_id]
         player = Reply.user_name(game.user.name, game.user.discriminator)
         money = game.return_money(wrong_answer=False)
+        time = self.bot.time - game.start
 
-        await game.last_embed.delete()
-        if money:
-            save_player_money(player, money)
+        await game.last_message.delete()
+        save_player(player, money, time)
 
         del self.bot.games[self.user_id]
         await ctx.send(Reply.end_game(self.user_id, money))

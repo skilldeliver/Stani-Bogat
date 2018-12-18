@@ -45,20 +45,13 @@ class Help:
             await self.ctx.send(embed=embed)
             return True
 
-        msg = await self.ctx.send(Reply.audience_help(30))
+        player_game.audience_msg = await self.ctx.send(Reply.audience_help(10))
         player_game.audience = False
         player_game.audience_channel = self.ctx.channel
+        player_game.start_audience_help = self.bot.time
 
         player_game.waiting_audience_help = True
-        await self._count_seconds_down_audience(player_game, msg)
 
-        if player_game.waiting_audience_help:
-            audience_data = player_game.get_audience_votes()
-            embed = AudienceEmbed(**audience_data)
-            await self.ctx.send(embed=embed)
-
-        player_game.waiting_audience_help = False
-        await msg.add_reaction(Emoji.clock)
 
     async def _request_help_from_friend(self):
         if self.user_id not in self.bot.games.keys():
@@ -97,19 +90,19 @@ class Help:
             return
 
         # Asserts that the helper is not a bot or the player itself
-        msg = await self.ctx.send(Reply.friend_help(helper.name, 30))
+        player_game.friend_msg = await self.ctx.send(Reply.friend_help(helper.name, 10))
+        player_game.helper_id = str(helper_id)
         player_game.friend = False
         # the joker is gone
 
         self.bot.helping_friends[str(helper_id)] = self.user_id
         # add the helper to the queue and bind the player id
         player_game.waiting_friend_help = True
-        await self._count_seconds_down_friend(player_game,
-                                              helper.name,
-                                              msg)
-        player_game.waiting_friend_help = False
-        await msg.add_reaction(Emoji.clock)
-        del self.bot.helping_friends[str(helper_id)]
+        player_game.start_friend_help = self.bot.time
+
+        # await self._count_seconds_down_friend(player_game,
+        #                                       helper.name,
+        #                                       msg)
         # remove the helper from the queue
 
     @staticmethod
@@ -122,28 +115,6 @@ class Help:
             return int(user_id)
         except Exception:
             return None
-
-    @staticmethod
-    async def _count_seconds_down_audience(player_game,
-                                           message):
-        for i in range(29, -1, -1):
-            # count seconds
-            await asyncio.sleep(1)
-            if not player_game.waiting_audience_help:
-                break
-            await message.edit(content=Reply.audience_help(i))
-
-    @staticmethod
-    async def _count_seconds_down_friend(player_game,
-                                         helper_name,
-                                         message, ):
-        for i in range(29, -1, -1):
-            # count seconds
-            await asyncio.sleep(1)
-            if not player_game.waiting_friend_help:
-                break
-            await message.edit(content=Reply.friend_help(helper_name, i))
-
 
 def setup(bot):
     bot.add_cog(Help(bot))

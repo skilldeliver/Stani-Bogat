@@ -4,7 +4,7 @@ import datetime
 from discord.ext import commands
 
 from bot.utilities.json import append_to_pending
-from bot.core.constants import Cogs, Emoji, Regex
+from bot.core.constants import Cogs, Emoji, Regex, Text
 from bot.core.embeds import HowToAddEmbed, FormEmbed
 from bot.core.replies import Reply
 
@@ -41,7 +41,7 @@ class Add:
         pins = await dm.pins()
 
         if not len(pins):
-            await dm.send('Няма pin-нати съобщения в този чат.')
+            await dm.send(Text.no_pins)
             return
 
         pattern = Regex.form
@@ -74,7 +74,7 @@ class Add:
                         adict[k] = None
 
                 adict['user'] = Reply.user_name(self.user.name, self.user.discriminator)
-                adict['user_id'] = str(ctx.author.id)
+                adict['user_id'] = ctx.author.id
                 adict['date'] = str(datetime.datetime.now())
                 questions.append(adict)
             else:
@@ -85,17 +85,17 @@ class Add:
             append_to_pending(questions)
 
         if len(pins) == 1 and success == 0:
-            await dm.send('Pin-натото съобщение не отговаря на формата.')
+            await dm.send(Text.pin_not_inform)
         elif len(pins) == 1:
-            await dm.send('Успешно изпратен въпрос. Очаква се преглед от модератор. Ще Ви известим ако въпроса Ви е в игра.')
+            await dm.send(Text.success_send)
         elif success == 0:
-            await dm.send('Pin-натите съобщения не отговарят на формата.')
+            await dm.send(Text.pins_not_inform)
         else:
-            await dm.send(f'{success} от {len(pins)} успешно изпратени въпроса. Очаква се преглед от модератор. Ще Ви известим ако въпросите Ви са в игра.')
+            await dm.send(Reply.successfully_send(success, len(pins)))
 
-        call(['git', 'add', '.'])
-        call(['git', 'commit', '-m', '"new data"'])
-        call(['git', 'push', 'origin', 'heroku'])
+        # call(['git', 'add', '.'])
+        # call(['git', 'commit', '-m', '"new data"'])
+        # call(['git', 'push', 'origin', 'heroku'])
 
 def setup(bot):
     bot.add_cog(Add(bot))

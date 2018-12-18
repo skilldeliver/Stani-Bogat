@@ -48,5 +48,19 @@
         ]
       }
     ]
+  },
+  "Viewless": {
+    "questions": [
+      {
+        "question": "Зададен е пътя към файла C:\\DOC\\PROBA.TXT Какво е името на директорията, в която се намира файла?",
+        "choices": [
+          "DOC",
+          "TXT",
+          "C:\\DOC\\PROBA.TXT",
+          "PROBA.TXT"
+        ]
+      }
+    ],
+    "author_img": "https://i.imgur.com/FZFt0SJ.png"
   }
 }

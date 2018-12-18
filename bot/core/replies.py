@@ -127,6 +127,10 @@ Pipenv
         return f'Играта на {player}. Гласoве на публиката за въпрос {level}.'
 
     @staticmethod
+    def successfully_send(success, pins):
+        return f'{success} от {pins} успешно изпратени въпроса. Очаква се преглед от модератор. Ще Ви известим ако въпросите Ви са в игра.'
+
+    @staticmethod
     def list_general_commands(P):
         return f'**{P}инфо** - изпраща информация за бота.\n\
 **{P}правила** - изпраща правилата на играта.\n\

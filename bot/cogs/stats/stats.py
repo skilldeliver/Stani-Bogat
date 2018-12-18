@@ -2,7 +2,7 @@ from discord.ext import commands
 
 from bot.core.constants import Cogs
 from bot.core.embeds import Top10Embed
-from bot.utilities.json import return_top
+from bot.utilities.json import return_top_authors, return_top_players
 
 class Stats:
     """ Handles these cogs - топ10, статс"""
@@ -11,11 +11,12 @@ class Stats:
 
     @commands.command(name=Cogs.Stats.top10, aliases=[Cogs.Stats.top])
     async def print_top10(self, ctx, arg): # автори or играчи
+        # TODO return players and authors
         if arg == Cogs.Stats.authors:
-            authors = return_top(target='authors', how=10)
+            authors = return_top_authors(10)
             await ctx.send(embed=Top10Embed('authors', authors))
         elif arg == Cogs.Stats.players:
-            players = return_top(target='players', how=10)
+            players = return_top_players(10)
             await ctx.send(embed=Top10Embed('players', players))
 
     # @commands.command(name='статс', aliases=['стат'])

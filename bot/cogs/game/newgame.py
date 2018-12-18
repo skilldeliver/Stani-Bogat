@@ -15,6 +15,7 @@ class NewGame:
 
         self.player = None
         self.player_id = str()
+        self.embed = None
 
     @commands.guild_only()
     @commands.command(name=Cogs.Game.game, aliases=[Cogs.Game.newgame])
@@ -32,6 +33,7 @@ class NewGame:
             await ctx.send(Reply.not_finished(self.player_id))
             return
 
+
         await self._create_new_game()
         await self._send_first_question()
 
@@ -42,18 +44,23 @@ class NewGame:
 
     async def _create_new_game(self):
         # Create new Game and bind it to the user_id in the queue
-        self.bot.games[self.player_id] = Game(self.player)
+        self.bot.games[self.player_id] = Game(self.player, self.bot.time)
+        self.bot.games[self.player_id].ctx = self.ctx
+
         await self.ctx.send(Reply.start_game(self.player_id))
-        await asyncio.sleep(1)
+        # await asyncio.sleep(1)
+
 
     async def _send_first_question(self):
         # ask the first question
         question_data = self.bot.games[self.player_id].ask()
-        embed = QuestionEmbed(**question_data)
+        game = self.bot.games[self.player_id]
+        game.last_embed = QuestionEmbed(**question_data)
 
-        self.bot.games[self.player_id].last_question = question_data
-        self.bot.games[self.player_id].last_embed = \
-            await self.ctx.send(embed=embed)
+        game.last_question = question_data
+        game.last_message= \
+            await self.ctx.send(content='⏳ **Имаш 20 секунди**', embed=game.last_embed)
+        game.start_question = self.bot.time
 
 
 def setup(bot):

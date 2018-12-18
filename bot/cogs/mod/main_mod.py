@@ -17,6 +17,11 @@ class Approve:
         self.question = None
 
     @is_mod()
+    @commands.command(name='test')
+    async def test(self, ctx):
+        await ctx.send(self.bot.seconds)
+
+    @is_mod()
     @commands.command(name=Cogs.Mod.mod)
     async def get_info(self, ctx):
         await ctx.send(LargeText.mod_cogs)
@@ -26,7 +31,7 @@ class Approve:
     async def get_question(self, ctx):
         self.ctx = ctx
         if self.question:
-            await ctx.send()
+            await ctx.send('Има незатворен въпрос!')
             await self._send_question()
             return
 
@@ -53,21 +58,26 @@ class Approve:
                      choices=choices,
                      author_thumbnail=image
                      )
+        await self._notify_user(int(q['user_id']), q['question'], True)
         self.question = None
         await ctx.send('Въпросът е добавен!')
 
     @is_mod()
     @commands.command(name=Cogs.Mod.reject)
-    async def reject(self, ctx):
+    async def reject(self, ctx, *args):
         # TODO send explanation to the user for the rejecting reason
+        text = " ".join(args)
+        q = self.question
+        await self._notify_user(int(q['user_id']), q['question'], False, text)
         self.question = None
         await ctx.send('Въпросът е отхвърлен!')
 
     @is_mod()
     @commands.command(name=Cogs.Mod.change)
-    async def change_value(self, ctx, key, value):
+    async def change_value(self, ctx, key, *args):
         self.ctx = ctx
 
+        value = ' '.join(args)
         self.question[key] = value
         await self._send_question()
 
@@ -97,14 +107,16 @@ class Approve:
             ```css
 {string}```''')
 
-    async def _notify_user(self, user_id, approved,):
-        #TODO finish notifiying user
+    async def _notify_user(self, user_id, question, approved, text=''):
         user = self.bot.get_user(user_id)
-        dm = self.user.dm_channel
+        dm = user.dm_channel
         if not dm:
-            dm = await self.user.create_dm()
+            dm = await user.create_dm()
 
-        dm.send()
+        if approved:
+            await dm.send(f'Въпросът `{question}`... е одобрен. Благодарим за съдействието.')
+        else:
+            await dm.send(f'Въпросът `{question}`... е отхвърлен. {text}')
 
 
 def setup(bot):

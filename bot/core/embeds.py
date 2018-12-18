@@ -185,7 +185,7 @@ class Top10Embed(Embed):
             title = Text.top_authors
             what = Text.added_questions
         elif target == 'players':
-            what = Text.money
+            what = Text.points
             title = Text.top_players
 
         self.set_author(name=title,

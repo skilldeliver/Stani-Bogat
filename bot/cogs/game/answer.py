@@ -1,12 +1,10 @@
-import asyncio
-
 from discord.ext import commands
 
 from bot.core.constants import Cogs, Emoji
 from bot.core.embeds import QuestionEmbed, RightAnswerEmbed, WrongAnswerEmbed,\
     FriendEmbed
 from bot.core.replies import Reply
-from bot.utilities.json import save_player_money
+from bot.utilities.json import save_player
 
 
 class Answer:
@@ -124,23 +122,25 @@ class Answer:
         """
         player = self.user_id
         game = self.bot.games[player]
+        game.answered = True
         # get the game of the player
 
-        await asyncio.sleep(0.5)
+        # await asyncio.sleep(0.5)
         answer = self.ctx.message.content[1:].upper()
         # take the letter
 
         if game.correct_answer(answer):
             await self._right_answer()
 
-            await asyncio.sleep(1.5)
-            question_data = self.bot.games[player].ask()
-            embed = QuestionEmbed(**question_data)
+            # await asyncio.sleep(1.5)
 
-            await game.last_embed.delete()
+            question_data = self.bot.games[player].ask()
+            game.last_embed = QuestionEmbed(**question_data)
+            game.start_question = self.bot.time
 
             game.last_question = question_data
-            game.last_embed = await self.ctx.send(embed=embed)
+            await game.last_message.delete()
+            game.last_message = await self.ctx.send(content='⏳ **Имаш 20 секунди**', embed=game.last_embed)
 
             if game.waiting_friend_help:
                 game.waiting_friend_help = False
@@ -148,18 +148,26 @@ class Answer:
             if game.waiting_audience_help:
                 game.waiting_audience_help = False
 
+            # player_name = Reply.user_name(game.user.name, game.user.discriminator)
+            # money = game.return_money()
+            # time = self.bot.time - game.start
+            #
+            # save_player(player_name, money, time)
+            # del self.bot.games[player]
+            # await game.last_message.delete()
+            # await self.ctx.send(Reply.end_game(player, money))
         else:
             await self._wrong_answer()
 
-            del self.bot.games[player]
             player_name = Reply.user_name(game.user.name, game.user.discriminator)
             money = game.return_money()
+            time = self.bot.time - game.start
 
-            if money:
-                save_player_money(player_name, money)
+            save_player(player_name, money, time)
+            del self.bot.games[player]
 
-            await asyncio.sleep(1.5)
-            await game.last_embed.delete()
+            # await asyncio.sleep(1.5)
+            await game.last_message.delete()
             await self.ctx.send(Reply.end_game(player, money))
 
     async def _right_answer(self):
@@ -169,7 +177,7 @@ class Answer:
         """
         await self.ctx.message.add_reaction(Emoji.right)
         embed = RightAnswerEmbed()
-        await self.ctx.send(embed=embed, delete_after=1.5)
+        await self.ctx.send(embed=embed, delete_after=1)
 
     async def _wrong_answer(self):
         """
@@ -178,7 +186,7 @@ class Answer:
         """
         await self.ctx.message.add_reaction(Emoji.wrong)
         embed = WrongAnswerEmbed()
-        await self.ctx.send(embed=embed, delete_after=1.5)
+        await self.ctx.send(embed=embed, delete_after=1)
 
 
 def setup(bot):

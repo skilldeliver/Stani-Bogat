@@ -1,7 +1,13 @@
 from pathlib import Path
+import asyncio
 
 import discord
 from discord.ext import commands
+
+from bot.core.replies import Reply
+from bot.utilities.json import save_player
+from bot.core.constants import Emoji
+from bot.core.embeds import AudienceEmbed
 
 
 class Bot(commands.Bot):
@@ -19,6 +25,10 @@ class Bot(commands.Bot):
 
         self.games = dict()
         self.helping_friends = dict()
+        self.time = 0
+
+        self.load_cogs()
+        self.loop.create_task(self.time_loop())
 
     def load_cogs(self):
         general_cogs = [file.stem for file in Path('bot',
@@ -64,3 +74,75 @@ class Bot(commands.Bot):
                 print(f'    Successfully loaded game cog: {extension}')
             except Exception as e:
                 print(f'    Failed to load game cog {extension}: {repr(e)}')
+
+    async def time_loop(self):
+        await self.wait_until_ready()
+        while not self.is_closed():
+            await asyncio.sleep(1)
+            self.time += 1
+            await self.change_games_count()
+
+
+    async def change_games_count(self):
+        d = self.games.copy()
+        for player_id in d:
+            game = self.games[player_id]
+
+            if self.time - game.start_question == 15:
+                await game.last_message.edit(content=f'⏳ **Остават ти 5 секунди!**', embed=game.last_embed)
+            if self.time - game.start_question == 20:
+                player = Reply.user_name(game.user.name, game.user.discriminator)
+                money = game.return_money(wrong_answer=True)
+                time = self.time - game.start
+
+                save_player(player, money, time)
+
+                await game.ctx.send(Reply.end_game(game.user.id, money))
+
+                try:
+                    await game.last_message.delete()
+                except:
+                    pass
+
+                del self.games[player_id]
+
+            # check friends help
+            if game.waiting_friend_help:
+                user = self.get_user(int(game.helper_id))
+                if self.time - game.start_friend_help == 5:
+                    await game.friend_msg.edit(content=Reply.friend_help(user.name, 5))
+                if self.time - game.start_friend_help == 10:
+                    game.waiting_friend_help = False
+
+                    await game.friend_msg.edit(content=Reply.friend_help(user.name, 0))
+                    await game.friend_msg.add_reaction(Emoji.clock)
+                    del self.helping_friends[game.helper_id]
+
+            if not game.add_friend_reaction and \
+               not game.waiting_friend_help and \
+                   game.start_friend_help:
+                await game.friend_msg.add_reaction(Emoji.clock)
+                game.add_friend_reaction = True
+                try:
+                    del self.helping_friends[int(game.helper_id)]
+                except:
+                    pass
+
+            if game.waiting_audience_help:
+                if self.time - game.start_audience_help == 5:
+                    await game.audience_msg.edit(content=Reply.audience_help(5))
+                if self.time - game.start_audience_help == 10:
+                    audience_data = game.get_audience_votes()
+                    embed = AudienceEmbed(**audience_data)
+
+                    await game.audience_msg.edit(content=Reply.audience_help(0))
+                    await game.audience_channel.send(embed=embed)
+                    await game.audience_msg.add_reaction(Emoji.clock)
+
+                    game.waiting_audience_help = False
+
+            if not game.add_audience_reaction and \
+               not game.waiting_audience_help and \
+                   game.start_audience_help:
+                await game.audience_msg.add_reaction(Emoji.clock)
+                game.add_audience_reaction = True
