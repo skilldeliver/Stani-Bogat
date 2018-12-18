@@ -115,7 +115,7 @@ def return_top_players(how):
     adict = dict()
 
     for name in data:
-        adict[name] = data[name]['money'] / data[name]['games']
+        adict[name] = (data[name]['money'] - data[name]['time']) / data[name]['games']
 
     players_n = sorted(adict.items(), key=lambda kv: kv[1], reverse=True)
     final = list()
