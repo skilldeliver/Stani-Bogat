@@ -85,8 +85,8 @@ class Reply:
         return f'{place}. **{name}**: {count} {what}'
 
     @staticmethod
-    def system_info(uptime, node, sys, rel, cpu, ram, ram_tot, hdd, hdd_tot):
-        return f'Uptime: {uptime}\nName: {node}\nOS: {sys} {rel}\n\
+    def system_info(node, sys, rel, cpu, ram, ram_tot, hdd, hdd_tot):
+        return f'Name: {node}\nOS: {sys} {rel}\n\
 CPU usage: {cpu} % \n\
 RAM total: {ram_tot} GB\n\
 RAM usage: {ram} GB\n\

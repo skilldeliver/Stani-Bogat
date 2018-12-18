@@ -54,19 +54,23 @@ class InfoEmbed(Embed):
                  hdd_tot):
         super().__init__(color=Color.info)
 
+
         uptime = strftime('%H hours %M mins %S secs', gmtime(uptime))
 
         self.set_author(name=Reply.github_repo(stars, forks, issues),
                         url=Link.github_repo,
                         icon_url=Link.github_icon)
-        self.add_field(name=Text.discord_servers,
-                       value=str(connected_servers),
-                       inline=True)
-        self.add_field(name=Text.users,
-                       value=str(total_members),
-                       inline=True)
+        # self.add_field(name=Text.discord_servers,
+        #                value=str(connected_servers),
+        #                inline=True)
+        # self.add_field(name=Text.users,
+        #                value=str(total_members),
+        #                inline=True)
+
+        self.add_field(name='🤖 Бот:',
+                       value=f'Uptime: {uptime}\nСървъри: {connected_servers}\nПотребители: {total_members}')
         self.add_field(name=Text.host,
-                       value=Reply.system_info(uptime,
+                       value=Reply.system_info(
                                                pc.node,
                                                pc.system,
                                                pc.release,
