@@ -166,13 +166,44 @@ def how_many_questions(author,
     file = f'data/questions/{theme}/{str(question_level).zfill(2)}{File.json}'
 
     with open(file, 'r',
-              encoding="utf8") as f:
+              encoding="utf-8") as f:
         data = json.load(f)
         questions = data[author]['questions']
 
         for question in questions:
             print(question)
         print(len(questions))
+
+def total():
+    players = Path.global_stats.joinpath(File.players)
+    authors = Path.global_stats.joinpath(File.authors)
+
+    games = int()
+    money = int()
+    time = int()
+    questions = int()
+
+    with open(players, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    for value in data.values():
+        games += value['games']
+        money += value['money']
+        time += value['time']
+
+    with open(authors, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    for value in data.values():
+        questions += value
+
+    return dict(
+        games=games,
+        money=money,
+        time=time,
+        questions=questions
+    )
+
 
 
 def refactor():

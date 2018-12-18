@@ -1,3 +1,4 @@
+from time import strftime, gmtime
 from discord import Embed
 
 from bot.core.constants import PREFIX as P, Link, Text, LargeText, Color
@@ -37,6 +38,7 @@ class QuestionEmbed(Embed):
 
 class InfoEmbed(Embed):
     def __init__(self,
+                 uptime,
                  python_version,
                  discord_version,
                  stars,
@@ -52,6 +54,8 @@ class InfoEmbed(Embed):
                  hdd_tot):
         super().__init__(color=Color.info)
 
+        uptime = strftime('%H hours %M mins %S secs', gmtime(uptime))
+
         self.set_author(name=Reply.github_repo(stars, forks, issues),
                         url=Link.github_repo,
                         icon_url=Link.github_icon)
@@ -62,7 +66,8 @@ class InfoEmbed(Embed):
                        value=str(total_members),
                        inline=True)
         self.add_field(name=Text.host,
-                       value=Reply.system_info(pc.node,
+                       value=Reply.system_info(uptime,
+                                               pc.node,
                                                pc.system,
                                                pc.release,
                                                cpu_use,
@@ -229,4 +234,29 @@ class StatsEmbed(Embed):
     #TODO stats embed
     pass
 
-#TODO total games embed
+
+class Total(Embed):
+    def __init__(self,
+                 games,
+                 money,
+                 time,
+                 questions):
+        time = strftime('%H hours %M mins %S secs', gmtime(time))
+        super().__init__(color=Color.form)
+        self.set_author(name='Сумирана информация:')
+        self.add_field(name=f'**Игри**: {games}',
+                       value=Text.invisible,
+                       inline=False
+                       )
+        self.add_field(name=f'**Генерирани пари**: {money} лева.',
+                       value=Text.invisible,
+                       inline=False
+                       )
+        self.add_field(name=f'**Време в игри**: {time}',
+                       value=Text.invisible,
+                       inline=False
+                       )
+        self.add_field(name=f'**Въпроси**: {questions}',
+                       value=Text.invisible,
+                       inline=False
+                       )

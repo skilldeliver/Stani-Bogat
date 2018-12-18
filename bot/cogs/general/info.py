@@ -19,6 +19,8 @@ class Info:
 
     @commands.command(name=Cogs.General.info)
     async def print_info(self, ctx):
+        uptime = self.bot.time
+
         # versions stuff
         python_v = python_version()
         discord_v = discord.__version__
@@ -48,7 +50,7 @@ class Info:
         hdd_tot = round(total // (2**20), 2)
         hdd = round(used // (2**20), 2)
 
-        embed = InfoEmbed(
+        embed = InfoEmbed(uptime=uptime,
                           python_version=python_v,
                           discord_version=discord_v,
                           stars=stars,
