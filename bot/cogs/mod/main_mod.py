@@ -2,7 +2,7 @@ from discord.ext import commands
 from discord import Embed
 
 from bot.core.constants import MODS, Cogs, LargeText
-from bot.utilities.json import get_pending, add_question
+from bot.utilities.json import get_pending, get_pen_len, add_question
 
 
 def is_mod():
@@ -20,6 +20,11 @@ class Approve:
     @commands.command(name=Cogs.Mod.mod)
     async def get_info(self, ctx):
         await ctx.send(LargeText.mod_cogs)
+
+    @is_mod()
+    @commands.command(name=Cogs.Mod.length)
+    async def get_pen_length(self, ctx):
+        await ctx.send(get_pen_len())
 
     @is_mod()
     @commands.command(name=Cogs.Mod.pending)
@@ -103,7 +108,7 @@ class Approve:
 {string}```''')
 
     async def _notify_user(self, user_id, question, approved, text=''):
-        user = self.bot.get_user(user_id)
+        user = self.bot.get_user(int(user_id))
         dm = user.dm_channel
         if not dm:
             dm = await user.create_dm()

@@ -26,8 +26,10 @@ class Bot(commands.Bot):
         self.games = dict()
         self.helping_friends = dict()
         self.time = 0
+        self.loop_running = True
 
         self.load_cogs()
+        self.loop.create_task(self.recover_loop())
         self.loop.create_task(self.time_loop())
 
     def load_cogs(self):
@@ -76,12 +78,23 @@ class Bot(commands.Bot):
                 print(f'    Failed to load game cog {extension}: {repr(e)}')
 
     async def time_loop(self):
+        try:
+            await self.wait_until_ready()
+            while not self.is_closed():
+                await asyncio.sleep(1)
+                self.time += 1
+                await self.change_games_count()
+        except Exception as e:
+            print(e)
+            self.loop_running = False
+
+    async def recover_loop(self):
         await self.wait_until_ready()
         while not self.is_closed():
-            await asyncio.sleep(1)
-            self.time += 1
-            await self.change_games_count()
-
+            await asyncio.sleep(60)
+            if not self.loop_running:
+                self.loop.create_task(self.time_loop())
+                self.loop_running = True
 
     async def change_games_count(self):
         d = self.games.copy()

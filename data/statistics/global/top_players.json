@@ -1,1 +1,77 @@
-{"Skilldeliver#0515": {"games": 25, "money": 107050, "time": 683}, "THGM#3866": {"games": 23, "money": 136550, "time": 1189}, "vesucto#3686": {"games": 4, "money": 0, "time": 55}, "Bane#4813": {"games": 21, "money": 1700, "time": 335}, "Lyutenitsa™#4558": {"games": 1, "money": 0, "time": 20}, "Darknezzz#3065": {"games": 1, "money": 500, "time": 0}, "Viewless#2396": {"games": 5, "money": 107100, "time": 192}, "Petar#0974": {"games": 2, "money": 0, "time": 20}, "JUNGLE ABUSE ALWAYS LOSE#6969": {"games": 2, "money": 0, "time": 70}, "Tiranozavyr#0002": {"games": 31, "money": 2800, "time": 741}, "Rex#5608": {"games": 2, "money": 0, "time": 41}, "bilyan#1670": {"games": 2, "money": 1000, "time": 178}, "Berch#1254": {"games": 2, "money": 500, "time": 121}, "Swagmaster#6870": {"games": 1, "money": 0, "time": 62}, "Nekros#3088": {"games": 2, "money": 0, "time": 64}}
+{
+  "Skilldeliver#0515": {
+    "games": 27,
+    "money": 107550,
+    "time": 762
+  },
+  "THGM#3866": {
+    "games": 23,
+    "money": 136550,
+    "time": 1189
+  },
+  "vesucto#3686": {
+    "games": 4,
+    "money": 0,
+    "time": 55
+  },
+  "Bane#4813": {
+    "games": 21,
+    "money": 1700,
+    "time": 335
+  },
+  "Lyutenitsa™#4558": {
+    "games": 1,
+    "money": 0,
+    "time": 20
+  },
+  "Darknezzz#3065": {
+    "games": 1,
+    "money": 500,
+    "time": 0
+  },
+  "Viewless#2396": {
+    "games": 5,
+    "money": 107100,
+    "time": 192
+  },
+  "Petar#0974": {
+    "games": 2,
+    "money": 0,
+    "time": 20
+  },
+  "JUNGLE ABUSE ALWAYS LOSE#6969": {
+    "games": 2,
+    "money": 0,
+    "time": 70
+  },
+  "Tiranozavyr#0002": {
+    "games": 31,
+    "money": 2800,
+    "time": 741
+  },
+  "Rex#5608": {
+    "games": 2,
+    "money": 0,
+    "time": 41
+  },
+  "bilyan#1670": {
+    "games": 2,
+    "money": 1000,
+    "time": 178
+  },
+  "Berch#1254": {
+    "games": 2,
+    "money": 500,
+    "time": 121
+  },
+  "Swagmaster#6870": {
+    "games": 1,
+    "money": 0,
+    "time": 62
+  },
+  "Nekros#3088": {
+    "games": 2,
+    "money": 0,
+    "time": 64
+  }
+}

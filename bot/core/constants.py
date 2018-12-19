@@ -39,6 +39,7 @@ class Cogs(NamedTuple):
 
     class Mod(NamedTuple):
         mod = 'mod'
+        length = 'length'
         pending = 'pending'
         approve = 'approve'
         reject = 'reject'

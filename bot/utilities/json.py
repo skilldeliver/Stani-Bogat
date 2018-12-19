@@ -166,6 +166,15 @@ def get_pending():
     return question
 
 
+def get_pen_len(self):
+    file = Path.pending.joinpath(File.pending_questions)
+
+    with open(file, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    return len(data['queue'])
+
+
 
 def how_many_questions(author,
                        theme,

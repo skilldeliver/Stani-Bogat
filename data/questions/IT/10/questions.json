@@ -75,5 +75,18 @@
       }
     ],
     "author_img": "https://i.imgur.com/FZFt0SJ.png"
+  },
+  "Nekros": {
+    "questions": [
+      {
+        "question": "Каква е работата на Observable в Observer Design Pattern-a?",
+        "choices": [
+          "Да известява всички закачени observers при промяна в state-a му.",
+          "Да преглежда за грешки в кода.",
+          "Да сканира за device, с който да се свърже.",
+          "Да известява програмиста, когато има пробив в базата с данни."
+        ]
+      }
+    ]
   }
 }
