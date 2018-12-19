@@ -264,3 +264,8 @@ class Total(Embed):
                        value=Text.invisible,
                        inline=False
                        )
+
+class Win(Embed):
+    def __init__(self):
+        super().__init__(color=Color.form)
+        self.set_image(url='https://i.imgur.com/GqmKt77.gifv')

@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from bot.core.constants import GOD, Path, File
+from bot.core.constants import GOD, Path, File, Gif
 
 
 def is_god():
@@ -15,6 +15,11 @@ class God:
         self.bot = bot
         self.ctx = None
         self.question = None
+
+    @is_god()
+    @commands.command(name='test')
+    async def test(self, ctx):
+        await ctx.send(Gif.win)
 
     @is_god()
     @commands.command(name='get_globals')
@@ -36,7 +41,7 @@ class God:
         await ctx.send(file=file)
 
     @is_god()
-    @commands.command(name='get_questions')
+    @commands.command(name='')
     async def get_questions(self, ctx, arg):
         for i in range(1, 16):
             f = str(Path.questions.joinpath(f'{arg}/' + str(i).zfill(2) + '/' + File.json))

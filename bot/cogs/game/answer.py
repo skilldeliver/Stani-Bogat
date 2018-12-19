@@ -1,6 +1,6 @@
 from discord.ext import commands
 
-from bot.core.constants import Cogs, Emoji
+from bot.core.constants import Cogs, Emoji, Gif
 from bot.core.embeds import QuestionEmbed, RightAnswerEmbed, WrongAnswerEmbed,\
     FriendEmbed
 from bot.core.replies import Reply
@@ -132,7 +132,18 @@ class Answer:
         if game.correct_answer(answer):
             await self._right_answer()
 
-            # await asyncio.sleep(1.5)
+            if game.question_level == 15:
+                player_name = Reply.user_name(game.user.name, game.user.discriminator)
+                money = game.return_money(wrong_answer=False)
+                time = self.bot.time - game.start
+
+                await self.ctx.send(Gif.win)
+                await self.ctx.send(f'<@{game.user.id}> жалко, че не са истински.')
+
+                save_player(player_name, money, time)
+                del self.bot.games[player]
+
+                return
 
             question_data = self.bot.games[player].ask()
             game.last_embed = QuestionEmbed(**question_data)

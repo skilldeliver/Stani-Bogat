@@ -17,11 +17,6 @@ class Approve:
         self.question = None
 
     @is_mod()
-    @commands.command(name='test')
-    async def test(self, ctx):
-        await ctx.send(self.bot.seconds)
-
-    @is_mod()
     @commands.command(name=Cogs.Mod.mod)
     async def get_info(self, ctx):
         await ctx.send(LargeText.mod_cogs)

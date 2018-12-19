@@ -75,6 +75,9 @@ class File(NamedTuple):
     pending_questions = 'pending_questions.json'
 
 
+class Gif(NamedTuple):
+    win = 'https://i.imgur.com/GqmKt77.gifv'
+
 class Link(NamedTuple):
     github_repo = 'https://github.com/skilldeliver/Stani-Bogat'
     github_icon = 'https://avatars0.githubusercontent.com/u/9919?s=280&v=4'

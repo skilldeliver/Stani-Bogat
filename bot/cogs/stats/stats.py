@@ -21,6 +21,7 @@ class Stats:
     @commands.command(name='общо')
     async def total(self, ctx):
         await ctx.send(embed=Total(**total()))
+
 # автори or играчи
     # @commands.command(name='статс', aliases=['стат'])
     # async def stats(self, ctx):
