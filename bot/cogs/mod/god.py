@@ -50,7 +50,7 @@ class God:
     @is_god()
     @commands.command(name='shutdown')
     async def shutdown(self, ctx):
-        await self.bot.logout()
+        quit()
 
 def setup(bot):
     bot.add_cog(God(bot))
