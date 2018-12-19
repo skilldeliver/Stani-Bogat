@@ -134,7 +134,7 @@ class Answer:
 
             if game.question_level == 15:
                 player_name = Reply.user_name(game.user.name, game.user.discriminator)
-                money = game.question_amount_map(15)
+                money = game.question_amount_map[15]
                 time = self.bot.time - game.start
 
                 await self.ctx.send(Gif.win)

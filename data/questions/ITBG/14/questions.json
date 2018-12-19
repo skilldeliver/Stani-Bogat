@@ -1,1 +1,16 @@
-{"Skilldeliver": {"author_img": "https://i.imgur.com/AqoLZQH.png", "questions": [{"question": "Това е въпрос 14?", "choices": ["0", "2", "4", "8"]}]}}
+{
+  "Skilldeliver": {
+    "author_img": "https://i.imgur.com/AqoLZQH.png",
+    "questions": [
+      {
+        "question": "Това е въпрос 14?",
+        "choices": [
+          "0",
+          "2",
+          "4",
+          "8"
+        ]
+      }
+    ]
+  }
+}

@@ -90,6 +90,7 @@ class Game:
         choices = data["choices"]
         self.right_answer = choices[0]
 
+        print(self.right_answer)
         random.shuffle(choices)
         self.answers = dict(zip(self.letters, choices))
 
