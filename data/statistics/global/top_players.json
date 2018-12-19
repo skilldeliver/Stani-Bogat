@@ -1,8 +1,8 @@
 {
   "Skilldeliver#0515": {
-    "games": 27,
-    "money": 107550,
-    "time": 762
+    "games": 25,
+    "money": 107050,
+    "time": 683
   },
   "THGM#3866": {
     "games": 23,
@@ -30,9 +30,9 @@
     "time": 0
   },
   "Viewless#2396": {
-    "games": 5,
-    "money": 107100,
-    "time": 192
+    "games": 11,
+    "money": 208600,
+    "time": 452
   },
   "Petar#0974": {
     "games": 2,
@@ -45,9 +45,9 @@
     "time": 70
   },
   "Tiranozavyr#0002": {
-    "games": 31,
-    "money": 2800,
-    "time": 741
+    "games": 38,
+    "money": 5000,
+    "time": 872
   },
   "Rex#5608": {
     "games": 2,
@@ -55,9 +55,9 @@
     "time": 41
   },
   "bilyan#1670": {
-    "games": 2,
-    "money": 1000,
-    "time": 178
+    "games": 5,
+    "money": 1500,
+    "time": 280
   },
   "Berch#1254": {
     "games": 2,
@@ -70,8 +70,8 @@
     "time": 62
   },
   "Nekros#3088": {
-    "games": 2,
-    "money": 0,
-    "time": 64
+    "games": 19,
+    "money": 3000,
+    "time": 238
   }
 }
