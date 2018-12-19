@@ -47,7 +47,7 @@ class Approve:
         q = self.question
         choices = [q['answer'], q['other1'], q['other2'], q['other3']]
         add_question(author=q['name'],
-                     theme=theme_map[q['theme'].lower()],
+                     theme=theme_map[q['theme'].upper()],
                      question_level=q['level'],
                      question=q['question'],
                      choices=choices,
