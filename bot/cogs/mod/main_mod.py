@@ -39,7 +39,7 @@ class Approve:
     @is_mod()
     @commands.command(name=Cogs.Mod.approve)
     async def approve_question(self, ctx, arg):
-        theme_map = {'ИТ': 'IT', 'общо': 'general'}
+        theme_map = {'ИТ': 'IT', 'общо': 'general', 'ИТБГ': 'ITBG'}
         image = None
 
         if arg == Cogs.Mod.image:
@@ -47,7 +47,7 @@ class Approve:
         q = self.question
         choices = [q['answer'], q['other1'], q['other2'], q['other3']]
         add_question(author=q['name'],
-                     theme=theme_map[q['theme']],
+                     theme=theme_map[q['theme'].lower()],
                      question_level=q['level'],
                      question=q['question'],
                      choices=choices,

@@ -81,7 +81,7 @@ class Game:
         amount = self.question_amount_map[self.question_level]
 
         data = load_question(str(self.question_level).zfill(2),
-                             'IT')
+                             'ITBG')
 
         author = data["author"]
         author_thumbnail = data["author_thumbnail"]
@@ -161,6 +161,7 @@ class Game:
                     count_votes=count_votes,
                     votes=votes,
                     color=self.color)
+
 
     def return_money(self, wrong_answer=True)->int:
         if wrong_answer:

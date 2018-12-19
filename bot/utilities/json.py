@@ -1,3 +1,4 @@
+import os
 import json
 import random
 
@@ -122,10 +123,16 @@ def return_top_players(how):
 
     if len(players_n) < how:
         for item in players_n:
-            final.append((item[0], int(item[1])))
+            points = int(item[1])
+            if points < 0:
+                points = 0
+            final.append((item[0], points))
     else:
         for i in range(how):
-            final.append((players_n[i][0], int(players_n[i][1])))
+            points = int(players_n[i][1])
+            if points < 0:
+                points = 0
+            final.append((players_n[i][0], points))
     return final
 
 def append_to_pending(alist):
@@ -218,3 +225,9 @@ def refactor():
 
             with open(file, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False)
+
+
+def test():
+    for i in range(1, 16):
+
+        os.mkdir('C:\ABC\CODING\#CRAFTING\Stani-Bogat\data\questions\ITBG\\' + str(i).zfill(2))

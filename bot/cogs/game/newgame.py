@@ -1,5 +1,3 @@
-import asyncio
-
 from discord.ext import commands
 
 from bot.core.constants import Cogs

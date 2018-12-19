@@ -1,0 +1,79 @@
+{
+  "Viewless": {
+    "questions": [
+      {
+        "question": "В C++, стандартната функция, която се използва за намиране на последното съвпадение на символ в стринг е:",
+        "choices": [
+          "strrchr()",
+          "strnstr()",
+          "strstr()",
+          "aststr()"
+        ]
+      },
+      {
+        "question": "В C++, кой header файл трябва да е включен, ако ще използвате функция, която може да приема различен брой аргументи?",
+        "choices": [
+          "stdarg.h",
+          "stdio.h",
+          "stdlib.h",
+          "varagrg.h"
+        ]
+      },
+      {
+        "question": "Кое от твърденията е вярно за класа java.util.ArrayList?",
+        "choices": [
+          "The elements in the collection are ordered.",
+          "The elements in the collection are accessed using a unique key.",
+          "The elements in the collection are guaranteed to be unique.",
+          "The collection is guaranteed to be immutable."
+        ]
+      },
+      {
+        "question": "Кое от следните твърдения е вярно?",
+        "choices": [
+          "В Java, aко switchблока няма default, за подходящо се счита добавянето на assert default.",
+          "В assert statement, Ако израза след двуеточието (: ) няма стойност, assert's error message ще бъде празен.",
+          "Подходящ начин да се прихване assertion failure е чрез catch clause",
+          "В assert statement, израза след (: ) може да бъде произволен Java израз."
+        ]
+      },
+      {
+        "question": "В SQL,  как можете да изтриете записите от таблицата \"Persons\", за които стойността на полето \"FirstName\" е \"John\"?",
+        "choices": [
+          "DELETE FROM Persons WHERE FirstName = 'John'",
+          "DELETE ROW FirstName='John' FROM Persons",
+          "DELETE ROW FROM Persons WHERE FirstName = 'John'",
+          "DELETE FirstName='John' FROM Persons"
+        ]
+      },
+      {
+        "question": "В SQL, как може да получите броя на записите в таблицата \"Persons\"?",
+        "choices": [
+          "SELECT COUNT(*) FROM Persons",
+          "SELECT COUNT() FROM Persons",
+          "SELECT COLUMNS() FROM Persons",
+          "SELECT COLUMNS(*) FROM Persons"
+        ]
+      },
+      {
+        "question": "В SQL, как ще селектирате всички записи от таблицата \"Persons\", където стойността на полето \"FirstName\" започва с \"j\"\"?",
+        "choices": [
+          "SELECT * FROM Persons WHERE FirstName LIKE 'j%'",
+          "SELECT * FROM Persons WHERE FirstName='%j%'",
+          "SELECT * FROM Persons WHERE FirstName='j'",
+          "SELECT * FROM Persons WHERE FirstName LIKE '%j'"
+        ]
+      },
+      {
+        "question": "В SQL, как ще селектирате всички записи от таблицата \"Persons\", за които стойността на полето \"FirstName\" е \"John\" и \"LastName\" e \"Smith\"?",
+        "choices": [
+          "SELECT * FROM Persons WHERE FirstName='John' AND LastName='Smith'",
+          "SELECT FirstName='John', LastName='Smith' FROM Persons",
+          "SELECT * FROM Persons WHERE FirstName is 'John' AND LastName is 'Smith'",
+          "SELECT * FROM Persons WHERE FirstName<>'John' AND LastName<>'Smith'"
+        ]
+      }
+    ],
+    "author_img": "https://i.imgur.com/FZFt0SJ.png"
+  }
+}
