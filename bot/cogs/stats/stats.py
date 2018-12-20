@@ -1,8 +1,11 @@
+from time import strftime, gmtime
+
 from discord.ext import commands
 
 from bot.core.constants import Cogs
-from bot.core.embeds import Top10Embed, Total
-from bot.utilities.json import return_top_authors, return_top_players, total
+from bot.core.replies import Reply
+from bot.core.embeds import Top10Embed, Total, StatsEmbed
+from bot.utilities.json import return_top_authors, return_top_players, total, get_player_stats
 
 class Stats:
     """ Handles these cogs - топ10, статс"""
@@ -24,7 +27,20 @@ class Stats:
 
     @commands.command(name=Cogs.Stats.stat, aliases=[Cogs.Stats.stats])
     async def stats(self, ctx):
-        await ctx.send(f'<@{ctx.author.id}>, отпечатва се статистиката на юзъра.')
+        user = self.bot.get_user(ctx.author.id)
+        stats = get_player_stats(Reply.user_name(user.name, user.discriminator))
+
+        if not stats:
+            await ctx.send(f'<@{ctx.author.id}> няма Ви в дата базата. Ако мислите, че има проблем свържете се с модераторите.')
+            return
+
+        time = strftime('%H hours %M mins %S secs', gmtime(stats['time']))
+        embed = StatsEmbed(name=user.name,
+                           img_url=user.avatar_url,
+                           games=stats['games'],
+                           time=time,
+                           money=stats['money'])
+        await ctx.send(embed=embed)
 
 
 def setup(bot):

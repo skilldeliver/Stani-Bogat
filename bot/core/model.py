@@ -6,7 +6,7 @@ from discord.ext import commands
 
 from bot.core.replies import Reply
 from bot.utilities.json import save_player
-from bot.core.constants import Emoji
+from bot.core.constants import SECS, Emoji
 from bot.core.embeds import AudienceEmbed
 
 
@@ -102,9 +102,9 @@ class Bot(commands.Bot):
         for player_id in d:
             game = self.games[player_id]
 
-            if self.time - game.start_question == 15:
+            if self.time - game.start_question == SECS - 5:
                 await game.last_message.edit(content=f'⏳ **Остават ти 5 секунди!**', embed=game.last_embed)
-            if self.time - game.start_question == 20:
+            if self.time - game.start_question == SECS:
                 player = Reply.user_name(game.user.name, game.user.discriminator)
                 money = game.return_money(wrong_answer=True)
                 time = self.time - game.start

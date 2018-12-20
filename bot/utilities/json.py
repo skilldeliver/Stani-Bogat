@@ -190,6 +190,17 @@ def how_many_questions(author,
             print(question)
         print(len(questions))
 
+
+def get_player_stats(player):
+    players = Path.global_stats.joinpath(File.players)
+    with open(players, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    if player not in data.keys():
+        return False
+    return data[player]
+
+
 def total():
     players = Path.global_stats.joinpath(File.players)
     authors = Path.global_stats.joinpath(File.authors)
@@ -219,7 +230,6 @@ def total():
         time=time,
         questions=questions
     )
-
 
 
 def refactor():

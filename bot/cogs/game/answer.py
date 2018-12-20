@@ -1,6 +1,6 @@
 from discord.ext import commands
 
-from bot.core.constants import Cogs, Emoji, Gif
+from bot.core.constants import SECS, Cogs, Emoji, Gif
 from bot.core.embeds import QuestionEmbed, RightAnswerEmbed, WrongAnswerEmbed,\
     FriendEmbed
 from bot.core.replies import Reply
@@ -151,7 +151,7 @@ class Answer:
 
             game.last_question = question_data
             await game.last_message.delete()
-            game.last_message = await self.ctx.send(content='⏳ **Имаш 20 секунди**', embed=game.last_embed)
+            game.last_message = await self.ctx.send(content=f'⏳ **Имаш {SECS} секунди**', embed=game.last_embed)
 
             if game.waiting_friend_help:
                 game.waiting_friend_help = False

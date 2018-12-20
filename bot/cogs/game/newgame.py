@@ -1,6 +1,6 @@
 from discord.ext import commands
 
-from bot.core.constants import Cogs
+from bot.core.constants import SECS, Cogs
 from bot.core.game import Game
 from bot.core.embeds import QuestionEmbed
 from bot.core.replies import Reply
@@ -18,15 +18,19 @@ class NewGame:
 
     @commands.guild_only()
     @commands.command(name=Cogs.Game.game, aliases=[Cogs.Game.newgame])
-    async def new_game(self, ctx, arg):
+    async def new_game(self, ctx, *args):
         '''
         Creates new Game.
         Add it to the bot games (dictionary).
         Key - string of the user ID
         Value - instance of the bot.core.game.Game class
         '''
+        if not args:
+            self.arg = 'ИТБГ'
+        else:
+            self.arg = args[0].upper()
+
         self.ctx = ctx
-        self.arg = arg.upper()
         self._get_player()
 
         if self.player_id in self.bot.games.keys():
@@ -59,7 +63,7 @@ class NewGame:
 
         game.last_question = question_data
         game.last_message= \
-            await self.ctx.send(content='⏳ **Имаш 20 секунди**', embed=game.last_embed)
+            await self.ctx.send(content=f'⏳ **Имаш {SECS} секунди**', embed=game.last_embed)
         game.start_question = self.bot.time
 
 

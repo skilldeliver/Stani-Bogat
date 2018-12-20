@@ -1,1 +1,92 @@
-{"Skilldeliver#0515": {"games": 29, "money": 107050, "time": 741}, "THGM#3866": {"games": 26, "money": 239050, "time": 1384}, "vesucto#3686": {"games": 5, "money": 500, "time": 125}, "Bane#4813": {"games": 22, "money": 2400, "time": 389}, "Lyutenitsa™#4558": {"games": 1, "money": 0, "time": 20}, "Darknezzz#3065": {"games": 1, "money": 500, "time": 0}, "Viewless#2396": {"games": 11, "money": 208600, "time": 452}, "Petar#0974": {"games": 2, "money": 0, "time": 20}, "JUNGLE ABUSE ALWAYS LOSE#6969": {"games": 2, "money": 0, "time": 70}, "Tiranozavyr#0002": {"games": 45, "money": 5500, "time": 1088}, "Rex#5608": {"games": 2, "money": 0, "time": 41}, "bilyan#1670": {"games": 7, "money": 2000, "time": 394}, "Berch#1254": {"games": 2, "money": 500, "time": 121}, "Swagmaster#6870": {"games": 1, "money": 0, "time": 62}, "Nekros#3088": {"games": 19, "money": 3000, "time": 238}, "готен сапорт#7607": {"games": 15, "money": 0, "time": 286}, "Orel#4813": {"games": 1, "money": 0, "time": 20}}
+{
+  "Skilldeliver#0515": {
+    "games": 32,
+    "money": 107050,
+    "time": 753
+  },
+  "THGM#3866": {
+    "games": 28,
+    "money": 239550,
+    "time": 1489
+  },
+  "vesucto#3686": {
+    "games": 5,
+    "money": 500,
+    "time": 125
+  },
+  "Bane#4813": {
+    "games": 22,
+    "money": 2400,
+    "time": 389
+  },
+  "Lyutenitsa™#4558": {
+    "games": 1,
+    "money": 0,
+    "time": 20
+  },
+  "Darknezzz#3065": {
+    "games": 1,
+    "money": 500,
+    "time": 0
+  },
+  "Viewless#2396": {
+    "games": 11,
+    "money": 208600,
+    "time": 452
+  },
+  "Petar#0974": {
+    "games": 2,
+    "money": 0,
+    "time": 20
+  },
+  "JUNGLE ABUSE ALWAYS LOSE#6969": {
+    "games": 2,
+    "money": 0,
+    "time": 70
+  },
+  "Tiranozavyr#0002": {
+    "games": 45,
+    "money": 5500,
+    "time": 1088
+  },
+  "Rex#5608": {
+    "games": 2,
+    "money": 0,
+    "time": 41
+  },
+  "bilyan#1670": {
+    "games": 7,
+    "money": 2000,
+    "time": 394
+  },
+  "Berch#1254": {
+    "games": 2,
+    "money": 500,
+    "time": 121
+  },
+  "Swagmaster#6870": {
+    "games": 1,
+    "money": 0,
+    "time": 62
+  },
+  "Nekros#3088": {
+    "games": 19,
+    "money": 3000,
+    "time": 238
+  },
+  "готен сапорт#7607": {
+    "games": 15,
+    "money": 0,
+    "time": 286
+  },
+  "Orel#4813": {
+    "games": 1,
+    "money": 0,
+    "time": 20
+  },
+  "DidoBG#0420": {
+    "games": 4,
+    "money": 2500,
+    "time": 255
+  }
+}

@@ -60,13 +60,6 @@ class InfoEmbed(Embed):
         self.set_author(name=Reply.github_repo(stars, forks, issues),
                         url=Link.github_repo,
                         icon_url=Link.github_icon)
-        # self.add_field(name=Text.discord_servers,
-        #                value=str(connected_servers),
-        #                inline=True)
-        # self.add_field(name=Text.users,
-        #                value=str(total_members),
-        #                inline=True)
-
         self.add_field(name='🤖 Бот:',
                        value=f'Uptime: {uptime}\nСървъри: {connected_servers}\nПотребители: {total_members}')
         self.add_field(name=Text.host,
@@ -235,8 +228,24 @@ class FormEmbed(Embed):
                        )
 
 class StatsEmbed(Embed):
-    #TODO stats embed
-    pass
+    def __init__(self,
+                 name,
+                 img_url,
+                 games,
+                 time,
+                 money):
+        super().__init__(color=Color.top)
+        self.set_author(name=f'📊 Статистика на {name}')
+        self.set_thumbnail(url=img_url)
+        self.add_field(name=f'🎲 **Всички изиграни игри**: {games}',
+                       value=Text.invisible,
+                       inline=False)
+        self.add_field(name=f'🕒 **Време в игри**: {time}',
+                       value=Text.invisible,
+                       inline=False)
+        self.add_field(name=f'💰 **Спечелени пари**: {money} лева.',
+                       value=Text.invisible,
+                       inline=False)
 
 
 class Total(Embed):
@@ -246,21 +255,21 @@ class Total(Embed):
                  time,
                  questions):
         time = strftime('%H hours %M mins %S secs', gmtime(time))
-        super().__init__(color=Color.form)
-        self.set_author(name='Сумирана информация:')
-        self.add_field(name=f'**Игри**: {games}',
+        super().__init__(color=Color.top)
+        self.set_author(name='ℹ     Сумирана информация:')
+        self.add_field(name=f'🎮 **Всички изиграни игри**: {games}',
                        value=Text.invisible,
                        inline=False
                        )
-        self.add_field(name=f'**Генерирани пари**: {money} лева.',
+        self.add_field(name=f'🤑 **Генерирани пари**: {money} лева.',
                        value=Text.invisible,
                        inline=False
                        )
-        self.add_field(name=f'**Време в игри**: {time}',
+        self.add_field(name=f'⏲ **Време в игри**: {time}',
                        value=Text.invisible,
                        inline=False
                        )
-        self.add_field(name=f'**Въпроси**: {questions}',
+        self.add_field(name=f'🙋 **Въпроси**: {questions}',
                        value=Text.invisible,
                        inline=False
                        )
