@@ -18,14 +18,13 @@ class Stats:
             players = return_top_players(10)
             await ctx.send(embed=Top10Embed('players', players))
 
-    @commands.command(name='общо')
+    @commands.command(name=Cogs.Stats.general)
     async def total(self, ctx):
         await ctx.send(embed=Total(**total()))
 
-# автори or играчи
-    # @commands.command(name='статс', aliases=['стат'])
-    # async def stats(self, ctx):
-    #     await ctx.send(f'<@{ctx.author.id}>, отпечатва се статистиката на юзъра.')
+    @commands.command(name=Cogs.Stats.stat, aliases=[Cogs.Stats.stats])
+    async def stats(self, ctx):
+        await ctx.send(f'<@{ctx.author.id}>, отпечатва се статистиката на юзъра.')
 
 
 def setup(bot):

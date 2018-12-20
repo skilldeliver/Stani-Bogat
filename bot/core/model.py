@@ -28,6 +28,7 @@ class Bot(commands.Bot):
         self.time = 0
         self.loop_running = True
 
+        self.remove_command('help')
         self.load_cogs()
         self.loop.create_task(self.recover_loop())
         self.loop.create_task(self.time_loop())

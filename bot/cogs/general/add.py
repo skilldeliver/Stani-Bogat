@@ -1,10 +1,9 @@
 import re
-from subprocess import call
 import datetime
 from discord.ext import commands
 
 from bot.utilities.json import append_to_pending
-from bot.core.constants import Cogs, Emoji, Regex, Text
+from bot.core.constants import Cogs, Emoji, Regex, Text, GOD
 from bot.core.embeds import HowToAddEmbed, FormEmbed
 from bot.core.replies import Reply
 
@@ -34,6 +33,7 @@ class Add:
     @commands.command(name=Cogs.General.adding)
     async def add_it(self, ctx):
         self.user = self.bot.get_user(ctx.author.id)
+        self.god = self.bot.get_user(GOD)
 
         dm = self.user.dm_channel
         if not dm:
@@ -88,14 +88,12 @@ class Add:
             await dm.send(Text.pin_not_inform)
         elif len(pins) == 1:
             await dm.send(Text.success_send)
+            await self.god.dm_channel.send('Има добавен въпрос!')
         elif success == 0:
             await dm.send(Text.pins_not_inform)
         else:
             await dm.send(Reply.successfully_send(success, len(pins)))
-
-        # call(['git', 'add', '.'])
-        # call(['git', 'commit', '-m', '"new data"'])
-        # call(['git', 'push', 'origin', 'heroku'])
+            await self.god.dm_channel.send('Има добавени въпроси!')
 
 def setup(bot):
     bot.add_cog(Add(bot))

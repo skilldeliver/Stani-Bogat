@@ -8,9 +8,16 @@ from bot.utilities.json import load_question
 class Game:
     def __init__(self,
                  user: discord.User,
-                 start):
+                 theme: str,
+                 start: int):
         # the user - discord.User instance
         self.user = user
+
+        self.map_themes = {'ОБЩО':'general',
+                           'ИТБГ': 'ITBG',
+                           'ИТ': 'IT'}
+
+        self.theme = self.map_themes[theme]
         self.start = start
 
         self.question_level = 0
@@ -81,7 +88,7 @@ class Game:
         amount = self.question_amount_map[self.question_level]
 
         data = load_question(str(self.question_level).zfill(2),
-                             'ITBG')
+                             self.theme)
 
         author = data["author"]
         author_thumbnail = data["author_thumbnail"]

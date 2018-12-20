@@ -10,6 +10,7 @@ class NewGame:
     def __init__(self, bot):
         self.bot = bot
         self.ctx = None
+        self.arg = None
 
         self.player = None
         self.player_id = str()
@@ -17,7 +18,7 @@ class NewGame:
 
     @commands.guild_only()
     @commands.command(name=Cogs.Game.game, aliases=[Cogs.Game.newgame])
-    async def new_game(self, ctx):
+    async def new_game(self, ctx, arg):
         '''
         Creates new Game.
         Add it to the bot games (dictionary).
@@ -25,6 +26,7 @@ class NewGame:
         Value - instance of the bot.core.game.Game class
         '''
         self.ctx = ctx
+        self.arg = arg.upper()
         self._get_player()
 
         if self.player_id in self.bot.games.keys():
@@ -42,12 +44,12 @@ class NewGame:
 
     async def _create_new_game(self):
         # Create new Game and bind it to the user_id in the queue
-        self.bot.games[self.player_id] = Game(self.player, self.bot.time)
+        self.bot.games[self.player_id] = Game(self.player,
+                                              self.arg,
+                                              self.bot.time)
         self.bot.games[self.player_id].ctx = self.ctx
 
         await self.ctx.send(Reply.start_game(self.player_id))
-        # await asyncio.sleep(1)
-
 
     async def _send_first_question(self):
         # ask the first question

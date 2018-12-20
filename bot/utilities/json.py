@@ -166,7 +166,7 @@ def get_pending():
     return question
 
 
-def get_pen_len(self):
+def get_pen_len():
     file = Path.pending.joinpath(File.pending_questions)
 
     with open(file, 'r', encoding='utf-8') as f:

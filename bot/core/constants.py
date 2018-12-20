@@ -4,6 +4,7 @@ from typing import NamedTuple
 PREFIX = '?'
 
 GOD = 365859941292048384
+
 MODS = [
     365859941292048384,
     374537025983873024,
@@ -13,7 +14,6 @@ MODS = [
 
 
 class Cogs(NamedTuple):
-
     class Game(NamedTuple):
         letter = 'А'
         fifty = '50:50'
@@ -37,6 +37,17 @@ class Cogs(NamedTuple):
         info = 'инфо'
         rules = 'правила'
 
+    class Stats(NamedTuple):
+        top10 = 'топ10'
+        authors = 'автори'
+        players = 'играчи'
+        general = 'общо'
+        stat = 'стат'
+
+        # aliases
+        top = 'топ'
+        stats = 'статс'
+
     class Mod(NamedTuple):
         mod = 'mod'
         length = 'length'
@@ -48,11 +59,11 @@ class Cogs(NamedTuple):
         image = 'image'
         get = 'get'
 
-    class Stats(NamedTuple):
-        top10 = 'топ10'
-        top = 'топ'
-        authors = 'автори'
-        players = 'играчи'
+    class God:
+        globals = 'get_globals'
+        pending = 'get_pending'
+        questions = 'get_questions'
+        shutdown = 'shutdown'
 
 
 class Path(NamedTuple):
