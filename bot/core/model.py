@@ -72,7 +72,7 @@ class Bot(commands.Bot):
                     await game.ctx.send(Gif.win)
                     await game.ctx.send(f'<@{game.user.id}> жалко, че не са истински.')
 
-                    save_player(player_name, money, time)
+                    save_player(str(game.user.id), money, time)
                     del self.games[player]
 
                     return
@@ -82,7 +82,7 @@ class Bot(commands.Bot):
                 game.start_question = self.time
 
                 game.last_question = question_data
-                await game.last_message.edit(delete_after=1)
+                await game.last_message.edit(delete_after=5)
                 game.last_message = await game.ctx.send(content=f'⏳ **Имаш {SECS} секунди**', embed=game.last_embed)
                 await game.last_message.add_reaction('🇦')
                 await game.last_message.add_reaction('🇧')
@@ -101,10 +101,10 @@ class Bot(commands.Bot):
                 money = game.return_money()
                 time = self.time - game.start
 
-                save_player(player_name, money, time)
+                save_player(str(game.user.id), money, time)
                 del self.games[player]
 
-                await game.last_message.edit(delete_after=1)
+                await game.last_message.edit(delete_after=5)
                 await game.ctx.send(Reply.end_game(player, money))
 
     async def time_loop(self):
@@ -130,17 +130,20 @@ class Bot(commands.Bot):
         d = self.games.copy()
         for player_id in d:
             game = self.games[player_id]
+            diff = self.time - game.start_question
 
-
-            if self.time - game.start_question == SECS - 5:
+            if diff == SECS - 5:
                 await game.last_message.edit(content=f'⏳ **Остават ти 5 секунди!**', embed=game.last_embed)
+            elif diff % 5 == 0:
+                await game.last_message.edit(content=f'⏳ **Имаш {SECS - diff} секунди**', embed=game.last_embed)
+
             if self.time - game.start_question == SECS:
-                await game.last_message.edit(content=f'⏳ **Изтече ти времето!**', embed=game.last_embed, delete_after=1)
+                await game.last_message.edit(content=f'⏳ **Изтече ти времето!**', embed=game.last_embed, delete_after=5)
                 player = Reply.user_name(game.user.name, game.user.discriminator)
                 money = game.return_money(wrong_answer=True)
                 time = self.time - game.start
 
-                save_player(player, money, time)
+                save_player(str(game.user.id), money, time)
 
                 await game.ctx.send(Reply.end_game(game.user.id, money))
                 del self.games[player_id]

@@ -20,12 +20,11 @@ class Stop:
             return
 
         game = self.bot.games[self.user_id]
-        player = Reply.user_name(game.user.name, game.user.discriminator)
         money = game.return_money(wrong_answer=False)
         time = self.bot.time - game.start
 
         await game.last_message.delete()
-        save_player(player, money, time)
+        save_player(str(game.user.id), money, time)
 
         del self.bot.games[self.user_id]
         await ctx.send(Reply.end_game(self.user_id, money))

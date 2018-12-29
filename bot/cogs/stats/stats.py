@@ -18,7 +18,12 @@ class Stats:
             authors = return_top_authors(10)
             await ctx.send(embed=Top10Embed('authors', authors))
         elif arg == Cogs.Stats.players:
-            players = return_top_players(10)
+            raw_players = return_top_players(10)
+            players = list()
+
+            for p in raw_players:
+                u = self.bot.get_user(int(p[0]))
+                players.append((u, p[1]))
             await ctx.send(embed=Top10Embed('players', players))
 
     @commands.command(name=Cogs.Stats.general)
@@ -27,11 +32,12 @@ class Stats:
 
     @commands.command(name=Cogs.Stats.stat, aliases=[Cogs.Stats.stats])
     async def stats(self, ctx):
+        user_id = str(ctx.author.id)
         user = self.bot.get_user(ctx.author.id)
-        stats = get_player_stats(Reply.user_name(user.name, user.discriminator))
+        stats = get_player_stats(user_id)
 
         if not stats:
-            await ctx.send(f'<@{ctx.author.id}> няма Ви в дата базата. Ако мислите, че има проблем свържете се с модераторите.')
+            await ctx.send(f'<@{user_id}> няма Ви в дата базата. Ако мислите, че има проблем свържете се с модераторите.')
             return
 
         time = strftime('%H hours %M mins %S secs', gmtime(stats['time']))
