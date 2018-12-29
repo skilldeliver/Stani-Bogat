@@ -8,11 +8,12 @@ from bot.utilities.json import load_question
 class Game:
     def __init__(self,
                  user: discord.User,
+                 channel,
                  theme: str,
                  start: int):
         # the user - discord.User instance
         self.user = user
-
+        self.channel = channel
         self.map_themes = {'ОБЩО':'general',
                            'ИТБГ': 'ITBG',
                            'ИТ': 'IT'}
@@ -23,7 +24,7 @@ class Game:
         self.question_level = 0
         self.ctx = None
 
-        self.letters = ['А)', 'Б)', 'В)', 'Г)']
+        self.letters = ['A)', 'B)', 'C)', 'D)']
         self.color = self._get_rand_color()  # color of the question embed
         self.right_answer = None  # save the right answer
 

@@ -60,7 +60,7 @@ class Cogs(NamedTuple):
         image = 'image'
         get = 'get'
 
-    class God:
+    class God(NamedTuple):
         globals = 'get_globals'
         pending = 'get_pending'
         questions = 'get_questions'

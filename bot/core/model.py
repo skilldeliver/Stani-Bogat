@@ -6,8 +6,8 @@ from discord.ext import commands
 
 from bot.core.replies import Reply
 from bot.utilities.json import save_player
-from bot.core.constants import SECS, Emoji
-from bot.core.embeds import AudienceEmbed
+from bot.core.constants import SECS, Emoji, Gif
+from bot.core.embeds import AudienceEmbed, RightAnswerEmbed, WrongAnswerEmbed, QuestionEmbed
 
 
 class Bot(commands.Bot):
@@ -34,49 +34,78 @@ class Bot(commands.Bot):
         self.loop.create_task(self.time_loop())
 
     def load_cogs(self):
-        general_cogs = [file.stem for file in Path('bot',
-                        'cogs', 'general').glob('*.py')]
+        cogs = ['general', 'game', 'stats', 'mod']
 
-        game_cogs = [file.stem for file in Path('bot',
-                     'cogs', 'game').glob('*.py')]
+        for cog in cogs:
+            files = [file.stem for file in Path('bot',
+                     'cogs', cog).glob('*.py')]
 
-        stats_cogs = [file.stem for file in Path('bot',
-                      'cogs', 'stats').glob('*.py')]
+            print(f'\nLoading {cog} cogs:')
+            for extension in files:
+                try:
+                    self.load_extension(f'bot.cogs.{cog}.{extension}')
+                    print(f'    Successfully loaded general cog: {extension}')
+                except Exception as e:
+                    print(f'    Failed to load {cog} cog {extension}: {repr(e)}')
 
-        mod_cogs = [file.stem for file in Path('bot',
-                      'cogs', 'mod').glob('*.py')]
+    async def on_reaction_add(self, reaction, user):
+        answers_map = {'🇦': 'A', '🇧': 'B', '🇨': 'C', '🇩': 'D'}
 
-        print('Loading general cogs:')
-        for extension in general_cogs:
-            try:
-                self.load_extension(f'bot.cogs.general.{extension}')
-                print(f'    Successfully loaded general cog: {extension}')
-            except Exception as e:
-                print(f'    Failed to load general cog {extension}: {repr(e)}')
+        if str(user.id) in self.games.keys() and reaction.emoji in answers_map:
+            player = str(user.id)
+            game = self.games[player]
+            game.answered = True
+            # get the game of the player
 
-        print('\nLoading gaming cogs:')
-        for extension in game_cogs:
-            try:
-                self.load_extension(f'bot.cogs.game.{extension}')
-                print(f'    Successfully loaded game cog: {extension}')
-            except Exception as e:
-                print(f'    Failed to load game cog {extension}: {repr(e)}')
+            # await asyncio.sleep(0.5)
+            answer = answers_map[reaction.emoji]
+            # take the letter
 
-        print('\nLoading stats cogs:')
-        for extension in stats_cogs:
-            try:
-                self.load_extension(f'bot.cogs.stats.{extension}')
-                print(f'    Successfully loaded game cog: {extension}')
-            except Exception as e:
-                print(f'    Failed to load game cog {extension}: {repr(e)}')
+            if game.correct_answer(answer):
+                await self._right_answer(game.ctx)
 
-        print('\nLoading mod cogs:')
-        for extension in mod_cogs:
-            try:
-                self.load_extension(f'bot.cogs.mod.{extension}')
-                print(f'    Successfully loaded game cog: {extension}')
-            except Exception as e:
-                print(f'    Failed to load game cog {extension}: {repr(e)}')
+                if game.question_level == 15:
+                    player_name = Reply.user_name(game.user.name, game.user.discriminator)
+                    money = game.question_amount_map[15]
+                    time = self.time - game.start
+
+                    await game.ctx.send(Gif.win)
+                    await game.ctx.send(f'<@{game.user.id}> жалко, че не са истински.')
+
+                    save_player(player_name, money, time)
+                    del self.games[player]
+
+                    return
+
+                question_data = self.games[player].ask()
+                game.last_embed = QuestionEmbed(**question_data)
+                game.start_question = self.time
+
+                game.last_question = question_data
+                await game.last_message.edit(delete_after=1)
+                game.last_message = await game.ctx.send(content=f'⏳ **Имаш {SECS} секунди**', embed=game.last_embed)
+                await game.last_message.add_reaction('🇦')
+                await game.last_message.add_reaction('🇧')
+                await game.last_message.add_reaction('🇨')
+                await game.last_message.add_reaction('🇩')
+
+                if game.waiting_friend_help:
+                    game.waiting_friend_help = False
+
+                if game.waiting_audience_help:
+                    game.waiting_audience_help = False
+            else:
+                await self._wrong_answer(game.ctx)
+
+                player_name = Reply.user_name(game.user.name, game.user.discriminator)
+                money = game.return_money()
+                time = self.time - game.start
+
+                save_player(player_name, money, time)
+                del self.games[player]
+
+                await game.last_message.edit(delete_after=1)
+                await game.ctx.send(Reply.end_game(player, money))
 
     async def time_loop(self):
         try:
@@ -102,9 +131,11 @@ class Bot(commands.Bot):
         for player_id in d:
             game = self.games[player_id]
 
+
             if self.time - game.start_question == SECS - 5:
                 await game.last_message.edit(content=f'⏳ **Остават ти 5 секунди!**', embed=game.last_embed)
             if self.time - game.start_question == SECS:
+                await game.last_message.edit(content=f'⏳ **Изтече ти времето!**', embed=game.last_embed, delete_after=1)
                 player = Reply.user_name(game.user.name, game.user.discriminator)
                 money = game.return_money(wrong_answer=True)
                 time = self.time - game.start
@@ -112,12 +143,6 @@ class Bot(commands.Bot):
                 save_player(player, money, time)
 
                 await game.ctx.send(Reply.end_game(game.user.id, money))
-
-                try:
-                    await game.last_message.delete()
-                except:
-                    pass
-
                 del self.games[player_id]
 
             # check friends help
@@ -160,3 +185,19 @@ class Bot(commands.Bot):
                    game.start_audience_help:
                 await game.audience_msg.add_reaction(Emoji.clock)
                 game.add_audience_reaction = True
+
+    async def _right_answer(self, ctx):
+        """
+        Adds correct react to the answer.
+        Sends right answer embed in the chat.
+        """
+        embed = RightAnswerEmbed()
+        await ctx.send(embed=embed, delete_after=1)
+
+    async def _wrong_answer(self, ctx):
+        """
+        Adds mistaken react to the answer.
+        Sends wrong answer embed in the chat.
+        """
+        embed = WrongAnswerEmbed()
+        await ctx.send(embed=embed, delete_after=1)

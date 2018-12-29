@@ -37,6 +37,9 @@ class NewGame:
             await ctx.send(Reply.not_finished(self.player_id))
             return
 
+        if ctx.channel in [g.channel for g in self.bot.games.values()]:
+            await ctx.send(Reply.another_game_in_channel(self.player_id))
+            return
 
         await self._create_new_game()
         await self._send_first_question()
@@ -49,6 +52,7 @@ class NewGame:
     async def _create_new_game(self):
         # Create new Game and bind it to the user_id in the queue
         self.bot.games[self.player_id] = Game(self.player,
+                                              self.ctx.channel,
                                               self.arg,
                                               self.bot.time)
         self.bot.games[self.player_id].ctx = self.ctx
@@ -66,6 +70,10 @@ class NewGame:
             await self.ctx.send(content=f'⏳ **Имаш {SECS} секунди**', embed=game.last_embed)
         game.start_question = self.bot.time
 
+        await game.last_message.add_reaction('🇦')
+        await game.last_message.add_reaction('🇧')
+        await game.last_message.add_reaction('🇨')
+        await game.last_message.add_reaction('🇩')
 
 def setup(bot):
     bot.add_cog(NewGame(bot))

@@ -1,1 +1,16 @@
-{"Skilldeliver": {"author_img": "https://i.imgur.com/AqoLZQH.png", "questions": [{"question": "Това е въпрос 13?", "choices": ["2", "4", "0", "8"]}]}}
+{
+  "Skilldeliver": {
+    "author_img": "https://i.imgur.com/AqoLZQH.png",
+    "questions": [
+      {
+        "question": "Кой от изброените е валиден ламбда израз в Python?",
+        "choices": [
+          "lambda x: x**2",
+          "x => x*2",
+          "(x) => x*2",
+          "Няма ламбда изрази в Python, заради концепцията за по-добра четимост на кода"
+        ]
+      }
+    ]
+  }
+}
