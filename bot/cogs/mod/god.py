@@ -16,6 +16,18 @@ class God:
         self.ctx = None
         self.question = None
 
+    @is_god()
+    @commands.command(name='get_servers')
+    async def return_servers(self, ctx):
+        for guild in self.bot.guilds:
+            owner = self.bot.get_user(guild.owner_id)
+            s = f'''
+Guild name: {guild.name}
+Guild icon: {guild.icon_url}
+Guild owner: {owner}
+------------------------'''
+            await ctx.send(s + '\n\n')
+
     @commands.command(name='help')
     async def help(self, ctx):
         await ctx.send('Тази команда е илюзия на твоето съзнание.')
