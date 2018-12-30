@@ -1,160 +1,160 @@
-{
-  "Skilldeliver": {
-    "author_img": "https://i.imgur.com/AqoLZQH.png",
-    "questions": [
-      {
-        "question": "Кое от изброените компютрите от първата генерация са имали?",
-        "choices": [
-          "Електронни лампи и магнитен барабан",
-          "Интегрални схеми",
-          "Магнитни ленти и транзистори",
-          "Всяко от изброените"
-        ]
-      },
-      {
-        "question": "Какво ниво програмен език е Асембли?",
-        "choices": [
-          "Ниско ниво",
-          "Средно нивo",
-          "Високо ниво",
-          "Машинен език"
-        ]
-      },
-      {
-        "question": "Какво означава ALU?",
-        "choices": [
-          "Arithmetic logic unit",
-          "Allowed logic unit",
-          "ASCII logic unit",
-          "Arithmetic least unit"
-        ]
-      },
-      {
-        "question": "Кой е известен като \"Бащата на компютъра\"?",
-        "choices": [
-          "Чарлз Бабидж",
-          "Тим Бърнър Лий",
-          "Стийв Джобс",
-          "Джон Атанасов"
-        ]
-      },
-      {
-        "question": "Кой език се използва най-често в Андроид приложения?",
-        "choices": [
-          "Java",
-          "PHP",
-          "C++",
-          "C"
-        ]
-      }
-    ]
-  },
-  "Viewless": {
-    "questions": [
-      {
-        "question": "В коя секция може да се сложи JavaScript?",
-        "choices": [
-          "<head> и <body>",
-          "<head>",
-          "<body>",
-          "Нито едно от посочените"
-        ]
-      },
-      {
-        "question": "Как е правилно да се вмъкне външен скрипт?",
-        "choices": [
-          "<script src=\"sample1.js\">",
-          "<script href=\"sample1.js\">",
-          "<#include \"sample1.js\">",
-          "<script name=\"sample1.js\">"
-        ]
-      },
-      {
-        "question": "Как може да изведем съобщението \"Hello World!\" като използваме JavaScript?",
-        "choices": [
-          "alert(\"Hello World\");",
-          "alertBox(\"Hello World\");",
-          "msg(\"Hello World\");",
-          "msgBox(\"Hello World\");"
-        ]
-      },
-      {
-        "question": "Как се декларира функция в JavaScript?",
-        "choices": [
-          "function MyFunction()",
-          "function = MyFunction()",
-          "function:MyFunction()",
-          "function = New MyFunction()"
-        ]
-      },
-      {
-        "question": "Кой е правилният начин за използване на IF клаузата в JavaScript?",
-        "choices": [
-          "if (i == 2)",
-          "if i = 2 then",
-          "if i == 2 then",
-          "if i = 2"
-        ]
-      },
-      {
-        "question": "Всички променливи в PHP започват със следния символ:",
-        "choices": [
-          "$",
-          "#",
-          "!",
-          "&"
-        ]
-      },
-      {
-        "question": "С какво завършва всеки PHP израз?",
-        "choices": [
-          ";",
-          "</cr>",
-          "</php>",
-          "."
-        ]
-      },
-      {
-        "question": "В PHP, как се означават коментарите в PHP?",
-        "choices": [
-          "/* ... */",
-          "<!-- ... -->",
-          "<comment> ... </comment>",
-          "*...*"
-        ]
-      }
-    ],
-    "author_img": "https://i.imgur.com/FZFt0SJ.png"
-  },
-  "THGM": {
-    "questions": [
-      {
-        "question": "Кой е първият отбор спечелил титла във Формула 1?",
-        "choices": [
-          "Алфа Ромео",
-          "Рено",
-          "Ферари",
-          "Мерцедес"
-        ]
-      },
-      {
-        "question": "Кой е отборът с най-много световни титли във Формула 1 към 2018?",
-        "choices": [
-          "Ферари",
-          "Рено",
-          "Алфа Ромео",
-          "Мерцедес"
-        ]
-      },
-      {
-        "question": "Кой е пилотът с най-много световни титли във Формула 1 към 2018?",
-        "choices": [
-          "Михаел Шумахер",
-          "Себастиан Фетел",
-          "Луис Хамилтън",
-          "Ален Прост"
-        ]
-      }
-    ]
-  }
+{
+  "Skilldeliver": {
+    "author_img": "https://i.imgur.com/AqoLZQH.png",
+    "questions": [
+      {
+        "question": "Кое от изброените компютрите от първата генерация са имали?",
+        "choices": [
+          "Електронни лампи и магнитен барабан",
+          "Интегрални схеми",
+          "Магнитни ленти и транзистори",
+          "Всяко от изброените"
+        ]
+      },
+      {
+        "question": "Какво ниво програмен език е Асембли?",
+        "choices": [
+          "Ниско ниво",
+          "Средно нивo",
+          "Високо ниво",
+          "Машинен език"
+        ]
+      },
+      {
+        "question": "Какво означава ALU?",
+        "choices": [
+          "Arithmetic logic unit",
+          "Allowed logic unit",
+          "ASCII logic unit",
+          "Arithmetic least unit"
+        ]
+      },
+      {
+        "question": "Кой е известен като \"Бащата на компютъра\"?",
+        "choices": [
+          "Чарлз Бабидж",
+          "Тим Бърнър Лий",
+          "Стийв Джобс",
+          "Джон Атанасов"
+        ]
+      },
+      {
+        "question": "Кой език се използва най-често в Андроид приложения?",
+        "choices": [
+          "Java",
+          "PHP",
+          "C++",
+          "C"
+        ]
+      }
+    ]
+  },
+  "Viewless": {
+    "questions": [
+      {
+        "question": "В коя секция може да се сложи JavaScript?",
+        "choices": [
+          "<head> и <body>",
+          "<head>",
+          "<body>",
+          "Нито едно от посочените"
+        ]
+      },
+      {
+        "question": "Как е правилно да се вмъкне външен скрипт?",
+        "choices": [
+          "<script src=\"sample1.js\">",
+          "<script href=\"sample1.js\">",
+          "<#include \"sample1.js\">",
+          "<script name=\"sample1.js\">"
+        ]
+      },
+      {
+        "question": "Как може да изведем съобщението \"Hello World!\" като използваме JavaScript?",
+        "choices": [
+          "alert(\"Hello World\");",
+          "alertBox(\"Hello World\");",
+          "msg(\"Hello World\");",
+          "msgBox(\"Hello World\");"
+        ]
+      },
+      {
+        "question": "Как се декларира функция в JavaScript?",
+        "choices": [
+          "function MyFunction()",
+          "function = MyFunction()",
+          "function:MyFunction()",
+          "function = New MyFunction()"
+        ]
+      },
+      {
+        "question": "Кой е правилният начин за използване на IF клаузата в JavaScript?",
+        "choices": [
+          "if (i == 2)",
+          "if i = 2 then",
+          "if i == 2 then",
+          "if i = 2"
+        ]
+      },
+      {
+        "question": "Всички променливи в PHP започват със следния символ:",
+        "choices": [
+          "$",
+          "#",
+          "!",
+          "&"
+        ]
+      },
+      {
+        "question": "С какво завършва всеки PHP израз?",
+        "choices": [
+          ";",
+          "</cr>",
+          "</php>",
+          "."
+        ]
+      },
+      {
+        "question": "В PHP, как се означават коментарите в PHP?",
+        "choices": [
+          "/* ... */",
+          "<!-- ... -->",
+          "<comment> ... </comment>",
+          "*...*"
+        ]
+      }
+    ],
+    "author_img": "https://i.imgur.com/FZFt0SJ.png"
+  },
+  "THGM": {
+    "questions": [
+      {
+        "question": "Кой е първият отбор спечелил титла във Формула 1?",
+        "choices": [
+          "Алфа Ромео",
+          "Рено",
+          "Ферари",
+          "Мерцедес"
+        ]
+      },
+      {
+        "question": "Кой е отборът с най-много световни титли във Формула 1 към 2018?",
+        "choices": [
+          "Ферари",
+          "Рено",
+          "Алфа Ромео",
+          "Мерцедес"
+        ]
+      },
+      {
+        "question": "Кой е пилотът с най-много световни титли във Формула 1 към 2018?",
+        "choices": [
+          "Михаел Шумахер",
+          "Себастиан Фетел",
+          "Луис Хамилтън",
+          "Ален Прост"
+        ]
+      }
+    ]
+  }
 }

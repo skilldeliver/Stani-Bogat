@@ -2,13 +2,27 @@ import os
 import json
 import random
 
+from bot.utilities.dropbox import download, upload
 from bot.core.constants import Path, File
+
+def fetch(path):
+    dbx_path = '/data' + str(path).split('data')[1].replace('\\', '/')
+    print(dbx_path)
+    file = download(dbx_path)
+
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(file.decode('utf-8'))
+
+def push(path):
+    dbx_path = '/data' + str(path).split('data')[1].replace('\\', '/')
+    upload(path, dbx_path, overwrite=True)
 
 
 def load_question(question_level, theme):
-    path = eval(f'Path.{theme}')
+    path = eval(f'Path.{theme}').joinpath(f'{question_level}{File.json}')
+    fetch(path)
 
-    with open(path.joinpath(f'{question_level}{File.json}'),
+    with open(path,
               encoding="utf-8") as f:
         data = json.load(f)
 
@@ -33,6 +47,7 @@ def load_question(question_level, theme):
 def save_player(player, money, time):
     file = Path.global_stats.joinpath(File.players)
 
+    fetch(file)
     with open(file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -48,11 +63,13 @@ def save_player(player, money, time):
 
     with open(file, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
+    push(file)
 
 
 def append_to_authors(author):
     file = Path.global_stats.joinpath(File.authors)
 
+    fetch(file)
     with open(file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -63,6 +80,7 @@ def append_to_authors(author):
 
     with open(file, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
+    push(file)
 
 def add_question(author,
                  theme,
@@ -73,6 +91,7 @@ def add_question(author,
 
     file = f'data/questions/{theme}/{str(question_level).zfill(2)}{File.json}'
 
+    fetch(file)
     with open(file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -92,11 +111,13 @@ def add_question(author,
 
     with open(file, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
+    push(file)
 
 
 def return_top_authors(how):
     file = Path.global_stats.joinpath(File.authors)
 
+    fetch(file)
     with open(file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -110,6 +131,7 @@ def return_top_authors(how):
 def return_top_players(how):
     file = Path.global_stats.joinpath(File.players)
 
+    fetch(file)
     with open(file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -138,6 +160,7 @@ def return_top_players(how):
 def append_to_pending(alist):
     file = Path.pending.joinpath(File.pending_questions)
 
+    fetch(file)
     with open(file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -146,11 +169,13 @@ def append_to_pending(alist):
 
     with open(file, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
+    push(file)
 
 def get_pending():
 
     file = Path.pending.joinpath(File.pending_questions)
 
+    fetch(file)
     with open(file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -162,13 +187,14 @@ def get_pending():
 
     with open(file, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False)
-
+    push(file)
     return question
 
 
 def get_pen_len():
     file = Path.pending.joinpath(File.pending_questions)
 
+    fetch(file)
     with open(file, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -181,6 +207,7 @@ def how_many_questions(author,
                        question_level):
     file = f'data/questions/{theme}/{str(question_level).zfill(2)}{File.json}'
 
+    fetch(file)
     with open(file, 'r',
               encoding="utf-8") as f:
         data = json.load(f)
@@ -193,6 +220,7 @@ def how_many_questions(author,
 
 def get_player_stats(player):
     players = Path.global_stats.joinpath(File.players)
+    fetch(players)
     with open(players, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -210,6 +238,7 @@ def total():
     time = int()
     questions = int()
 
+    fetch(players)
     with open(players, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
@@ -218,6 +247,7 @@ def total():
         money += value['money']
         time += value['time']
 
+    fetch(authors)
     with open(authors, 'r', encoding='utf-8') as f:
         data = json.load(f)
 
