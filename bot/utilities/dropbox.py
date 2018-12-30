@@ -58,4 +58,3 @@ def upload(file_upload, path, overwrite=True):
             return None
     # print('uploaded as', res.name.encode('utf8'))
     return res
-
