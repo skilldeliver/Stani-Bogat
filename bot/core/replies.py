@@ -114,7 +114,8 @@ HDD usage: {hdd} MB'
         return f'''
 Python {python_version} :snake:
 discord.py rewrite branch {discord_version}
-PyGithub    
+Dropbox API
+PyGithub
 Pipenv
 '''
 
