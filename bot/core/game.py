@@ -16,7 +16,8 @@ class Game:
         self.channel = channel
         self.map_themes = {'ОБЩО':'general',
                            'ИТБГ': 'ITBG',
-                           'ИТ': 'IT'}
+                           'ИТ': 'IT',
+                           'БЕЛ': 'BEL'}
 
         self.theme = self.map_themes[theme]
         self.start = start

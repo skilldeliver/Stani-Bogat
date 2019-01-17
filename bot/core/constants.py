@@ -80,6 +80,7 @@ class Path(NamedTuple):
     general = questions.joinpath('general/')
     IT = questions.joinpath('IT/')
     ITBG = questions.joinpath('ITBG/')
+    BEL = questions.joinpath('BEL/')
 
 
 class File(NamedTuple):
