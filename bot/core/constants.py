@@ -2,7 +2,7 @@ from pathlib import PurePath
 from typing import NamedTuple
 
 PREFIX = '?'
-SECS = 25
+SECS = 40
 
 GOD = 365859941292048384
 
