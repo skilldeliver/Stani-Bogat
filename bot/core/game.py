@@ -17,7 +17,8 @@ class Game:
         self.map_themes = {'ОБЩО':'general',
                            'ИТБГ': 'ITBG',
                            'ИТ': 'IT',
-                           'БЕЛ': 'BEL'}
+                           'БЕЛ': 'BEL',
+                           'БЕЗЖИЧНИ_МРЕЖИ': 'wireless_networks'}
 
         self.theme = self.map_themes[theme]
         self.start = start

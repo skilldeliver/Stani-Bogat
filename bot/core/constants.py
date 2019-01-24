@@ -81,6 +81,7 @@ class Path(NamedTuple):
     IT = questions.joinpath('IT/')
     ITBG = questions.joinpath('ITBG/')
     BEL = questions.joinpath('BEL/')
+    wireless_networks = questions.joinpath('Wireless networks/')
 
 
 class File(NamedTuple):
@@ -206,7 +207,7 @@ class LargeText(NamedTuple):
 ```css
 Име: [тук поставяте Вашето име или никнейм]
 Фото: [линк към Ваша снимка или аватар](опционално)
-Тема: [общо, ИТ, ИТБГ] - изберете някое от изброените
+Тема: [общо, ИТ, ИТБГ, БЕЛ] - изберете някое от изброените
 Ниво: [число от 1 до 15]
 Въпрос: [тук поставяте вашият въпрос]
 Отговор: [тук поставяте верният отговор]

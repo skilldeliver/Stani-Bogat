@@ -26,7 +26,7 @@ class NewGame:
         Value - instance of the bot.core.game.Game class
         '''
         if not args:
-            self.arg = 'ИТБГ'
+            self.arg = 'общо'
         else:
             self.arg = args[0].upper()
 
