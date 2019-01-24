@@ -1,88 +1,88 @@
-﻿{
-  "THGM": {
-    "author_img": "https://i.imgur.com/2Mfjv7B.jpg",
-    "questions": [
-      {
-        "question": "От какви компоненти се състои един чипсет на безжична мрежа? ",
-        "choices": [
-          "MAC (Media Access Control)/BBP(Baseband Processor)/Radio Frequency Transceiver",
-          "MAC (Media Access Control)/Radio Frequency Transceiver/ITM(Internet Transmit Medium)",
-          "BBP(Baseband Processor)/Radio Frequency Transceiver/MAS(Media Access Switch)",
-          "BBP(Baseband Processor)/MAC (Media Access Control)/ITM(Internet Transmit Medium)"
-        ]
-      },
-      {
-        "question": "Хардуерният MAC (Media Access Control) компонент изпълнява следните функции: ",
-        "choices": [
-          "Контролира достъпа до преносната среда за радио вълните.",
-          "Контролират техническите аспекти на функционирането и съвместимостта на различните технологии",
-          "Приема и предава RF (Radio Frequency) сигнали",
-          "Нито едно от посочените"
-        ]
-      },
-      {
-        "question": "BBP(Baseband Processor) изпълнява следните функции: ",
-        "choices": [
-          "Всяко от изброените.",
-          "извършва модулация и демодолулацията на бейсбанд сигналите.",
-          "Извършва аналогово-цифрово преобразуване и цифрово-аналогово преобразуване",
-          "Взаимодейства с цифровата част на мрежовото устройство по магистрала (bus) или друг интерфейс"
-        ]
-      },
-      {
-        "question": "Радиочестотен приемопредавател (Radio Frequency Transceiver): ",
-        "choices": [
-          "приема и предава RF (Radio Frequency) сигнали",
-          "управлява радиочестотното (radio frequency - RF) използване на регионално ниво",
-          "управлява радиочестотното (radio frequency - RF) използване на начионално ниво",
-          "Всяко от изброените."
-        ]
-      },
-      {
-        "question": "Приводството на чипсетове за безжични мрежи е доминирано от няколко производители, а именно",
-        "choices": [
-          "Atheros, Alcatel, Broadcom, Cisco, Intel, Realtek",
-          "LG, Samsung, Sony, Asus, Logitech, AsRock",
-          "AMD, NVIDIA, MSI, OPPO, Redmi, Honor, Viva",
-          "Нито едно от изброените."
-        ]
-      },
-              {
-        "question": "Кои от изброените са хардуерни интерфейси ползвани в безжичните мрежи ?",
-        "choices": [
-          "PCI, Mini PCI, PCI Express Mini, PC Card, ExpressCard, USB",
-          "DHCP, DNS, TCP/IP, ASCII, IPv4, IPv6",
-          "ITU-R, КРС, OFCOM",
-          "нито едно от изброените."
-        ]
-      },
-      {
-        "question": "Изберете вярните твърдения: PCI устройстватa...",
-        "choices": [
-          "Всяко от изброените.",
-          "комуникират помежду си като изпращат данни по паралелна магистрала",
-          "основното им приложение е при стандартните потрителски компютри или сървъри",
-          "могат да се използват разглобяеми антени"
-        ]
-      },
-      {
-        "question": "Изберете вярните твърдения: PCI Express Mini ...",
-        "choices": [
-          "Всяко от изброените.",
-          "импленетация на PCI стандарта",
-          "намира приложение в мобилните компютри",
-          "най-често WLAN, Ethernet и Bluetooth използват този стандарт."
-        ]
-      },
-      {
-        "question": "Изберете вярните твърдения: ExpressCard ...",
-        "choices": [
-          "Всяко от изброените.",
-          "е хардуерен стандарт от следващо поколение, наследник на PC Card",
-          "най-често Ethernet, WLAN, модеми, външни памети използват този стандарт",
-          "може да се свърже посредством PCIe или USB. "
-        ]
-      }
-    ]
-  }
+﻿{
+  "THGM": {
+    "author_img": "https://i.imgur.com/2Mfjv7B.jpg",
+    "questions": [
+      {
+        "question": "От какви компоненти се състои един чипсет на безжична мрежа? ",
+        "choices": [
+          "MAC (Media Access Control)/BBP(Baseband Processor)/Radio Frequency Transceiver",
+          "MAC (Media Access Control)/Radio Frequency Transceiver/ITM(Internet Transmit Medium)",
+          "BBP(Baseband Processor)/Radio Frequency Transceiver/MAS(Media Access Switch)",
+          "BBP(Baseband Processor)/MAC (Media Access Control)/ITM(Internet Transmit Medium)"
+        ]
+      },
+      {
+        "question": "Хардуерният MAC (Media Access Control) компонент изпълнява следните функции: ",
+        "choices": [
+          "Контролира достъпа до преносната среда за радио вълните.",
+          "Контролират техническите аспекти на функционирането и съвместимостта на различните технологии",
+          "Приема и предава RF (Radio Frequency) сигнали",
+          "Нито едно от посочените"
+        ]
+      },
+      {
+        "question": "BBP(Baseband Processor) изпълнява следните функции: ",
+        "choices": [
+          "Всяко от изброените.",
+          "извършва модулация и демодолулацията на бейсбанд сигналите.",
+          "Извършва аналогово-цифрово преобразуване и цифрово-аналогово преобразуване",
+          "Взаимодейства с цифровата част на мрежовото устройство по магистрала (bus) или друг интерфейс"
+        ]
+      },
+      {
+        "question": "Радиочестотен приемопредавател (Radio Frequency Transceiver): ",
+        "choices": [
+          "приема и предава RF (Radio Frequency) сигнали",
+          "управлява радиочестотното (radio frequency - RF) използване на регионално ниво",
+          "управлява радиочестотното (radio frequency - RF) използване на начионално ниво",
+          "Всяко от изброените."
+        ]
+      },
+      {
+        "question": "Приводството на чипсетове за безжични мрежи е доминирано от няколко производители, а именно",
+        "choices": [
+          "Atheros, Alcatel, Broadcom, Cisco, Intel, Realtek",
+          "LG, Samsung, Sony, Asus, Logitech, AsRock",
+          "AMD, NVIDIA, MSI, OPPO, Redmi, Honor, Viva",
+          "Нито едно от изброените."
+        ]
+      },
+              {
+        "question": "Кои от изброените са хардуерни интерфейси ползвани в безжичните мрежи ?",
+        "choices": [
+          "PCI, Mini PCI, PCI Express Mini, PC Card, ExpressCard, USB",
+          "DHCP, DNS, TCP/IP, ASCII, IPv4, IPv6",
+          "ITU-R, КРС, OFCOM",
+          "нито едно от изброените."
+        ]
+      },
+      {
+        "question": "Изберете вярните твърдения: PCI устройстватa...",
+        "choices": [
+          "Всяко от изброените.",
+          "комуникират помежду си като изпращат данни по паралелна магистрала",
+          "основното им приложение е при стандартните потрителски компютри или сървъри",
+          "могат да се използват разглобяеми антени"
+        ]
+      },
+      {
+        "question": "Изберете вярните твърдения: PCI Express Mini ...",
+        "choices": [
+          "Всяко от изброените.",
+          "импленетация на PCI стандарта",
+          "намира приложение в мобилните компютри",
+          "най-често WLAN, Ethernet и Bluetooth използват този стандарт."
+        ]
+      },
+      {
+        "question": "Изберете вярните твърдения: ExpressCard ...",
+        "choices": [
+          "Всяко от изброените.",
+          "е хардуерен стандарт от следващо поколение, наследник на PC Card",
+          "най-често Ethernet, WLAN, модеми, външни памети използват този стандарт",
+          "може да се свърже посредством PCIe или USB. "
+        ]
+      }
+    ]
+  }
 }

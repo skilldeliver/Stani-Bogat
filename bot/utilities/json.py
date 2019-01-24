@@ -23,7 +23,7 @@ def load_question(question_level, theme):
     fetch(path)
 
     with open(path,
-              encoding="utf-8") as f:
+              encoding="utf-8-sig") as f:
         data = json.load(f)
 
         author = random.choice(list(data.keys()))

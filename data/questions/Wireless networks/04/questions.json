@@ -2,7 +2,7 @@
   "THGM": {
     "author_img": "https://i.imgur.com/2Mfjv7B.jpg",
     "questions": [
-        {
+      {
         "question": "Една антена може да причини както усилване, така и затихване на RF сигнала...",
         "choices": [
           "който тя излъчва или приема",
