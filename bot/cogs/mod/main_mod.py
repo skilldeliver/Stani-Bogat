@@ -44,7 +44,7 @@ class Approve:
     @is_mod()
     @commands.command(name=Cogs.Mod.approve)
     async def approve_question(self, ctx, arg):
-        theme_map = {'ИТ': 'IT', 'общо': 'general', 'ИТБГ': 'ITBG', 'БЕЛ': 'BEL', 'география':
+        theme_map = {'ИТ': 'IT', 'общо': 'general', 'ИТБГ': 'ITBG', 'БЕЛ': 'BEL', 'ГЕОГРАФИЯ':
                      'Geography'}
         image = None
 
