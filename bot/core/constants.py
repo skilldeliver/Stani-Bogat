@@ -82,6 +82,7 @@ class Path(NamedTuple):
     ITBG = questions.joinpath('ITBG/')
     BEL = questions.joinpath('BEL/')
     wireless_networks = questions.joinpath('Wireless networks/')
+    geography = questions.joinpath('Geography/')
 
 
 class File(NamedTuple):

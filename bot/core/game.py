@@ -18,7 +18,8 @@ class Game:
                            'ИТБГ': 'ITBG',
                            'ИТ': 'IT',
                            'БЕЛ': 'BEL',
-                           'БЕЗЖИЧНИ_МРЕЖИ': 'wireless_networks'}
+                           'БЕЗЖИЧНИ_МРЕЖИ': 'wireless_networks',
+                           'ГЕОГРАФИЯ': 'geography'}
 
         self.theme = self.map_themes[theme]
         self.start = start

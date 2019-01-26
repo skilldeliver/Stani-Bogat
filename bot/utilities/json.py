@@ -278,4 +278,4 @@ def refactor():
 
 def test():
     for i in range(1, 16):
-        os.mkdir('C:\ABC\CODING\#CRAFTING\Stani-Bogat\data\questions\Wireless networks\\' + str(i).zfill(2))
+        os.mkdir('C:\ABC\CODING\#CRAFTING\Stani-Bogat\data\questions\Geography\\' + str(i).zfill(2))
