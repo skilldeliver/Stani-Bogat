@@ -2,7 +2,7 @@ import re
 import datetime
 from discord.ext import commands
 
-from bot.utilities.json import append_to_pending
+from bot.utilities.jsoner import append_to_pending
 from bot.core.constants import Cogs, Emoji, Regex, Text, GOD
 from bot.core.embeds import HowToAddEmbed, FormEmbed
 from bot.core.replies import Reply

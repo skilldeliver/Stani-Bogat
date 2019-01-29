@@ -83,7 +83,26 @@ class Path(NamedTuple):
     BEL = questions.joinpath('BEL/')
     wireless_networks = questions.joinpath('Wireless networks/')
     geography = questions.joinpath('Geography/')
+    databases = questions.joinpath('Databases/')
 
+class Theme:
+    # connected with the path variables above
+    game_themes = {
+                    'ОБЩО':'general',
+                    'ИТБГ': 'ITBG',
+                    'ИТ': 'IT',
+                    'БЕЛ': 'BEL',
+                    'БЕЗЖИЧНИ_МРЕЖИ': 'wireless_networks',
+                    'ГЕОГРАФИЯ': 'geography',
+                    'БАЗИ_ОТ_ДАННИ': 'databases'}
+
+    # connected only with the path name
+    adding_themes = {'ИТ': 'IT',
+                     'ОБЩО': 'general',
+                     'ИТБГ': 'ITBG',
+                     'БЕЛ': 'BEL',
+                     'ГЕОГРАФИЯ': 'Geography',
+                     'БАЗИ_ОТ_ДАННИ': 'Databases'}
 
 class File(NamedTuple):
     json = '/questions.json'

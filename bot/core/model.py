@@ -5,7 +5,7 @@ import discord
 from discord.ext import commands
 
 from bot.core.replies import Reply
-from bot.utilities.json import save_player
+from bot.utilities.jsoner import save_player
 from bot.core.constants import SECS, Emoji, Gif
 from bot.core.embeds import AudienceEmbed, RightAnswerEmbed, WrongAnswerEmbed, QuestionEmbed
 

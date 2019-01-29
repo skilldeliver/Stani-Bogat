@@ -5,7 +5,7 @@ from discord.ext import commands
 from bot.core.constants import Cogs
 from bot.core.replies import Reply
 from bot.core.embeds import Top10Embed, Total, StatsEmbed
-from bot.utilities.json import return_top_authors, return_top_players, total, get_player_stats
+from bot.utilities.jsoner import return_top_authors, return_top_players, total, get_player_stats
 
 class Stats:
     """ Handles these cogs - топ10, статс"""

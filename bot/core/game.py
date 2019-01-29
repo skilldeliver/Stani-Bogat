@@ -1,8 +1,8 @@
 import random
 import discord
 
-from bot.core.constants import Sprite
-from bot.utilities.json import load_question
+from bot.core.constants import Sprite, Theme
+from bot.utilities.jsoner import load_question
 
 
 class Game:
@@ -14,13 +14,7 @@ class Game:
         # the user - discord.User instance
         self.user = user
         self.channel = channel
-        self.map_themes = {'ОБЩО':'general',
-                           'ИТБГ': 'ITBG',
-                           'ИТ': 'IT',
-                           'БЕЛ': 'BEL',
-                           'БЕЗЖИЧНИ_МРЕЖИ': 'wireless_networks',
-                           'ГЕОГРАФИЯ': 'geography'}
-
+        self.map_themes = Theme.game_themes
         self.theme = self.map_themes[theme]
         self.start = start
 

@@ -1,8 +1,8 @@
 from discord.ext import commands
 from discord import Embed
 
-from bot.core.constants import MODS, Cogs, LargeText
-from bot.utilities.json import get_pending, get_pen_len, add_question
+from bot.core.constants import MODS, Cogs, LargeText, Theme
+from bot.utilities.jsoner import get_pending, get_pen_len, add_question
 
 
 def is_mod():
@@ -44,8 +44,7 @@ class Approve:
     @is_mod()
     @commands.command(name=Cogs.Mod.approve)
     async def approve_question(self, ctx, arg):
-        theme_map = {'ИТ': 'IT', 'общо': 'general', 'ИТБГ': 'ITBG', 'БЕЛ': 'BEL', 'ГЕОГРАФИЯ':
-                     'Geography'}
+        theme_map = Theme.adding_themes
         image = None
 
         if arg == Cogs.Mod.image:
