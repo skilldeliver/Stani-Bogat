@@ -89,20 +89,18 @@ class Theme:
     # connected with the path variables above
     game_themes = {
                     'ОБЩО':'general',
-                    'ИТБГ': 'ITBG',
                     'ИТ': 'IT',
                     'БЕЛ': 'BEL',
-                    'БЕЗЖИЧНИ_МРЕЖИ': 'wireless_networks',
+                    'БЕЗЖИЧНИ-МРЕЖИ': 'wireless_networks',
                     'ГЕОГРАФИЯ': 'geography',
-                    'БАЗИ_ОТ_ДАННИ': 'databases'}
+                    'БАЗИ-ОТ-ДАННИ': 'databases'}
 
     # connected only with the path name
     adding_themes = {'ИТ': 'IT',
                      'ОБЩО': 'general',
-                     'ИТБГ': 'ITBG',
                      'БЕЛ': 'BEL',
                      'ГЕОГРАФИЯ': 'Geography',
-                     'БАЗИ_ОТ_ДАННИ': 'Databases'}
+                     'БАЗИ-ОТ-ДАННИ': 'Databases'}
 
 class File(NamedTuple):
     json = '/questions.json'
@@ -227,7 +225,7 @@ class LargeText(NamedTuple):
 ```css
 Име: [тук поставяте Вашето име или никнейм]
 Фото: [линк към Ваша снимка или аватар](опционално)
-Тема: [общо, ИТ, ИТБГ, БЕЛ] - изберете някое от изброените
+Тема: [общо, ИТ, БЕЛ, география] - изберете някое от изброените
 Ниво: [число от 1 до 15]
 Въпрос: [тук поставяте вашият въпрос]
 Отговор: [тук поставяте верният отговор]

@@ -62,7 +62,7 @@ class Reply:
 
     @staticmethod
     def game_title(question_level, player, question_leva):
-        return f'{question_level}. Играта на {player}. Въпрос за {question_leva} лева.'
+        return f'{question_level}. Играта на {player}. Въпрос за {qguestion_leva} лева.'
 
     @staticmethod
     def question_added_by(author):
@@ -153,7 +153,7 @@ Pipenv
 
     @staticmethod
     def list_game_commands(P):
-        return (f'**{P}игра** [общо, ИТ, ИТБГ, БЕЛ, безжични_мрежи, география] - стартира се нова игра за потребителя\n'
+        return (f'**{P}игра** [общо, ИТ, БЕЛ, безжични-мрежи, бази-от-данни, география] - стартира се нова игра за потребителя\n'
                 f'**{P}50:50** - жокер, два грешни отговора се премахват.\n'
                 f'**{P}помощ [таг]** - жокер, 30 секунди се изчаква помощ от тагнатият.\n'
                 f'**{P}помощ публика** - жокери, 30 секунди се изчакват отговори в същият канал.\n'
