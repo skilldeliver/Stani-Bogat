@@ -62,7 +62,7 @@ class Reply:
 
     @staticmethod
     def game_title(question_level, player, question_leva):
-        return f'{question_level}. Играта на {player}. Въпрос за {qguestion_leva} лева.'
+        return f'{question_level}. Играта на {player}. Въпрос за {question_leva} лева.'
 
     @staticmethod
     def question_added_by(author):
