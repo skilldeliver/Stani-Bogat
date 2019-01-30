@@ -137,7 +137,7 @@ class Bot(commands.Bot):
 
             if diff == SECS - 5:
                 await game.last_message.edit(content=f'⏳ **Остават ти 5 секунди!**', embed=game.last_embed)
-            elif diff % 5 == 0:
+            elif diff % 10 == 0:
                 await game.last_message.edit(content=f'⏳ **Имаш {SECS - diff} секунди**', embed=game.last_embed)
 
             if self.time - game.start_question == SECS:
