@@ -84,6 +84,7 @@ class Path(NamedTuple):
     wireless_networks = questions.joinpath('Wireless networks/')
     geography = questions.joinpath('Geography/')
     databases = questions.joinpath('Databases/')
+    databases1 = questions.joinpath('Databases1/')
 
 class Theme:
     # connected with the path variables above
@@ -93,7 +94,8 @@ class Theme:
                     'БЕЛ': 'BEL',
                     'БЕЗЖИЧНИ-МРЕЖИ': 'wireless_networks',
                     'ГЕОГРАФИЯ': 'geography',
-                    'БАЗИ-ОТ-ДАННИ': 'databases'}
+                    'БАЗИ-ОТ-ДАННИ': 'databases',
+                    'БАЗИ-ОТ-ДАННИ-1': 'databases1'}
 
     # connected only with the path name
     adding_themes = {'ИТ': 'IT',
