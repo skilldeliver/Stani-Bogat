@@ -86,6 +86,7 @@ class Path(NamedTuple):
     databases = questions.joinpath('Databases/')
     databases1 = questions.joinpath('Databases1/')
     biology = questions.joinpath('Biology/')
+    chemistry = questions.joinpath('Chemistry/')
 
 class Theme:
     # connected with the path variables above
@@ -96,7 +97,8 @@ class Theme:
                     'БЕЗЖИЧНИ-МРЕЖИ': 'wireless_networks',
                     'ГЕОГРАФИЯ': 'geography',
                     'БАЗИ-ОТ-ДАННИ': 'databases',
-                    'БИОЛОГИЯ': 'biology'}
+                    'БИОЛОГИЯ': 'biology',
+                    'ХИМИЯ': 'chemistry' }
 
     # connected only with the path name
     adding_themes = {'ИТ': 'IT',
@@ -104,7 +106,8 @@ class Theme:
                      'БЕЛ': 'BEL',
                      'ГЕОГРАФИЯ': 'Geography',
                      'БАЗИ-ОТ-ДАННИ': 'Databases',
-                     'БИОЛОГИЯ': 'Biology'}
+                     'БИОЛОГИЯ': 'Biology',
+                     'ХИМИЯ': 'Chemistry'}
 
 class File(NamedTuple):
     json = '/questions.json'
