@@ -97,6 +97,7 @@ class Theme:
                     'БЕЗЖИЧНИ-МРЕЖИ': 'wireless_networks',
                     'ГЕОГРАФИЯ': 'geography',
                     'БАЗИ-ОТ-ДАННИ': 'databases',
+                    'БАЗИ-ОТ-ДАННИ-1': 'databases1',
                     'БИОЛОГИЯ': 'biology',
                     'ХИМИЯ': 'chemistry' }
 
