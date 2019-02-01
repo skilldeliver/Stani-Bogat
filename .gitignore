@@ -1,6 +1,6 @@
 __pycache__/
+data/
 .vscode
 .idea
 Pipfile
 Pipfile.lock
-data/*
