@@ -12,7 +12,6 @@ class Stats:
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.cooldown(1, 128, commands.BucketType.channel)
     @commands.command(name=Cogs.Stats.top10, aliases=[Cogs.Stats.top])
     async def print_top10(self, ctx, arg): # автори or играчи
         if arg == Cogs.Stats.authors:
@@ -27,12 +26,10 @@ class Stats:
                 players.append((u, p[1]))
             await ctx.send(embed=Top10Embed('players', players))
 
-    @commands.cooldown(1, 128, commands.BucketType.channel)
     @commands.command(name=Cogs.Stats.general)
     async def total(self, ctx):
         await ctx.send(embed=Total(**total()))
 
-    @commands.cooldown(1, 128, commands.BucketType.channel)
     @commands.command(name=Cogs.Stats.stat, aliases=[Cogs.Stats.stats])
     async def stats(self, ctx):
         user_id = str(ctx.author.id)

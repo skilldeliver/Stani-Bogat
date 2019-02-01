@@ -16,7 +16,6 @@ class NewGame:
         self.player_id = str()
         self.embed = None
 
-    @commands.cooldown(1, 128, commands.BucketType.channel)
     @commands.guild_only()
     @commands.command(name=Cogs.Game.game, aliases=[Cogs.Game.newgame])
     async def new_game(self, ctx, *args):
