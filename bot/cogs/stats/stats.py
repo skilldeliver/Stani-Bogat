@@ -18,7 +18,7 @@ class Stats:
             authors = return_top_authors(10)
             await ctx.send(embed=Top10Embed('authors', authors))
         elif arg == Cogs.Stats.players:
-            raw_players = return_top_players(1000)
+            raw_players = return_top_players(10)
             players = list()
 
             for p in raw_players:

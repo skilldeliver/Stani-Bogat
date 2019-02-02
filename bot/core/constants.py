@@ -87,6 +87,7 @@ class Path(NamedTuple):
     databases1 = questions.joinpath('Databases1/')
     biology = questions.joinpath('Biology/')
     chemistry = questions.joinpath('Chemistry/')
+    javascript = questions.joinpath('Javascript/')
 
 class Theme:
     # connected with the path variables above
@@ -99,7 +100,8 @@ class Theme:
                     'БАЗИ-ОТ-ДАННИ': 'databases',
                     'БАЗИ-ОТ-ДАННИ-1': 'databases1',
                     'БИОЛОГИЯ': 'biology',
-                    'ХИМИЯ': 'chemistry' }
+                    'ХИМИЯ': 'chemistry',
+                    'ДЖАВАСКРИПТ': 'javascript'}
 
     # connected only with the path name
     adding_themes = {'ИТ': 'IT',
