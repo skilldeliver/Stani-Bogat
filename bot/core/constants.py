@@ -85,9 +85,12 @@ class Path(NamedTuple):
     geography = questions.joinpath('Geography/')
     databases = questions.joinpath('Databases/')
     databases1 = questions.joinpath('Databases1/')
+    databases2 = questions.joinpath('Databases2/')
+    databases3 = questions.joinpath('Databases3/')
     biology = questions.joinpath('Biology/')
     chemistry = questions.joinpath('Chemistry/')
     javascript = questions.joinpath('Javascript/')
+    sql = questions.joinpath('SQL/')
 
 class Theme:
     # connected with the path variables above
@@ -99,6 +102,9 @@ class Theme:
                     'ГЕОГРАФИЯ': 'geography',
                     'БАЗИ-ОТ-ДАННИ': 'databases',
                     'БАЗИ-ОТ-ДАННИ-1': 'databases1',
+                    'БАЗИ-ОТ-ДАННИ-2': 'databases2',
+                    'БАЗИ-ОТ-ДАННИ-3': 'databases3',
+                    'SQL': 'sql',
                     'БИОЛОГИЯ': 'biology',
                     'ХИМИЯ': 'chemistry',
                     'ДЖАВАСКРИПТ': 'javascript'}

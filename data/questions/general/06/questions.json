@@ -1,16 +1,1 @@
-{
-  "Skilldeliver": {
-    "author_img": "https://i.imgur.com/AqoLZQH.png",
-    "questions": [
-      {
-        "question": "Какво е комодския варан?",
-        "choices": [
-          "гушер",
-          "паяк",
-          "птица",
-          "риба"
-        ]
-      }
-    ]
-  }
-}
+{"Skilldeliver": {"author_img": "https://i.imgur.com/AqoLZQH.png", "questions": [{"question": "Какво е комодския варан?", "choices": ["гушер", "паяк", "птица", "риба"]}, {"question": "Съгласно кодовете, използвани от тайните служби на САЩ, кой е The Beast - Звярът?", "choices": ["Президентският автомобил", "Президента", "Президентското куче", "Първата дама"]}]}}
