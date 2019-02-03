@@ -1,3 +1,6 @@
+~ write documentation
+
+
 get user name and tag
 -
 user = self.bot.get_user(ctx.author.id)

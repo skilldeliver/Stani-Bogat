@@ -23,9 +23,9 @@ class Fifty:
 
         if game.fifty:
             game.remove_2_choices()
-            embed = QuestionEmbed(**game.last_question)
+            game.last_embed = QuestionEmbed(**game.last_question)
 
-            await game.last_embed.edit(embed=embed)
+            await game.last_message.edit(embed=game.last_embed)
             game.fifty = False
         else:
             await ctx.send(Reply.used_50(self.user_id))

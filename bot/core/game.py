@@ -1,17 +1,27 @@
 import random
 import discord
 
-from bot.core.constants import Sprite
-from bot.utilities.json import load_question
+from bot.core.constants import Sprite, Theme
+from bot.utilities.jsoner import load_question
 
 
 class Game:
-    def __init__(self, user: discord.User):
+    def __init__(self,
+                 user: discord.User,
+                 channel,
+                 theme: str,
+                 start: int):
         # the user - discord.User instance
         self.user = user
-        self.question_level = 0
+        self.channel = channel
+        self.map_themes = Theme.game_themes
+        self.theme = self.map_themes[theme]
+        self.start = start
 
-        self.letters = ['А)', 'Б)', 'В)', 'Г)']
+        self.question_level = 0
+        self.ctx = None
+
+        self.letters = ['A)', 'B)', 'C)', 'D)']
         self.color = self._get_rand_color()  # color of the question embed
         self.right_answer = None  # save the right answer
 
@@ -20,9 +30,22 @@ class Game:
         self.friend = True
         self.audience = True
 
+        self.start_question = int()
         # save the last question dict and embed to change them later
         self.last_question = None
         self.last_embed = None
+        self.last_message =  None
+
+        self.helper_id = None
+
+        self.start_friend_help = int()
+        self.start_audience_help = int()
+
+        self.add_friend_reaction = False
+        self.add_audience_reaction = False
+
+        self.friend_msg = None
+        self.audience_msg = None
 
         # boolean values to check if the joker is running
         # similar with the previous ones - but those expire after 30 secs
@@ -63,7 +86,7 @@ class Game:
         amount = self.question_amount_map[self.question_level]
 
         data = load_question(str(self.question_level).zfill(2),
-                             'IT')
+                             self.theme)
 
         author = data["author"]
         author_thumbnail = data["author_thumbnail"]
@@ -72,6 +95,7 @@ class Game:
         choices = data["choices"]
         self.right_answer = choices[0]
 
+        print(self.right_answer)
         random.shuffle(choices)
         self.answers = dict(zip(self.letters, choices))
 
@@ -143,6 +167,7 @@ class Game:
                     count_votes=count_votes,
                     votes=votes,
                     color=self.color)
+
 
     def return_money(self, wrong_answer=True)->int:
         if wrong_answer:

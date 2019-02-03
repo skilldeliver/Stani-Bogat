@@ -2,14 +2,19 @@ from pathlib import PurePath
 from typing import NamedTuple
 
 PREFIX = '?'
+SECS = 30
+
+GOD = 365859941292048384
+
 MODS = [
     365859941292048384,
     374537025983873024,
     261115722007183362,
     247028507903918083
 ]
-class Cogs(NamedTuple):
 
+
+class Cogs(NamedTuple):
     class Game(NamedTuple):
         letter = 'А'
         fifty = '50:50'
@@ -33,8 +38,20 @@ class Cogs(NamedTuple):
         info = 'инфо'
         rules = 'правила'
 
+    class Stats(NamedTuple):
+        top10 = 'топ10'
+        authors = 'автори'
+        players = 'играчи'
+        general = 'общо'
+        stat = 'стат'
+
+        # aliases
+        top = 'топ'
+        stats = 'статс'
+
     class Mod(NamedTuple):
         mod = 'mod'
+        length = 'length'
         pending = 'pending'
         approve = 'approve'
         reject = 'reject'
@@ -43,11 +60,11 @@ class Cogs(NamedTuple):
         image = 'image'
         get = 'get'
 
-    class Stats(NamedTuple):
-        top10 = 'топ10'
-        top = 'топ'
-        authors = 'автори'
-        players = 'играчи'
+    class God(NamedTuple):
+        globals = 'get_globals'
+        pending = 'get_pending'
+        questions = 'get_questions'
+        shutdown = 'shutdown'
 
 
 class Path(NamedTuple):
@@ -62,14 +79,54 @@ class Path(NamedTuple):
 
     general = questions.joinpath('general/')
     IT = questions.joinpath('IT/')
+    ITBG = questions.joinpath('ITBG/')
+    BEL = questions.joinpath('BEL/')
+    wireless_networks = questions.joinpath('Wireless networks/')
+    geography = questions.joinpath('Geography/')
+    databases = questions.joinpath('Databases/')
+    databases1 = questions.joinpath('Databases1/')
+    databases2 = questions.joinpath('Databases2/')
+    databases3 = questions.joinpath('Databases3/')
+    biology = questions.joinpath('Biology/')
+    chemistry = questions.joinpath('Chemistry/')
+    javascript = questions.joinpath('Javascript/')
+    sql = questions.joinpath('SQL/')
 
+class Theme:
+    # connected with the path variables above
+    game_themes = {
+                    'ОБЩО':'general',
+                    'ИТ': 'IT',
+                    'БЕЛ': 'BEL',
+                    'БЕЗЖИЧНИ-МРЕЖИ': 'wireless_networks',
+                    'ГЕОГРАФИЯ': 'geography',
+                    'БАЗИ-ОТ-ДАННИ': 'databases',
+                    'БАЗИ-ОТ-ДАННИ-1': 'databases1',
+                    'БАЗИ-ОТ-ДАННИ-2': 'databases2',
+                    'БАЗИ-ОТ-ДАННИ-3': 'databases3',
+                    'SQL': 'sql',
+                    'БИОЛОГИЯ': 'biology',
+                    'ХИМИЯ': 'chemistry',
+                    'ДЖАВАСКРИПТ': 'javascript'}
+
+    # connected only with the path name
+    adding_themes = {'ИТ': 'IT',
+                     'ОБЩО': 'general',
+                     'БЕЛ': 'BEL',
+                     'ГЕОГРАФИЯ': 'Geography',
+                     'БАЗИ-ОТ-ДАННИ': 'Databases',
+                     'БИОЛОГИЯ': 'Biology',
+                     'ХИМИЯ': 'Chemistry'}
 
 class File(NamedTuple):
     json = '/questions.json'
-    players = 'top_players.json'
     authors = 'top_authors.json'
+    players = 'top_players.json'
     pending_questions = 'pending_questions.json'
 
+
+class Gif(NamedTuple):
+    win = 'https://i.imgur.com/GqmKt77.gifv'
 
 class Link(NamedTuple):
     github_repo = 'https://github.com/skilldeliver/Stani-Bogat'
@@ -89,7 +146,6 @@ class Sprite(NamedTuple):
               }
 
 class Regex(NamedTuple):
-    #TODO add regex patterns here
     form = (r'Име:(?P<name>.*)\n'
             r'(Фото:(?P<image>.*)\n)?'
             r'Тема:(?P<theme>.*)\n'
@@ -112,7 +168,7 @@ class Emoji(NamedTuple):
 
 class Color(NamedTuple):
     #TODO write comment what each color is
-    info = 0x000000 # white
+    info = 0x000000 # black
     rules = 0x3351B6
     top = 0x8a2be2
     how_add = 0xcae00d
@@ -135,7 +191,7 @@ class Text(NamedTuple):
     top_contributors = '👷 Топ сътрудници(contributors):'
     contributors = ':one: skilldeliver \n:two: surister'
 
-    top_players = 'ТОП 10 играчи с най-много спечелени пари.'
+    top_players = 'ТОП 10 играчи с най-много точки.'
     top_authors = 'ТОП 10 потребители с най-много добавени въпроси.'
 
     right = 'Верен отговор!'
@@ -144,7 +200,7 @@ class Text(NamedTuple):
     question_add = '**?** Добавяне на въпрос'
     form = 'Форма'
     added_questions = 'добавени въпроса.'
-    money = 'лева.'
+    points = 'точки.'
 
     main_commands = '📦 Основни команди.'
     game_commands = '🎮 Игрови команди.'
@@ -153,6 +209,11 @@ class Text(NamedTuple):
 
     unclosed_question = 'Незатворен въпрос!'
 
+    no_pins = 'Няма pin-нати съобщения в този чат.'
+    pin_not_inform = 'Pin-натото съобщение не отговаря на формата.'
+    success_send = 'Успешно изпратен въпрос. Очаква се преглед от модератор. Ще Ви известим ако въпроса Ви е в игра.'
+    pins_not_inform = 'Pin-натите съобщения не отговарят на формата.'
+
 
 class LargeText(NamedTuple):
     list_rules = '1. Един потребител може да бъде само в една игра.\n\
@@ -160,12 +221,12 @@ class LargeText(NamedTuple):
 3. Не може да искаш помощ от бот или приятел в игра.\n\
 4. Грешен отговор - играта ти приключва и се запазват парите от достигнатата сигурна сума.'
 
-    instructions = """\
+    instructions = f"""\
 За да добавите въпрос, изпълнете следните инструкции:
 **1**. Копирайте и попълнета **формата**(по-долу).
 **2**. Изпратете я на **лично**(тук) на бота.
 **3**. **Pin**-нете съобщениeто в личният чат(тук).
-**4**. Изпълнете командата **$добавям**(тук) или в сървъра.
+**4**. Изпълнете командата **{PREFIX} добавям**(тук) или в сървъра.
 
 **При повече въпроси**:
 Всеки въпрос трябва да е в отделно съобщение с отделна форма.
@@ -180,7 +241,7 @@ class LargeText(NamedTuple):
 ```css
 Име: [тук поставяте Вашето име или никнейм]
 Фото: [линк към Ваша снимка или аватар](опционално)
-Тема: [общо, ИТ] - изберете някое от изброените
+Тема: [общо, ИТ, БЕЛ, география] - изберете някое от изброените
 Ниво: [число от 1 до 15]
 Въпрос: [тук поставяте вашият въпрос]
 Отговор: [тук поставяте верният отговор]

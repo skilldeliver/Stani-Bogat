@@ -1,8 +1,8 @@
 from discord.ext import commands
 from discord import Embed
 
-from bot.core.constants import MODS, Cogs, LargeText
-from bot.utilities.json import get_pending, add_question
+from bot.core.constants import MODS, Cogs, LargeText, Theme
+from bot.utilities.jsoner import get_pending, get_pen_len, add_question
 
 
 def is_mod():
@@ -22,11 +22,16 @@ class Approve:
         await ctx.send(LargeText.mod_cogs)
 
     @is_mod()
+    @commands.command(name=Cogs.Mod.length)
+    async def get_pen_length(self, ctx):
+        await ctx.send(get_pen_len())
+
+    @is_mod()
     @commands.command(name=Cogs.Mod.pending)
     async def get_question(self, ctx):
         self.ctx = ctx
         if self.question:
-            await ctx.send()
+            await ctx.send('Има незатворен въпрос!')
             await self._send_question()
             return
 
@@ -39,7 +44,7 @@ class Approve:
     @is_mod()
     @commands.command(name=Cogs.Mod.approve)
     async def approve_question(self, ctx, arg):
-        theme_map = {'ИТ': 'IT', 'общо': 'general'}
+        theme_map = Theme.adding_themes
         image = None
 
         if arg == Cogs.Mod.image:
@@ -47,27 +52,32 @@ class Approve:
         q = self.question
         choices = [q['answer'], q['other1'], q['other2'], q['other3']]
         add_question(author=q['name'],
-                     theme=theme_map[q['theme']],
+                     theme=theme_map[q['theme'].upper()],
                      question_level=q['level'],
                      question=q['question'],
                      choices=choices,
                      author_thumbnail=image
                      )
+        await self._notify_user(int(q['user_id']), q['question'], True)
         self.question = None
         await ctx.send('Въпросът е добавен!')
 
     @is_mod()
     @commands.command(name=Cogs.Mod.reject)
-    async def reject(self, ctx):
+    async def reject(self, ctx, *args):
         # TODO send explanation to the user for the rejecting reason
+        text = " ".join(args)
+        q = self.question
+        await self._notify_user(int(q['user_id']), q['question'], False, text)
         self.question = None
         await ctx.send('Въпросът е отхвърлен!')
 
     @is_mod()
     @commands.command(name=Cogs.Mod.change)
-    async def change_value(self, ctx, key, value):
+    async def change_value(self, ctx, key, *args):
         self.ctx = ctx
 
+        value = ' '.join(args)
         self.question[key] = value
         await self._send_question()
 
@@ -97,14 +107,16 @@ class Approve:
             ```css
 {string}```''')
 
-    async def _notify_user(self, user_id, approved,):
-        #TODO finish notifiying user
-        user = self.bot.get_user(user_id)
-        dm = self.user.dm_channel
+    async def _notify_user(self, user_id, question, approved, text=''):
+        user = self.bot.get_user(int(user_id))
+        dm = user.dm_channel
         if not dm:
-            dm = await self.user.create_dm()
+            dm = await user.create_dm()
 
-        dm.send()
+        if approved:
+            await dm.send(f'Въпросът `{question}`... е одобрен. Благодарим за съдействието.')
+        else:
+            await dm.send(f'Въпросът `{question}`... е отхвърлен. {text}')
 
 
 def setup(bot):

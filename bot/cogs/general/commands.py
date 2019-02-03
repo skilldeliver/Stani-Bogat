@@ -5,7 +5,6 @@ from bot.core.embeds import CommandsEmbed
 
 
 class Commands:
-    """ Handles this cog - команди"""
     def __init__(self, bot):
         self.bot = bot
 

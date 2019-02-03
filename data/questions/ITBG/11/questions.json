@@ -1,0 +1,52 @@
+{
+  "Viewless": {
+    "questions": [
+      {
+        "question": "В PHP какъв е правилният начин за връзка с MySQL база данни?",
+        "choices": [
+          "mysqli_connect(host,username,password,dbname);",
+          "mysqli_db(host,username,password,dbname);",
+          "db_open(host,username,password,dbname);",
+          "mysqli_open(host,username,password,dbname);"
+        ]
+      },
+      {
+        "question": "В SQL, коя ключова дума се използва за да се сортират върнатите записи?",
+        "choices": [
+          "ORDER BY",
+          "SORT BY",
+          "ORDER",
+          "SORT"
+        ]
+      },
+      {
+        "question": "В SQL, как можете да селектирате всички записи от таблицата \"Persons\", подредени по обратен на азбучния ред на полето \"FirstName\"?",
+        "choices": [
+          "SELECT * FROM Persons ORDER BY FirstName DESC",
+          "SELECT * FROM Persons ORDER FirstName DESCENDING",
+          "SELECT * FROM Persons SORT BY 'FirstName' DESCENDING",
+          "SELECT * FROM Persons SORT 'FirstName' DESC"
+        ]
+      },
+      {
+        "question": "В SQL,  с коя команда можете да вмъкнете нов запис в таблицата \"Persons\"?",
+        "choices": [
+          "INSERT INTO Persons VALUES ('Jimmy', 'Jackson')",
+          "INSERT NEW VALUES ('Jimmy', 'Jackson') INTO Persons",
+          "INSERT VALUES ('Jimmy', 'Jackson') INTO Persons",
+          "INSERT ('Jimmy', 'Jackson') INTO Persons"
+        ]
+      },
+      {
+        "question": "В SQL,  как може да смените \"Smith\" със \"Jones\" в полето \"LastNames\" на таблицата \"Persons\"?",
+        "choices": [
+          "UPDATE Persons SET LastName='Jones' WHERE LastName='Smith'",
+          "MODIFY Persons SET LastName='Jones' WHERE LastName='Smith'",
+          "MODIFY Persons SET LastName='Smith' INTO LastName='Jones'",
+          "UPDATE Persons SET LastName='Smith' INTO LastName='Jones'"
+        ]
+      }
+    ],
+    "author_img": "https://i.imgur.com/FZFt0SJ.png"
+  }
+}
