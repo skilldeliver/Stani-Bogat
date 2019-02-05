@@ -1,66 +1,66 @@
-{
-  "Skilldeliver": {
-    "author_img": "https://i.imgur.com/AqoLZQH.png",
-    "questions": [
-      {
-        "question": "HTTP е абревиатура на кое наименувание?",
-        "choices": [
-          "Hypertext Transfer Protocol",
-          "HTML Transcontinental Transfer Packager",
-          "Hierarchical Telecommunicating & Transfering Protocol",
-          "Hosting Troubleshooting Tied Pager"
-        ]
-      },
-      {
-        "question": "Променливата е място, където се съхраняват?",
-        "choices": [
-          "стойности",
-          "кодове",
-          "програми",
-          "свойства"
-        ]
-      },
-      {
-        "question": "Операторите AND, OR, NOT и XOR са?",
-        "choices": [
-          "логически",
-          "математически",
-          "входно-изходни",
-          "нито един от посочените отговори"
-        ]
-      },
-      {
-        "question": "Кое от изброените не е операционна система?",
-        "choices": [
-          "C",
-          "DOS",
-          "Mac",
-          "Linux"
-        ]
-      },
-      {
-        "question": "Коя бройна система се използва от компютрите за калкулации и съхранение?",
-        "choices": [
-          "двоична",
-          "десетична",
-          "шестнадесетична",
-          "осмична"
-        ]
-      }
-    ]
-  },
-  "Viewless": {
-    "questions": [
-      {
-        "question": "Зададен е пътя към файла C:\\DOC\\PROBA.TXT Какво е името на директорията, в която се намира файла?",
-        "choices": [
-          "DOC",
-          "TXT",
-          "C:\\DOC\\PROBA.TXT",
-          "PROBA.TXT"
-        ]
-      }
-    ],
-    "author_img": "https://i.imgur.com/FZFt0SJ.png"
-  }
+{
+  "Skilldeliver": {
+    "author_img": "https://i.imgur.com/AqoLZQH.png",
+    "questions": [
+      {
+        "question": "HTTP е абревиатура на кое наименувание?",
+        "choices": [
+          "Hypertext Transfer Protocol",
+          "HTML Transcontinental Transfer Packager",
+          "Hierarchical Telecommunicating & Transfering Protocol",
+          "Hosting Troubleshooting Tied Pager"
+        ]
+      },
+      {
+        "question": "Променливата е място, където се съхраняват?",
+        "choices": [
+          "стойности",
+          "кодове",
+          "програми",
+          "свойства"
+        ]
+      },
+      {
+        "question": "Операторите AND, OR, NOT и XOR са?",
+        "choices": [
+          "логически",
+          "математически",
+          "входно-изходни",
+          "нито един от посочените отговори"
+        ]
+      },
+      {
+        "question": "Кое от изброените не е операционна система?",
+        "choices": [
+          "C",
+          "DOS",
+          "Mac",
+          "Linux"
+        ]
+      },
+      {
+        "question": "Коя бройна система се използва от компютрите за калкулации и съхранение?",
+        "choices": [
+          "двоична",
+          "десетична",
+          "шестнадесетична",
+          "осмична"
+        ]
+      }
+    ]
+  },
+  "Viewless": {
+    "questions": [
+      {
+        "question": "Зададен е пътя към файла C:\\DOC\\PROBA.TXT Какво е името на директорията, в която се намира файла?",
+        "choices": [
+          "DOC",
+          "TXT",
+          "C:\\DOC\\PROBA.TXT",
+          "PROBA.TXT"
+        ]
+      }
+    ],
+    "author_img": "https://i.imgur.com/FZFt0SJ.png"
+  }
 }
