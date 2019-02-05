@@ -1,0 +1,33 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "Ще работи ли следният код в JavaScript? var fullName = firstName + “ ” + lastName",
+        "choices": [
+          "Зависи дали пишем в strict mode.",
+          "Не.",
+          "Зависи на кой браузър го изпълняваме.",
+          "Да."
+        ]
+      },
+      {
+        "question": "Как взимаме елемент с ID \"abcd\" с чист JavaScript?",
+        "choices": [
+          "document.getElementById(\"abcd\");",
+          "С нито един от горепосочените методи.",
+          "document.getElementById(\"abdc\");",
+          "id(''abcd\");"
+        ]
+      },
+      {
+        "question": "С кой метод се хвърлят/dispatch-ват събития в NodeJS?",
+        "choices": [
+          "emit",
+          "fire",
+          "throw",
+          "dispatch"
+        ]
+      }
+    ]
+  }
+}

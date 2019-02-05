@@ -1,0 +1,24 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "Мога ли в JavaScript да имам променливи с едно и също име в различен scope?",
+        "choices": [
+          "Да",
+          "Не, освен ако не декларираме closure.",
+          "Да, стига да не пишем в strict mode.",
+          "Не"
+        ]
+      },
+      {
+        "question": "С помощта на коя ключова дума за expose-ват пропъртита от CommonJS модулите?",
+        "choices": [
+          "export",
+          "Require",
+          "expose",
+          "extract"
+        ]
+      }
+    ]
+  }
+}

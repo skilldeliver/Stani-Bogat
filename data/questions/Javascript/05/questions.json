@@ -1,0 +1,33 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "Има ли разлика между == и === в JavaScript и каква е тя?",
+        "choices": [
+          "Да, има. С === се сравнява и по тип, докато с == само по стойност.",
+          "Да, има.",
+          "Зависи дали пишем в strict mode.",
+          "Не, няма."
+        ]
+      },
+      {
+        "question": "Какво значи AMD?",
+        "choices": [
+          "Asynchronous Module Definition",
+          "Arithmetic Matrix Decoding",
+          "Again Monday Damnit",
+          "Ajax Module Definition"
+        ]
+      },
+      {
+        "question": "В общия случай с коя команда изпълняваме NodeJS код?",
+        "choices": [
+          "node",
+          "nodejs",
+          "npm",
+          "execute"
+        ]
+      }
+    ]
+  }
+}

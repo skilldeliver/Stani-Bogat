@@ -1,0 +1,24 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "Как можем да спрем bubbling-a на event?",
+        "choices": [
+          "event.stopPropagation();",
+          "event.stop();",
+          "event.backtrace();",
+          "event.stopBubbling();"
+        ]
+      },
+      {
+        "question": "С коя функция включваме модули?",
+        "choices": [
+          "require",
+          "include",
+          "import",
+          "requirejs"
+        ]
+      }
+    ]
+  }
+}

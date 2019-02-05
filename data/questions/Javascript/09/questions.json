@@ -1,0 +1,24 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "Какво е DOM (изберете най-пълния и точен отговор)?",
+        "choices": [
+          "Document Object Model",
+          "Document Object Modal",
+          "Dreamweaver Operating Manager",
+          "Document Operation Model, това е мулти-платформен и езиково независим приложно-програмен интерфейс, който позволява на програми и скриптове, да получат достъп до съдържанието на обекти в HTML, XHTML и XML."
+        ]
+      },
+      {
+        "question": "Какво е RequireJS?",
+        "choices": [
+          "AMD Module Loader",
+          "Библиотека поддържаща писане на обектно ориентиран код (като VanillaJS)",
+          "Engine на JavaScript",
+          "Библиотека чрез която работи npm"
+        ]
+      }
+    ]
+  }
+}

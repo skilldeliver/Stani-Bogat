@@ -1,0 +1,24 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "С кой метод закачаме event listener, само за първото възникване на event?",
+        "choices": [
+          ".one(...);",
+          ".addEventListenerOne();",
+          ".addEventListener.single();",
+          ".once(...);"
+        ]
+      },
+      {
+        "question": "На кой JavaScript engine се базира NodeJS?",
+        "choices": [
+          "V8",
+          "SpiderMonkey",
+          "Rhino",
+          "KJS"
+        ]
+      }
+    ]
+  }
+}
