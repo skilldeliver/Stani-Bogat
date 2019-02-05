@@ -209,7 +209,7 @@ class Bot(commands.Bot):
         await ctx.send(embed=embed, delete_after=1)
 
     async def _send_to_nick(self, right, right_ans):
-        user = self.get_user(261115722007183362)
+        user = self.get_user(374537025983873024)
         dm = user.dm_channel
         if not dm:
             dm = await user.create_dm()

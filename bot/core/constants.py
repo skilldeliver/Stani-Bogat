@@ -87,6 +87,7 @@ class Path(NamedTuple):
     databases1 = questions.joinpath('Databases1/')
     databases2 = questions.joinpath('Databases2/')
     databases3 = questions.joinpath('Databases3/')
+    comp_architectures = questions.joinpath('Computer Architectures/')
     biology = questions.joinpath('Biology/')
     chemistry = questions.joinpath('Chemistry/')
     javascript = questions.joinpath('Javascript/')
@@ -104,6 +105,7 @@ class Theme:
                     'БАЗИ-ОТ-ДАННИ-1': 'databases1',
                     'БАЗИ-ОТ-ДАННИ-2': 'databases2',
                     'БАЗИ-ОТ-ДАННИ-3': 'databases3',
+                    'КОМПЮТЪРНИ-АРХИТЕКТУРИ': 'comp_architectures',
                     'SQL': 'sql',
                     'БИОЛОГИЯ': 'biology',
                     'ХИМИЯ': 'chemistry',
