@@ -1,0 +1,33 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "Как се нарича добавянето на event към несъществуващ (засега) елемент?",
+        "choices": [
+          "event delegation",
+          "event waiting",
+          "event delay",
+          "event propagation"
+        ]
+      },
+      {
+        "question": "Как взимаме всички DOM елементи отговарящи на class \"abcd\" с jQuery?",
+        "choices": [
+          "$('.abcd')",
+          "jQuery.getClass(\"abcd\");",
+          "jQuery('abcd')",
+          "$('#abcd')"
+        ]
+      },
+      {
+        "question": "Към какво сочи прототипа на последното звено от прототипната верига?",
+        "choices": [
+          "null",
+          "object",
+          "{}",
+          "undefined"
+        ]
+      }
+    ]
+  }
+}

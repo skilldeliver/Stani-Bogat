@@ -5,6 +5,7 @@ import contextlib
 
 import dropbox
 
+os.environ["DROPBOX"] = input('Dropbox: ')
 dbx = dropbox.Dropbox(os.getenv('DROPBOX'))
 
 @contextlib.contextmanager

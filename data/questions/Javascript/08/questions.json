@@ -1,0 +1,24 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "в JavaScript има ли фунцкии, които не връщат резултат?",
+        "choices": [
+          "Не, всички функции в JavaScript връщат стойност.",
+          "Да, ако не сложим return оператор във фунцкията, тя няма да върне стойност.",
+          "Да, ако сложим дефинираме функцията с ключовате дума void тя няма да върне стойност.",
+          "В JavaScript няма функции, работи се само с обекти."
+        ]
+      },
+      {
+        "question": "Посочете правилния начин за подаване параметри на IFFE.",
+        "choices": [
+          "(function (a, b, c) {console.log(a, b, c);}(‘value a‘, ‘value b‘, ‘value c'));",
+          "(a, b, c)(function () {console.log(a, b, c);}(‘value a‘, ‘value b‘, ‘value c'));",
+          "(function (a='value a', b='value b', c=''value c'') {console.log(a, b, c);});",
+          "(function () {console.log(a, b, c);}(‘value a‘, ‘value b‘, ‘value c'));"
+        ]
+      }
+    ]
+  }
+}

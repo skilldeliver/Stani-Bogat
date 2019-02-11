@@ -1,0 +1,33 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "Как се наричат фазите за обработка на събития?",
+        "choices": [
+          "bubbling & capturing",
+          "raising & drowning",
+          "up & down",
+          "bubbling & casting"
+        ]
+      },
+      {
+        "question": "Колко на брой ID-та с една и съща стойност можем да имаме на една страница?",
+        "choices": [
+          "Само едно.",
+          "2 при Internet Explorer 5 при FireFox Неограничен при Edge и Chrome (заради поддръжката на HTML5)",
+          "Неограничен брой.",
+          "Какво беше ID...???"
+        ]
+      },
+      {
+        "question": "С коя функция дефинираме AMD модул?",
+        "choices": [
+          "define",
+          "require",
+          "declaration",
+          "declare"
+        ]
+      }
+    ]
+  }
+}

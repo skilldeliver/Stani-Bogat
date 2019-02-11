@@ -16,7 +16,8 @@ class Bot(commands.Bot):
                  activity: str):
 
         what = discord.Activity(name=activity,
-                                type=discord.ActivityType.listening)
+                                url='https://www.twitch.tv/skilldeliver',
+                                type=discord.ActivityType.streaming)
 
         commands.Bot.__init__(self,
                               command_prefix=prefix,

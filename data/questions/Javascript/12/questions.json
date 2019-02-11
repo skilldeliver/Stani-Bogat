@@ -1,0 +1,24 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "С кой от следните оператори взимаме всички div елементи?",
+        "choices": [
+          "document.getElementsByTagName(\"div\");",
+          "div.getAll();",
+          "document.getNodeByElementTag('div');",
+          "document.div.getAll();"
+        ]
+      },
+      {
+        "question": "Как се нарича механизма за \"наследяване\" в JavaScript?",
+        "choices": [
+          "Prototyping",
+          "Events",
+          "Inheritance",
+          "Overloading"
+        ]
+      }
+    ]
+  }
+}

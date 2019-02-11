@@ -1,4 +1,5 @@
 __pycache__/
-data
+Pipfile
+Pipfile.lock
 .vscode
 .idea

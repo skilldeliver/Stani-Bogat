@@ -1,0 +1,24 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "Как се нарича функцията, която закачаме към DOM елемент и очаква да възникне даден event?",
+        "choices": [
+          "event listener",
+          "event waiter",
+          "event propagator",
+          "event adaptor"
+        ]
+      },
+      {
+        "question": "Как се включват модули в NodeJS?",
+        "choices": [
+          "С функцията require",
+          "С функцията include",
+          "С функцията define",
+          "С функцията import"
+        ]
+      }
+    ]
+  }
+}

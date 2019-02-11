@@ -1,0 +1,33 @@
+{
+  "Д.Енчев": {
+    "questions": [
+      {
+        "question": "Към какво сочи this в event handler?",
+        "choices": [
+          "Към конкретният елемент, за който се изпълнява handler-a.",
+          "Към document обекта.",
+          "Към елемента, за който първоначално е възникнал event-a.",
+          "Към елемента, който ще бъде променен от handler-a"
+        ]
+      },
+      {
+        "question": "Как се нарича кодът (функцията), който се изпълнява при възникване на event?",
+        "choices": [
+          "event handler",
+          "event action",
+          "event activator",
+          "event executor"
+        ]
+      },
+      {
+        "question": "Какъв вид модули използва NodeJS?",
+        "choices": [
+          "CommonJS",
+          "SDK",
+          "ES6 Harmony",
+          "AMD"
+        ]
+      }
+    ]
+  }
+}
