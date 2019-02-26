@@ -7,7 +7,7 @@ from bot.core.replies import Reply
 from bot.core.embeds import Top10Embed, Total, StatsEmbed
 from bot.utilities.jsoner import return_top_authors, return_top_players, total, get_player_stats
 
-class Stats:
+class Stats(commands.Cog):
     """ Handles these cogs - топ10, статс"""
     def __init__(self, bot):
         self.bot = bot
