@@ -5,7 +5,7 @@ from bot.core.embeds import QuestionEmbed, JokersEmbed
 from bot.core.replies import Reply
 
 
-class Fifty:
+class Fifty(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.user_id = str()

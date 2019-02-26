@@ -7,7 +7,7 @@ from bot.core.replies import Reply
 from bot.core.constants import Cogs, Emoji, Regex
 
 
-class Help:
+class Help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.user_id = str()

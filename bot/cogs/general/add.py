@@ -8,7 +8,7 @@ from bot.core.embeds import HowToAddEmbed, FormEmbed
 from bot.core.replies import Reply
 
 
-class Add:
+class Add(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.user = str()

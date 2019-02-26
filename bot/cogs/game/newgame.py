@@ -6,7 +6,7 @@ from bot.core.embeds import QuestionEmbed
 from bot.core.replies import Reply
 
 
-class NewGame:
+class NewGame(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.ctx = None

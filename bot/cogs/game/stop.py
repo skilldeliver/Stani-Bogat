@@ -5,7 +5,7 @@ from bot.core.replies import Reply
 from bot.utilities.jsoner import save_player
 
 
-class Stop:
+class Stop(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.user_id = str()

@@ -4,7 +4,7 @@ from bot.core.constants import Cogs
 from bot.core.embeds import CommandsEmbed
 
 
-class Commands:
+class Commands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 

@@ -10,7 +10,7 @@ def is_mod():
         return ctx.message.author.id in MODS
     return commands.check(predicate)
 
-class Approve:
+class Approve(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.ctx = None

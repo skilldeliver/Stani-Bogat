@@ -11,7 +11,7 @@ from bot.core.constants import Cogs
 from bot.core.embeds import InfoEmbed
 
 
-class Info:
+class Info(commands.Cog):
     """ Handles this cog - инфо"""
     def __init__(self, bot):
         self.bot = bot
