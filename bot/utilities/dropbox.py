@@ -1,12 +1,15 @@
 import os
+import sys
 import time
 import datetime
 import contextlib
 
 import dropbox
 
-os.environ["DROPBOX"] = input('Dropbox: ')
-dbx = dropbox.Dropbox(os.getenv('DROPBOX'))
+# os.environ["DROPBOX"] = input('Dropbox: ')
+# dbx = dropbox.Dropbox(os.getenv('DROPBOX'))
+
+dbx = dropbox.Dropbox(sys.argv[2])
 
 @contextlib.contextmanager
 def stopwatch(message):

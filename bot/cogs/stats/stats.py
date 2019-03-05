@@ -1,8 +1,8 @@
+import re
 from time import strftime, gmtime
-
 from discord.ext import commands
 
-from bot.core.constants import Cogs
+from bot.core.constants import Cogs, Regex
 from bot.core.replies import Reply
 from bot.core.embeds import Top10Embed, Total, StatsEmbed
 from bot.utilities.jsoner import return_top_authors, return_top_players, total, get_player_stats
@@ -31,10 +31,15 @@ class Stats(commands.Cog):
         await ctx.send(embed=Total(**total()))
 
     @commands.command(name=Cogs.Stats.stat, aliases=[Cogs.Stats.stats])
-    async def stats(self, ctx):
-        user_id = str(ctx.author.id)
-        user = self.bot.get_user(ctx.author.id)
-        stats = get_player_stats(user_id)
+    async def stats(self, ctx, *args):
+        if not args:
+            user_id = ctx.author.id
+        else:
+            user_id = self._extract_id_from_tag(args[0])
+
+        print(user_id)
+        user = self.bot.get_user(user_id)
+        stats = get_player_stats(str(user_id))
 
         if not stats:
             await ctx.send(f'<@{user_id}> няма Ви в дата базата. Ако мислите, че има проблем свържете се с модераторите.')
@@ -48,6 +53,14 @@ class Stats(commands.Cog):
                            money=stats['money'])
         await ctx.send(embed=embed)
 
+
+    @staticmethod
+    def _extract_id_from_tag(tag):
+        try:
+            user_id = re.search(Regex.user_id, tag).group(1)
+            return int(user_id)
+        except Exception:
+            return None
 
 def setup(bot):
     bot.add_cog(Stats(bot))

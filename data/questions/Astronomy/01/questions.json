@@ -1,1 +1,124 @@
-{}
+{
+  "nasko7": {
+    "questions": [
+      {
+        "question": "Какво е латинското название на съзвездието Летяща риба?",
+        "choices": [
+          "Volans",
+          "Pisces Austrinus",
+          "Hydra",
+          "Tucana"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Лъв?",
+        "choices": [
+          "Leo",
+          "Pavo",
+          "Orion",
+          "Volans"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Лира?",
+        "choices": [
+          "Lyra",
+          "Musca",
+          "Hercules",
+          "Auriga"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Делфин?",
+        "choices": [
+          "Delphinus",
+          "Monoceros",
+          "Cetus",
+          "Octans"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Дракон?",
+        "choices": [
+          "Draco",
+          "Camelopardalis",
+          "Pyxis",
+          "Leo"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Златна рибка?",
+        "choices": [
+          "Dorado",
+          "Auriga",
+          "Sagitta",
+          "Coma Berenices"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Индианец?",
+        "choices": [
+          "Indus",
+          "Carina",
+          "Puppis",
+          "Aries"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Кил?",
+        "choices": [
+          "Carina",
+          "Vulpecula",
+          "Pavo",
+          "Apus"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Близнаци?",
+        "choices": [
+          "Gemini",
+          "Canes Venatici",
+          "Pisces",
+          "Bootes"
+        ]
+      },
+      {
+        "question": "Какво е этимологическото значение на думата астрономия?",
+        "choices": [
+          "\"закон на звездите\"",
+          "\"наука на звездите\"",
+          "\"списък на звездите\"",
+          "\"запис на звездите\""
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Гущер?",
+        "choices": [
+          "Lacerta",
+          "Vulpecula",
+          "Mensa",
+          "Crux"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Кърма?",
+        "choices": [
+          "Puppis",
+          "Grus",
+          "Apus",
+          "Norma"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Лебед?",
+        "choices": [
+          "Cygnus",
+          "Crux",
+          "Columba",
+          "Monoceros"
+        ]
+      }
+    ],
+    "author_img": "http://coolspotters.com/files/photos/395692/chris-mclean-profile.png"
+  }
+}

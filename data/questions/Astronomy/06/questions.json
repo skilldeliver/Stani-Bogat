@@ -1,1 +1,43 @@
-{}
+{
+  "nasko7": {
+    "questions": [
+      {
+        "question": "Какво е латинското название на съзвездието Малка лисица?",
+        "choices": [
+          "Vulpecula",
+          "Leo Minor",
+          "Tucana",
+          "Auriga"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Мрежичка?",
+        "choices": [
+          "Reticulum",
+          "Vulpecula",
+          "Corvus",
+          "Ara"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Голямо куче?",
+        "choices": [
+          "Canis Major",
+          "Ursa Major",
+          "Ursa Minor",
+          "Canis Minor"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Гълъб?",
+        "choices": [
+          "Columba",
+          "Vulpecula",
+          "Mensa",
+          "Lacerta"
+        ]
+      }
+    ],
+    "author_img": "https://i.imgur.com/RU6fLnZ.png"
+  }
+}

@@ -1,1 +1,97 @@
-{}
+{
+  "nasko7": {
+    "questions": [
+      {
+        "question": "Какво е латинското название на съзвездието Ловджийски кучета?",
+        "choices": [
+          "Canes Venatici",
+          "Canis Major",
+          "Canis Minor",
+          "Ursa Major"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Муха?",
+        "choices": [
+          "Musca",
+          "Mensa",
+          "Pavo",
+          "Ara"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Длето?",
+        "choices": [
+          "Caelum",
+          "Antlia",
+          "Apus",
+          "Scutum"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Заек?",
+        "choices": [
+          "Lepus",
+          "Lupus",
+          "Vela",
+          "Cygnus"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Воловар?",
+        "choices": [
+          "Bootes",
+          "Caelum",
+          "Cetus",
+          "Volans"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Гарван?",
+        "choices": [
+          "Corvus",
+          "Grus",
+          "Vulpecula",
+          "Pavo"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Паун?",
+        "choices": [
+          "Pavo",
+          "Fornax",
+          "Cancer",
+          "Columba"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Пещ?",
+        "choices": [
+          "Fornax",
+          "Antlia",
+          "Lyra",
+          "Mensa"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Помпа?",
+        "choices": [
+          "Antlia",
+          "Fornax",
+          "Lyra",
+          "Mensa"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Малка мечка?",
+        "choices": [
+          "Ursa Minor",
+          "Ursa Major",
+          "Canis Major",
+          "Canis Minor"
+        ]
+      }
+    ],
+    "author_img": "https://i.imgur.com/RU6fLnZ.png"
+  }
+}

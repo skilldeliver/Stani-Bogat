@@ -1,7 +1,7 @@
 from time import strftime, gmtime
 from discord import Embed
 
-from bot.core.constants import PREFIX as P, Link, Text, LargeText, Color
+from bot.core.constants import PREFIX as P, Link, Text, LargeText, Color, Theme
 from bot.core.replies import Reply
 
 
@@ -61,7 +61,7 @@ class InfoEmbed(Embed):
                         url=Link.github_repo,
                         icon_url=Link.github_icon)
         self.add_field(name='🤖 Бот:',
-                       value=f'Uptime: {uptime}\nСървъри: {connected_servers}\nПотребители: {total_members}')
+                       value=f'**Uptime**: {uptime}\n**Сървъри**: {connected_servers}\n**Потребители**: {total_members}')
         self.add_field(name=Text.host,
                        value=Reply.system_info(
                                                pc.node,
@@ -177,6 +177,13 @@ class RulesEmbed(Embed):
         self.add_field(name=Text.rules,
 value=LargeText.list_rules)
 
+class ThemesEmbed(Embed):
+    def __init__(self):
+        super().__init__(color=Color.rules)
+
+        themes = [t.lower() for t in Theme.game_themes]
+        self.add_field(name=Text.themes,
+value='\n'.join(themes))
 
 class Top10Embed(Embed):
     def __init__(self, target, authors_n):

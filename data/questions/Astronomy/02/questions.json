@@ -1,1 +1,116 @@
-{}
+{
+  "nasko7": {
+    "questions": [
+      {
+        "question": "Какво е латинското название на съзвездието Малък лъв?",
+        "choices": [
+          "Leo Minor",
+          "Leo",
+          "Leo Major",
+          "Pictor"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Микроскоп?",
+        "choices": [
+          "Microscopium",
+          "Fornax",
+          "Apus",
+          "Antlia"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Касиопея?",
+        "choices": [
+          "Cassiopeia",
+          "Lyra",
+          "Antlia",
+          "Hydra"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Бик?",
+        "choices": [
+          "Taurus",
+          "Gemini",
+          "Aries",
+          "Bootes"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Водна змия?",
+        "choices": [
+          "Hydrus",
+          "Hidra",
+          "Corvus",
+          "Lacerta"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Овен?",
+        "choices": [
+          "Aries",
+          "Taurus",
+          "Capricorn",
+          "Cetus"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Октант?",
+        "choices": [
+          "Octans",
+          "Circinus",
+          "Puppis",
+          "Sextans"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Орион?",
+        "choices": [
+          "Orion",
+          "Pegasus",
+          "Piscec",
+          "Canes Venatici"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Персей?",
+        "choices": [
+          "Perseus",
+          "Cepheus",
+          "Musca",
+          "Lynx"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Рак?",
+        "choices": [
+          "Cancer",
+          "Taurus",
+          "Aries",
+          "Capricorn"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Андромеда?",
+        "choices": [
+          "Andromeda",
+          "Grus",
+          "Ara",
+          "Vela"
+        ]
+      },
+      {
+        "question": "Какъв е броят на официалните съзвездия, одобрени от Международния астрономически съюз през 1922 г.?",
+        "choices": [
+          "88",
+          "22",
+          "96",
+          "73"
+        ]
+      }
+    ],
+
+    "author_img": "https://i.imgur.com/RU6fLnZ.png"
+  }
+}

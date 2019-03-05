@@ -23,6 +23,7 @@ class Cogs(NamedTuple):
         jokers = 'жокери'
         game = 'игра'
         stop = 'спирам'
+        themes = 'теми'
 
         # aliases
         newgame= 'новаигра'
@@ -37,6 +38,7 @@ class Cogs(NamedTuple):
         commands = 'команди'
         info = 'инфо'
         rules = 'правила'
+        themes = 'теми'
 
     class Stats(NamedTuple):
         top10 = 'топ10'
@@ -120,7 +122,7 @@ class Theme:
                      'ГЕОГРАФИЯ': 'Geography',
                      'БАЗИ-ОТ-ДАННИ': 'Databases',
                      'БИОЛОГИЯ': 'Biology',
-                     'АСТРОНОМИЯ': 'Biology',
+                     'АСТРОНОМИЯ': 'Astronomy',
                      'ХИМИЯ': 'Chemistry'}
 
 class File(NamedTuple):
@@ -161,7 +163,7 @@ class Regex(NamedTuple):
             r'Друг:(?P<other2>.*)\n'
             r'Друг:(?P<other3>.*)'
             )
-    user_id = r'<@(\d*)>'
+    user_id = r'<@!(\d*)>'
 
 class Emoji(NamedTuple):
     clock = '\u23f0'
@@ -173,14 +175,15 @@ class Emoji(NamedTuple):
 
 class Color(NamedTuple):
     #TODO write comment what each color is
-    info = 0x000000 # black
-    rules = 0x3351B6
-    top = 0x8a2be2
+    info = 0x242C8C # black
+    rules = 0x242C8C
+    top2 = 0x8a2be2
+    top = 0x386DE4
     how_add = 0xcae00d
     form = 0xcae00d
     wrong = 0xdd2e44
     right = 0x77b255
-    commands = 0x3351B6
+    commands = 0x242C8C
 
 
 class Text(NamedTuple):
@@ -194,7 +197,7 @@ class Text(NamedTuple):
 
     me = 'Владислав Михов (skilldeliver)'
     top_contributors = '👷 Топ сътрудници(contributors):'
-    contributors = ':one: skilldeliver \n:two: surister'
+    contributors = ':one: skilldeliver \n:two: THGM \n:three: Viewless \n:four: surister'
 
     top_players = 'ТОП 10 играчи с най-много точки.'
     top_authors = 'ТОП 10 потребители с най-много добавени въпроси.'
@@ -207,10 +210,11 @@ class Text(NamedTuple):
     added_questions = 'добавени въпроса.'
     points = 'точки.'
 
-    main_commands = '📦 Основни команди.'
-    game_commands = '🎮 Игрови команди.'
-    statistics = '📊 Статистики - команди.'
+    main_commands = '📦 Основни'
+    game_commands = '🎮 Игрови'
+    statistics = '📊 Статистики'
     rules = '📜 Правила:'
+    themes = ' Теми:'
 
     unclosed_question = 'Незатворен въпрос!'
 

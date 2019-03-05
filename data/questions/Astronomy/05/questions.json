@@ -1,1 +1,70 @@
-{}
+{
+  "nasko7": {
+    "questions": [
+      {
+        "question": "Какво е латинското название на съзвездието Жребче?",
+        "choices": [
+          "Equuleus",
+          "Serpens",
+          "Indus",
+          "Dorado"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Колар?",
+        "choices": [
+          "Auriga",
+          "Aquila",
+          "Antlia",
+          "Bootes"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Вълк?",
+        "choices": [
+          "Lupus",
+          "Lepus",
+          "Draco",
+          "Pavo"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Орел?",
+        "choices": [
+          "Aquila",
+          "Pavo",
+          "Crux",
+          "Caelum"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Пергел?",
+        "choices": [
+          "Circinus",
+          "Apus",
+          "Horologium",
+          "Pyxis"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Малко куче?",
+        "choices": [
+          "Canis Minor",
+          "Ursa Major",
+          "Ursa Minor",
+          "Canis Major"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Компас?",
+        "choices": [
+          "Pyxis",
+          "Circinus",
+          "Horologium",
+          "Crater"
+        ]
+      }
+    ],
+    "author_img": "https://i.imgur.com/RU6fLnZ.png"
+  }
+}

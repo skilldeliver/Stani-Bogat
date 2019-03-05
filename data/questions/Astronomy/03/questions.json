@@ -1,1 +1,125 @@
-{}
+{
+  "nasko7": {
+    "questions": [
+      {
+        "question": "Какво е латинското название на съзвездието Маса?",
+        "choices": [
+          "Mensa",
+          "Musca",
+          "Sagitta",
+          "Norma"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Дева?",
+        "choices": [
+          "Virgo",
+          "Dorado",
+          "Ara",
+          "Aquila"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Змиеносец?",
+        "choices": [
+          "Ophiuchus",
+          "Serpens",
+          "Reticulum",
+          "Sagittarius"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Змия?",
+        "choices": [
+          "Serpens",
+          "Mensa",
+          "Musca",
+          "Tucana"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Кит?",
+        "choices": [
+          "Cetus",
+          "Pyxis",
+          "Cancer",
+          "Fornax"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Козирог?",
+        "choices": [
+          "Capricornus",
+          "Ophiucus",
+          "Circinus",
+          "Sagittarius"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Везни?",
+        "choices": [
+          "Libra",
+          "Aries",
+          "Aquila",
+          "Virgo"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Водолей?",
+        "choices": [
+          "Aquarius",
+          "Lupus",
+          "Equuleus",
+          "Cygnus"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Пегас?",
+        "choices": [
+          "Pegasus",
+          "Perseus",
+          "Cassiopeia",
+          "Lyra"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Риби?",
+        "choices": [
+          "Pisces",
+          "Piscis Austrinus",
+          "Hydris",
+          "Gemini"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Голяма мечка?",
+        "choices": [
+          "Ursa Major",
+          "Ursa Minor",
+          "Canis Major",
+          "Canis Minor"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Корабни платна?",
+        "choices": [
+          "Vela",
+          "Lyra",
+          "Musca",
+          "Ara"
+        ]
+      },
+      {
+        "question": "Какво е латинското название на съзвездието Косите на Вероника?",
+        "choices": [
+          "Coma Cerenices",
+          "Canes Venatici",
+          "Libra",
+          "Carina"
+        ]
+      }
+    ],
+
+    "author_img": "https://i.imgur.com/RU6fLnZ.png"
+  }
+}
