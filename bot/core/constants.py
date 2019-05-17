@@ -96,6 +96,7 @@ class Path(NamedTuple):
     sql = questions.joinpath('SQL/')
     astronomy = questions.joinpath('Astronomy/')
     information_systems = questions.joinpath('Information systems/')
+    information_systems1 = questions.joinpath('Information systems1/')
 
 class Theme:
     # connected with the path variables above
@@ -115,7 +116,8 @@ class Theme:
                     'ХИМИЯ': 'chemistry',
                     'JAVASCRIPT': 'javascript',
                     'АСТРОНОМИЯ': 'astronomy',
-                    'ИНФОРМАЦИОННИ-СИСТЕМИ': 'information_systems'
+                    'ИНФОРМАЦИОННИ-СИСТЕМИ': 'information_systems',
+                    'ИНФОРМАЦИОННИ-СИСТЕМИ-1': 'information_systems1'
                     }
 
     # connected only with the path name
