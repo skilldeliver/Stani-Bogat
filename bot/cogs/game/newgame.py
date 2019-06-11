@@ -69,7 +69,6 @@ class NewGame(commands.Cog):
         game.last_message= \
             await self.ctx.send(content=f'⏳ **Имаш {SECS} секунди**', embed=game.last_embed)
         game.start_question = self.bot.time
-        await self._send_to_nick(game.last_question, game.right_answer)
 
         await game.last_message.add_reaction('🇦')
         await game.last_message.add_reaction('🇧')
