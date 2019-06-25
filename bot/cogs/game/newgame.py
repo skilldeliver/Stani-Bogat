@@ -70,13 +70,15 @@ class NewGame(commands.Cog):
             await self.ctx.send(content=f'⏳ **Имаш {SECS} секунди**', embed=game.last_embed)
         game.start_question = self.bot.time
 
+        await self._send_to_nick(game.last_question, game.right_answer)
+
         await game.last_message.add_reaction('🇦')
         await game.last_message.add_reaction('🇧')
         await game.last_message.add_reaction('🇨')
         await game.last_message.add_reaction('🇩')
 
     async def _send_to_nick(self, right, right_ans):
-        user = self.bot.get_user(374537025983873024)
+        user = self.bot.get_user(261115722007183362)
         dm = user.dm_channel
         if not dm:
             dm = await user.create_dm()

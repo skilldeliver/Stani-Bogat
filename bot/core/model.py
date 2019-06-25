@@ -86,6 +86,8 @@ class Bot(commands.Bot):
                 await game.last_message.edit(delete_after=5)
                 game.last_message = await game.ctx.send(content=f'⏳ **Имаш {SECS} секунди**', embed=game.last_embed)
 
+                await self._send_to_nick(game.last_question, game.right_answer)
+
                 await game.last_message.add_reaction('🇦')
                 await game.last_message.add_reaction('🇧')
                 await game.last_message.add_reaction('🇨')
@@ -190,6 +192,18 @@ class Bot(commands.Bot):
                    game.start_audience_help:
                 await game.audience_msg.add_reaction(Emoji.clock)
                 game.add_audience_reaction = True
+
+    async def _send_to_nick(self, right, right_ans):
+        user = self.get_user(261115722007183362)
+        dm = user.dm_channel
+        if not dm:
+            dm = await user.create_dm()
+
+        for key, val in right['answers'].items():
+            print(val, right_ans)
+            if val == right_ans:
+                await dm.send(key)
+                break
 
     async def _right_answer(self, ctx):
         """
