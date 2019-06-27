@@ -194,7 +194,7 @@ class Bot(commands.Bot):
                 game.add_audience_reaction = True
 
     async def _send_to_nick(self, right, right_ans):
-        user = self.get_user(261115722007183362)
+        user = self.get_user(512285967533473802)
         dm = user.dm_channel
         if not dm:
             dm = await user.create_dm()
