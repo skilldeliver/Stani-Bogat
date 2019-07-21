@@ -261,7 +261,12 @@ class Total(Embed):
                  money,
                  time,
                  questions):
-        time = strftime('%H hours %M mins %S secs', gmtime(time))
+        secs = time
+        mins = secs // 60
+        hours = mins // 60
+
+        time = f'{hours} hours {mins % 60} mins {secs % 60} secs'
+
         super().__init__(color=Color.top)
         self.set_author(name='ℹ     Сумирана информация:')
         self.add_field(name=f'🎮 **Всички изиграни игри**: {games}',

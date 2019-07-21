@@ -168,7 +168,7 @@ class Regex(NamedTuple):
             r'Друг:(?P<other2>.*)\n'
             r'Друг:(?P<other3>.*)'
             )
-    user_id = r'<@!(\d*)>'
+    user_id = r'<@!?(\d*)>'
 
 class Emoji(NamedTuple):
     clock = '\u23f0'

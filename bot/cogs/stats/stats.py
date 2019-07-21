@@ -1,5 +1,4 @@
 import re
-from time import strftime, gmtime
 from discord.ext import commands
 
 from bot.core.constants import Cogs, Regex
@@ -45,7 +44,11 @@ class Stats(commands.Cog):
             await ctx.send(f'<@{user_id}> няма Ви в дата базата. Ако мислите, че има проблем свържете се с модераторите.')
             return
 
-        time = strftime('%H hours %M mins %S secs', gmtime(stats['time']))
+        secs = stats['time']
+        mins = secs // 60
+        hours = mins // 60
+
+        time = f'{hours} hours {mins} mins {secs} secs'
         embed = StatsEmbed(name=user.name,
                            img_url=user.avatar_url,
                            games=stats['games'],
