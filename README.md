@@ -17,13 +17,13 @@ The bot asks questions, give jokers, displays general or user statistics and run
 
 ### 1. Dependencies
   <a>
-      <img width=128 src="https://seeklogo.net/wp-content/uploads/2012/10/python-logo-vector.png">
+      <img width=60 src="https://seeklogo.net/wp-content/uploads/2012/10/python-logo-vector.png">
   </a>
   <a>
-      <img width=128 src="https://discordguide.github.io/assets/API.png">
+      <img width=60 src="https://discordguide.github.io/assets/API.png">
   </a>
   <a>
-      <img width=128 src="https://discordguide.github.io/assets/API.png">
+      <img width=60 src="https://aem.dropbox.com/cms/content/dam/dropbox/www/en-us/branding/app-dropbox-android@2x.png">
   </a>
 The whole code in the project is written in **Python**.
 For connecting the Discord API is used [discord.py](https://github.com/Rapptz/discord.py "Popular Discord API wrapper written in Python").
