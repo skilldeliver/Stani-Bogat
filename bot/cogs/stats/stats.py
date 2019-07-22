@@ -48,7 +48,7 @@ class Stats(commands.Cog):
         mins = secs // 60
         hours = mins // 60
 
-        time = f'{hours} hours {mins} mins {secs} secs'
+        time = f'{hours} hours {mins % 60} mins {secs % 60} secs'
         embed = StatsEmbed(name=user.name,
                            img_url=user.avatar_url,
                            games=stats['games'],
