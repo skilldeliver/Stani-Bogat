@@ -16,6 +16,7 @@ The bot asks questions, give jokers, displays general or user statistics and run
 ## Development
 
 ### 1. Dependencies
+<div display="inline-block">
   <a>
       <img width=60 src="https://seeklogo.net/wp-content/uploads/2012/10/python-logo-vector.png">
   </a>
@@ -25,6 +26,7 @@ The bot asks questions, give jokers, displays general or user statistics and run
   <a>
       <img width=60 src="https://aem.dropbox.com/cms/content/dam/dropbox/www/en-us/branding/app-dropbox-android@2x.png">
   </a>
+</div>
 The whole code in the project is written in **Python**.
 For connecting the Discord API is used [discord.py](https://github.com/Rapptz/discord.py "Popular Discord API wrapper written in Python").
 **Dropbox API** is used for storing and accessing the whole data in one place in the Dropbox cloud.
