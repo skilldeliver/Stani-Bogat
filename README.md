@@ -13,7 +13,7 @@ The bot asks questions, give jokers, displays general or user statistics and run
 
 ### 1. Dependencies
 The whole code in the project is written in **Python**.
-For connecting with the Discord API is used [discord.py](https://github.com/Rapptz/discord.py "Popular Discord API wrapper written in Python")
+For connecting the Discord API is used [discord.py](https://github.com/Rapptz/discord.py "Popular Discord API wrapper written in Python").
 **Dropbox API** is used for storing and accessing the whole data in one place in the Dropbox cloud.
 
 
@@ -23,8 +23,7 @@ Now the bot is hosted on [Google Cloud](https://cloud.google.com) with the Compu
 
 ### 3. Community
 This project was popularized and polished with the invaluable support of the [IT Bulgaria Discord server](http://discord.gg/dRrdYQf)
-There are more than 
-
+Due to the contributing nature of the project and easy to use question addition utility, there are more than 10 question authors and ~600 questions in ~15 different themes.
 
 ## How to play
 
