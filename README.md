@@ -18,7 +18,7 @@ The bot asks questions, give jokers, displays general or user statistics and run
 ### 1. Dependencies
 <div display="inline-block">
   <a>
-      <img width=60 src="https://seeklogo.net/wp-content/uploads/2012/10/python-logo-vector.png">
+      <img width=60 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png">
   </a>
   <a>
       <img width=60 src="https://discordguide.github.io/assets/API.png">
