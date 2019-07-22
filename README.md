@@ -34,6 +34,10 @@ For connecting the Discord API is used [discord.py](https://github.com/Rapptz/di
 
 
 ### 2. Running enviorment
+  <a>
+      <img width=60 src="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png">
+  </a>
+
 Firstly the bot was hosted on [Heroku](https://www.heroku.com).
 Now the bot is hosted on [Google Cloud](https://cloud.google.com) with the Compute Engine and basic VM instance, runned with nohup.
 
