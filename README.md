@@ -1,7 +1,7 @@
 # Stani-Bogat
 
   <a>
-      <img src="https://i.imgur.com/WX5gvAa.png">
+      <img src="https://i.imgur.com/WX5gvAa.png" align="middle">
   </a>
 
   <a href="https://github.com/Rapptz/discord.py/">
@@ -17,14 +17,14 @@ The bot asks questions, give jokers, displays general or user statistics and run
 
 ### 1. Dependencies
 <div display="inline-block">
-  <a style="margin-right: 10px">
-      <img width=60 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png">
+  <a >
+      <img style="margin-right: 109px" width=60 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png">
   </a>
-  <a  style="margin-right: 10px">
-      <img width=60 src="https://discordguide.github.io/assets/API.png">
+  <a >
+      <img style="margin-right: 100px" width=60 src="https://discordguide.github.io/assets/API.png">
   </a>
-  <a style="margin-right: 10px">
-      <img width=60 src="https://aem.dropbox.com/cms/content/dam/dropbox/www/en-us/branding/app-dropbox-android@2x.png">
+  <a>
+      <img style="margin-right: 100px" width=60 src="https://aem.dropbox.com/cms/content/dam/dropbox/www/en-us/branding/app-dropbox-android@2x.png">
   </a>
 </div>
 The whole code in the project is written in **Python**.
