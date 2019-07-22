@@ -18,13 +18,13 @@ The bot asks questions, give jokers, displays general or user statistics and run
 ### 1. Dependencies
 <div display="inline-block">
   <a >
-      <img style="margin-left: 100px" width=60 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1024px-Python-logo-notext.svg.png">
+      <img style="margin-left: 100px" width=60 src="docs/assets/python_logo.png">
   </a>
   <a >
-      <img style="margin-left: 100px" width=60 src="https://discordguide.github.io/assets/API.png">
+      <img style="margin-left: 100px" width=60 src="docs/assets/discord_api_logo.png">
   </a>
   <a>
-      <img style="margin-left: 100px" width=60 src="https://aem.dropbox.com/cms/content/dam/dropbox/www/en-us/branding/app-dropbox-android@2x.png">
+      <img style="margin-left: 100px" width=60 src="docs/assets/dropbox_logo.png">
   </a>
 </div>
 
@@ -35,7 +35,7 @@ For connecting the Discord API is used [discord.py](https://github.com/Rapptz/di
 
 ### 2. Running enviorment
   <a>
-      <img width=60 src="https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png">
+      <img width=60 src="docs/assets/google_cloud_logo.png">
   </a>
 
 Firstly the bot was hosted on [Heroku](https://www.heroku.com).
