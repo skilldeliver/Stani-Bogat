@@ -77,9 +77,9 @@ class InfoEmbed(Embed):
                        value=Reply.used_tech(python_version,
                                              discord_version),
                        inline=False)
-        self.add_field(name=Text.author,
-                       value=Text.me,
-                       inline=False)
+        # self.add_field(name=Text.author,
+        #                value=Text.me,
+        #                inline=False)
         self.add_field(name=Text.top_contributors,
                        value=Text.contributors,
                        inline=False)
