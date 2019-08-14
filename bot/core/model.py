@@ -47,6 +47,7 @@ class Bot(commands.Bot):
                     self.load_extension(f'bot.cogs.{cog}.{extension}')
                     print(f'    Successfully loaded general cog: {extension}')
                 except Exception as e:
+                    print(e)
                     print(f'    Failed to load {cog} cog {extension}: {repr(e)}')
 
     async def on_reaction_add(self, reaction, user):
