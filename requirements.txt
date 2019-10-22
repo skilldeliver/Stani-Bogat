@@ -11,7 +11,7 @@ idna==2.8
 mccabe==0.6.1
 multidict==4.5.1
 pep8==1.7.1
-Pillow==5.3.0
+Pillow==6.2.0
 psutil==5.4.8
 pycodestyle==2.4.0
 pyflakes==2.0.0
