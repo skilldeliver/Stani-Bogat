@@ -59,7 +59,6 @@ To start a new game you should send the new game command in discord channel. Aft
 
 <div>
   <a>
-      <img src="docs/assets/question_annotations.png">
   </a>
 </div>
 
