@@ -41,7 +41,7 @@ For connecting the Discord API is used [discord.py](https://github.com/Rapptz/di
 </div>
 
 Firstly the bot was hosted on [Heroku](https://www.heroku.com).
-Now the bot is hosted on [Google Cloud](https://cloud.google.com) with the Compute Engine and basic VM instance, runned with nohup.
+Currently the bot is hosted on [Google Cloud](https://cloud.google.com) with the Compute Engine and basic VM instance.
 
 ### 3. Community
 <div>
