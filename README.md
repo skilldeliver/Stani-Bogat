@@ -62,9 +62,3 @@ To start a new game you should send the new game command in discord channel. Aft
   </a>
 </div>
 
-
-## Statistics
-
-## Utility for question add
-
-## Credits
